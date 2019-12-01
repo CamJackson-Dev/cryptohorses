@@ -87,10 +87,10 @@
 			              </div>
 			            </div>
 			          </li>
-			          <li><a href="#dividendsModal" data-toggle="modal" title="Dividends"><%= __('Dividends')%></a></li>
+			          <li><a href="#dividendsModal" data-toggle="modal" title="Dividends" id="showDivs"><%= __('Dividends')%></a></li>
 			          <li><a href="/about-us" title="Help"><%= __('Help')%></a></li>
 					  <li><a href="/doc/WhitePaper.pdf" title="Whitepaper" target="_blank"><%= __('Whitepaper')%></a></li>
-					  <li><a href="#purchaseModel" data-toggle="modal" title="Purchase TRX" target="_blank">Buy TRX</a></li>
+					  <li><a href="#purchaseModel" data-toggle="modal" title="Purchase TRX" target="_blank" id="buyTRX">Buy TRX</a></li>
 					  <li><a href="https://winnamerch.com" title="Buy Merchandise" target="_blank">Buy Merchandise</a></li>
 			        </ul>
 			        
@@ -705,6 +705,12 @@
 <script src="js/anim.js"></script>
 <!-- <script src="js/project_js/login-bundle.js"></script> -->
 <script src="js/project_js/login.min.js"></script>
+<script>
+$("#buyTRX, #showDivs").on('click', function(){
+	console.log('clicked')
+	$('.mobile-menu,.menu-bar').toggleClass('active');
+})
+</script>
 
 </body>
 </html>
