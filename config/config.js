@@ -6,6 +6,7 @@ const dev = {
 
     TRONGRID_NODE: "https://api.shasta.trongrid.io",
     SIGNER_KEY: process.env.SIGNER_KEY,
+    TOKEN_OWNER: process.env.TOKEN_OWNER,
     DUMMY_PK: "677ff54c085d898025de8b8f1683c0d77f32568a6559787f4d46b5ae0fa8e767",
 
     MONGO_DATABASE: 'test',
@@ -24,6 +25,7 @@ const prod = {
 
     TRONGRID_NODE: "https://api.trongrid.io",
     SIGNER_KEY: process.env.SIGNER_KEY,
+    TOKEN_OWNER: process.env.TOKEN_OWNER,
 
     DUMMY_PK: "677ff54c085d898025de8b8f1683c0d77f32568a6559787f4d46b5ae0fa8e767",
 

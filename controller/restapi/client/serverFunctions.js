@@ -1,6 +1,6 @@
 const TronWeb = require('tronweb');
 var config = require('../../../config/config');
-
+var cron = require('node-cron');
 
 const fullNode = config.TRONGRID_NODE;
 const solidityNode = config.TRONGRID_NODE;
@@ -25,6 +25,39 @@ async function init() {
     
         var gameContractInfo = await tronWeb.trx.getContract(gameLocation1Contract);
         gameLocation1ContractInstance = await tronWeb.contract(gameContractInfo.abi.entrys, gameContractInfo.contract_address);
+    }catch(e){
+        console.log('error', e)
+    }
+
+}
+
+cron.schedule('* * * * *', async () => {
+    var divContractAddress = await tokenContractInstance.dividendContract().call()
+    var base58Converted = tronWeb.address.fromHex(divContractAddress);
+    if(base58Converted !== dividendContract){
+        console.log('need to change');
+        setDivAddress();
+    }
+});
+
+async function setDivAddress(){
+
+    const fullNode = config.TRONGRID_NODE;
+    const solidityNode = config.TRONGRID_NODE;
+    const eventServer = config.TRONGRID_NODE;
+    const privateKey = config.TOKEN_OWNER;
+
+    const tronWebTemp = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
+
+    try{
+        var tokenContractInfo = await tronWebTemp.trx.getContract(tokenContract);
+        tokenContractInstance = await tronWebTemp.contract(tokenContractInfo.abi.entrys, tokenContractInfo.contract_address);
+
+        await tokenContractInstance.setDividendContract(dividendContract).send({
+            shouldPollResponse: false,
+            feeLimit: 1000000
+        })
+    
     }catch(e){
         console.log('error', e)
     }
