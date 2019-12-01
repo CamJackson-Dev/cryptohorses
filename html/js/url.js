@@ -1,3 +1,3 @@
-// const url = 'https://beta-tronhorse.herokuapp.com';
-
-const url = "http://localhost:6001";
+const url = 'https://alpha-live-tronhorse.herokuapp.com';
+// const url = 'https://tronhorses.com'
+// const url = "http://localhost:6001";
