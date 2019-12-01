@@ -31,7 +31,7 @@ const prod = {
     MONGODB_USERNAME: 'tronhorse',
     MONGODB_PASSWORD: 'TronDB%40%230909',
     MONGODB_IP_1: 'cluster0-fdyv4.mongodb.net',
-    url: "mongodb+srv://winnahorse777:Y2FYYgvXGmps8QK5@cluster0-e6dbh.mongodb.net/test?retryWrites=true&w=majority"
+    url: "mongodb+srv://winnahorse777:Y2FYYgvXGmps8QK5@cluster0-e6dbh.mongodb.net/tronhorse?retryWrites=true&w=majority"
 
 }
 
