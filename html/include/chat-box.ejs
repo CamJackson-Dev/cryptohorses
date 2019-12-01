@@ -1,0 +1,237 @@
+
+<span class="chat-icon mobile-menu11"></span>
+
+
+<div class="chats-box" id="boxContainer">
+	<div class="chat-header">
+		<div class="username-heading" id="showBackbutton">
+			<div class="backto-userlist" title="Back" onclick="backbutton()"></div>
+			<!-- <h3 id="showontopUsername"></h3> -->
+		</div>
+		<h3 class="stable-box"><img src="images/winna-logo.png"></h3>
+	</div>	
+	<div class="chat-body">
+		<div class="icons-position">
+	    <ul class="rightsallicons profile-iconsright">
+	      <li class="onlyall"><a href="#" id="showontopUsername" data-userchat="All"><span class="all-show">All</span></a></li>
+	      <li><a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw" target="_blank"><svg class="icon"><use xlink:href="images/icons.svg#icon_headphone"></use></svg></a></li>
+	      <li><a href="#announcement" data-toggle="modal"><svg class="icon"><use xlink:href="images/icons.svg#icon_well"></use></svg></a></li>
+	      <!-- <li><a href="#"><svg class="icon"><use xlink:href="images/icons.svg#icon_list"></use></svg></a></li> -->
+	    </ul>
+	  </div>
+	  
+		<!-- This section will show when ulick on user list -->
+		<div class="chat-details" id="showChatdetails">
+				
+			<ul id="messages" class="chat-shaper">
+					
+
+				<!-- <li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>Hello</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user3.jpg"></a><p class="usernames">Adam Gilchirst</p>Hello dude.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Andrew Symonds</p>How are you? </li>
+				<li class="reciever-shape"><a href="#"><img src="img/user4.jpg"></a><p class="usernames">Ramesh Kumar</p>I am fine thank you and what about you?</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames"></p>I am also fine thanks you.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>Where are you?</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user5.jpg"></a><p class="usernames">Ricky Ponting</p>Lorem ipsome dollor lore imspolo soloouie ererer.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>Ipsome imspolo soloouie dollor ererel lore.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user3.jpg"></a><p class="usernames">Ricky Ponting</p>Hello</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>Hello dude.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user5.jpg"></a><p class="usernames">Ricky Ponting</p>How are you?</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user4.jpg"></a><p class="usernames">Ricky Ponting</p>I am fine thank you and what about you?</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>I am also fine thanks you.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user4.jpg"></a><p class="usernames">Ricky Ponting</p>Where are you?</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user3.jpg"></a><p class="usernames">Ricky Ponting</p>Lorem ipsome dollor lore imspolo soloouie ererer.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user6.jpg"></a><p class="usernames">Ricky Ponting</p>Ipsome imspolo soloouie dollor ererel lore.</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user7.jpg"></a><p class="usernames">Ricky Ponting</p>I am fine thank you and what about you?</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>I am also fine thanks you.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user3.jpg"></a><p class="usernames">Ricky Ponting</p>Where are you?</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user4.jpg"></a><p class="usernames">Ricky Ponting</p>Lorem ipsome dollor lore imspolo soloouie ererer.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>Ipsome imspolo soloouie dollor ererel lore.</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user5.jpg"></a><p class="usernames">Ricky Ponting</p>I am fine thank you and what about you?</li>
+				<li class="sender-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>I am also fine thanks you.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user3.jpg"></a><p class="usernames">Ricky Ponting</p>Where are you?</li>
+				<li class="reciever-shape"><a href="#"><img src="img/user2.jpg"></a><p class="usernames">Ricky Ponting</p>Lorem ipsome dollor lore imspolo soloouie ererer.</li>
+				<li class="sender-shape"><a href="#"><img src="img/user6.jpg"></a><p class="usernames">Ricky Ponting</p>Ipsome imspolo soloouie dollor ererel lore.</li> -->
+			</ul>
+			<form action="#" id="all-chats-form" method="post" class="chat-inputarea">
+				<textarea class="chat-inputfield textarea-chat-inputfield" name="all-message" id="chatArea" data-emojiable="true" placeholder="Type a message"></textarea>
+				<button type="submit" class="chat-sendbutton" id="sendMsg"></button>
+			</form>
+		</div>
+
+		<!-- This section for user listing and this will hide when click on user -->
+		<ul class="chat-userlist" id="hideUserlisting">
+		  <!-- <h3 class="stable-box"><img src="images/winna-logo.png"></h3> -->
+			<div class="chat-body">
+        <h4 class="lan-heading">Room</h4>
+        <ul class="country-language">
+          <li data-userchat="All" class="changeChatRoom" name="all"><a href="#"><img src="images/country/all-flags.svg">All</a></li>
+          <li data-userchat="En" class="changeChatRoom" name="en"><a href="#"><img src="images/country/america.svg">English(En)</a></li>
+          <li data-userchat="CN" class="changeChatRoom" name="cn"><a href="#"><img src="images/country/china.svg">China(CN)</a></li>
+          <li data-userchat="KR" class="changeChatRoom" name="kr"><a href="#"><img src="images/country/korea.svg">Korea(KR)</a></li>
+          <li data-userchat="Ru" class="changeChatRoom" name="ru"><a href="#" ><img src="images/country/russia.svg">Russia(Ru)</a></li>
+          <li data-userchat="Fr" class="changeChatRoom" name="fr"><a href="#"><img src="images/country/france.svg">France(Fr)</a></li>
+          <!-- <li data-userchat="JP"><a href="#"><img src="images/country/japan.svg">Japan(JP)</a></li>
+          <li data-userchat="BP"><a href="#"><img src="images/country/Portugal.png">Portuguese(BP)</a></li>
+          <li data-userchat="EP"><a href="#"><img src="images/country/spanius.png">Espanual(EP)</a></li> -->
+        </ul>
+				<h4 class="vip-rooms">Vip Room</h4>
+        <ul class="country-language">
+          <li data-userchat="Vip"><a href="#"><img src="images/country/gold-vip.svg">Gold Vip<small>Featured Locked</small></a></li>
+        </ul>
+		   </div>
+		</ul>
+	</div>	
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="./../js/libs/moment.js"></script>
+<script src="./../js/libs/mustache.js"></script>
+<script id="message-template-sender" type="text/template">
+	<li class="sender-shape">
+		<a href="#">
+			<img src="images/{{image}}.png">
+		</a>
+		<p class="{{color}}">
+			{{userName}}
+		</p>{{message}}
+	</li>
+</script>
+
+<script id="message-template-receiver" type="text/template">
+	<li class="reciever-shape">
+		<a href="#">
+			<img src="images/{{image}}.png">
+		</a>
+		<p class="{{color}}">
+			{{userName}}
+		</p>{{message}}
+	</li>
+</script>
+
+<div class="modal fade home-pop-up" id="announcement" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+		  <div class="modal-content modal-dividends">
+				<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					 </button>
+					 <p style="margin: 15px;">
+						No announcements at the moments
+					</p>
+					</div>
+				</div>
+		  </div>
+	  </div>	
+
+
+
+<!-- <div class="whatsapp-box" id="boxContainer">
+	<div class="chat-header">
+		<h2>WhatsApp</h2>
+		<div class="search-box" id="searchBox">
+			<div class="backto-userlist" title="Back" onclick="backfromSearch()"></div>
+			<input type="text" name="" placeholder="Search" id="searchInput" onkeyup="searchFunction()">
+		</div>
+		<div class="user-search" title="Search" onclick="showSearchbox()"></div>
+		<div class="chat-close" title="Close" onclick="hideBox('boxContainer')">&times;</div>
+		<div class="username-heading" id="showBackbutton">
+			<div class="backto-userlist" title="Back" onclick="backbutton()"></div>
+			<h3 id="showontopUsername">Fany</h3>
+		</div>
+	</div>	
+	<div class="chat-body">
+		<div class="chat-details" id="showChatdetails">
+			<ul class="chat-shaper">
+				<li class="sender-shape">Hello <span class="chat-timestamp">4:20 pm</span></li>
+				<li class="reciever-shape">Hello dude.<span class="chat-timestamp">4:21 pm</span></li>
+				<li class="sender-shape">How are you? <span class="chat-timestamp">4:22 pm</span></li>
+				<li class="reciever-shape">I am fine thank you and what about you?<span class="chat-timestamp">4:22 pm</span></li>
+				<li class="sender-shape">I am also fine thanks you. <span class="chat-timestamp">4:23 pm</span></li>
+				<li class="sender-shape">Where are you? <span class="chat-timestamp">4:23 pm</span></li>
+				<li class="reciever-shape">Lorem ipsome dollor lore imspolo soloouie ererer.<span class="chat-timestamp">4:24 pm</span></li>
+				<li class="sender-shape">Ipsome imspolo soloouie dollor ererel lore.<span class="chat-timestamp">4:25 pm</span></li>
+				<li class="sender-shape">Hello <span class="chat-timestamp">4:20 pm</span></li>
+				<li class="reciever-shape">Hello dude.<span class="chat-timestamp">4:21 pm</span></li>
+				<li class="sender-shape">How are you? <span class="chat-timestamp">4:22 pm</span></li>
+				<li class="reciever-shape">I am fine thank you and what about you?<span class="chat-timestamp">4:22 pm</span></li>
+				<li class="sender-shape">I am also fine thanks you. <span class="chat-timestamp">4:23 pm</span></li>
+				<li class="sender-shape">Where are you? <span class="chat-timestamp">4:23 pm</span></li>
+				<li class="reciever-shape">Lorem ipsome dollor lore imspolo soloouie ererer.<span class="chat-timestamp">4:24 pm</span></li>
+				<li class="sender-shape">Ipsome imspolo soloouie dollor ererel lore.<span class="chat-timestamp">4:25 pm</span></li>
+			</ul>
+			<form action="#" method="post" class="chat-inputarea">
+				<input type="input" name="" class="chat-inputfield" placeholder="Type a messagye" required>
+				<button type="submit" class="chat-sendbutton"></button>
+			</form>
+		</div>
+
+		<ul class="chat-userlist" id="hideUserlisting">
+			<li data-userchat="Fanny">
+				<div class="user-picture"><img src="images/user1.jpg"></div>
+				<h4>Fany</h4>
+				<h6>Today, 1:37 AM</h6>
+			</li>
+			<li data-userchat="Diana Rusa">
+				<div class="user-picture"><img src="images/user2.jpg"></div>
+				<h4>Diana Rusa</h4>
+				<h6>Yesterday, 8:01 PM</h6>
+			</li>
+			<li data-userchat="Moretti">
+				<div class="user-picture"><img src="images/user3.jpg"></div>
+				<h4>Moretti</h4>
+				<h6>Today, 9:53 AM</h6>
+			</li>
+			<li data-userchat="Isa Munoz">
+				<div class="user-picture"><img src="images/user4.jpg"></div>
+				<h4>Isa Munoz</h4>
+				<h6>Today, 12:21 AM</h6>
+			</li>
+			<li data-userchat="Annie Ruiz">
+				<div class="user-picture"><img src="images/user5.jpg"></div>
+				<h4>Annie Ruiz</h4>
+				<h6>Yesterday, 7:47 PM</h6>
+			</li>
+			<li data-userchat="Maribel Chuidadora">
+				<div class="user-picture"><img src="images/user6.jpg"></div>
+				<h4>Maribel Chuidadora</h4>
+				<h6>Yesterday, 4:39 PM</h6>
+			</li>
+			<li data-userchat="Ganguly Timorn">
+				<div class="user-picture"><img src="images/user7.jpg"></div>
+				<h4>Ganguly Timorn</h4>
+				<h6>Yesterday, 3:34 PM</h6>
+			</li>
+			<li data-userchat="Marina Sonia">
+				<div class="user-picture"><img src="images/user8.jpg"></div>
+				<h4>Marina Sonia</h4>
+				<h6>Today, 8:01 PM</h6>
+			</li>
+			<li data-userchat="Sindhia Moria">
+				<div class="user-picture"><img src="images/user9.jpg"></div>
+				<h4>Sindhia Moria</h4>
+				<h6>Today, 1:01 PM</h6>
+			</li>
+			<li data-userchat="Sachin Feria">
+				<div class="user-picture"><img src="images/user10.jpg"></div>
+				<h4>Sachin Feria</h4>
+				<h6>Today, 7:01 PM</h6>
+			</li>
+			<li data-userchat="Ricky Johnson">
+				<div class="user-picture"><img src="images/user11.jpg"></div>
+				<h4>Ricky Johnson</h4>
+				<h6>Yesterday, 8:19 AM</h6>
+			</li>
+			<li data-userchat="Michel Starc">
+				<div class="user-picture"><img src="images/user12.jpg"></div>
+				<h4>Michel Starc</h4>
+				<h6>Yesterday, 9:10 PM</h6>
+			</li>
+			<li data-userchat="Derren Smith">
+				<div class="user-picture"><img src="images/user13.jpg"></div>
+				<h4>Derren Smith</h4>
+				<h6>Yesterday, 7:11 AM</h6>
+			</li>
+		</ul>
+	</div>	
+</div> -->

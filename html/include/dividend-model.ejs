@@ -1,0 +1,161 @@
+<div class="modal fade" id="dividendsModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content modal-dividends">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row justify-content-center">
+              <div class="col-sm-10 text-center pt-4">
+                  <img src="images/winna-logo.png">
+                  <p class="text-white font-light mb-1 mt-4"><%= __('Stage')%>: <span id="stage"></span>-<span id="level"></span> ( <%= __('Play')%> <span id="difficulty"></span> <%= __('to mine')%> 1 WINNA)</p>
+                  <div class="rounded-progressbar">
+                      <p><span id="mintLimit">3,333,333</span>/<span id="mintedtillNow">1536133</span></p>
+                      <div class="inside-progressbar"><span style="width: 33%;" id="progressBar"></span></div>
+                  </div>
+              </div>
+              <div class="col-sm-11">
+                  <div class="dividends-rect">
+                      <h5><%= __('Available WINNAdrops')%></h5>
+                      <h2><span id="availableWinnaDrop"></span></h2>
+                      <p><%= __('A total of')%> <span id="totalFrozenWinna"></span><%= __(' is frozen across the network - You will receive:')%> <span id="playerDividend">0 TRX </span><br /><%= __('WINNAdrops Countdown:')%> <span id="nextWinnaDrop">04:50:06</span> </p>
+                  </div>
+              </div>
+          </div>
+          <div class="row justify-content-center">
+              <div class="col-md-6 col-lg-4 mt-4">
+                  <div class="common-status">
+                      <h4><%= __('Available')%></h4>
+                      <input type="text" id="availableWinna" style="padding: 10px;
+                      background-color: #000;
+                      border: 1px solid #666;
+                      border-radius: 4px;
+                      text-align: center;
+                      color: inherit;" readonly/>
+                      <button type="button" class="btn-withdraw" id="freeze">Freeze</button>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mt-4">
+                  <div class="common-status">
+                      <h4>Frozen</h4>
+                      <input type="text" id="frozenWinna" style="padding: 10px;
+                      background-color: #000;
+                      border: 1px solid #666;
+                      border-radius: 4px;
+                      text-align: center;
+                      color: inherit;" readonly/>
+                      <button type="button" class="btn-freeze" id="unfreeze">Unfreeze </button><a href="#freezeModal" data-toggle="modal" title="Dividends"><svg class="icon"><use xlink:href="images/icons.svg#icon_helped"></use></svg></a>
+                  </div>
+              </div>
+              <div class="col-md-6 col-lg-4 mt-4">
+                  <div class="common-status">
+                      <h4>Claim Unfrozen</h4>
+                      <input type="text" id="unfreezeAmt" style="padding: 10px;
+                      background-color: #000;
+                      border: 1px solid #666;
+                      border-radius: 4px;
+                      text-align: center;
+                      color: inherit;" readonly/>
+                      <button type="button" class="btn-unfreeze" id="claim">Claim</button>
+                  </div>
+              </div>
+              <div class="col-md-12 py-4 text-center text-muted">
+                  <h5><%= __('* WINNA will be frozen for 24 hours.')%></h5>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- unfreeze-modal -->
+  <div class="modal fade overlay-freeze" id="freezeModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content modal-dividends">
+        <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="row justify-content-center">
+              <div class="col-sm-12 text-center">
+                  <h2>Freezing WINNA</h2>
+              </div>
+          </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul>
+                        <li>WINNA must be frozen to get WINNAdrops. WINNA that is frozen before the countdown ends will recieve WINNAdrops.</li>
+                        <li>You must freeze your WINNA at least 10 minutes before the countdown ends. A minimum of 1 WINNA to freeze. Paying out WINNAdrops takes roughy 1-2 minutes after the countdown ends. You will not be able to freeze during this time.</li>
+                        <li>Withdrawing and freezing WINNA will consume a small amount of TRX (roughly 0.8-1.5 TRX). It is recommended to only operate when needed.</li>
+                        <li>Unfreezing WINNA requires 24 hours to be deposited into your wallet. WINNA that is being unfrozen will not receive WINNAdrops.</li>
+                        <li>The whole process is automated through our smart contracts.</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- freeze winna -->
+  <div class="modal fade overlay-freeze" id="freezeWinnaModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content modal-dividends" style="max-width: 350px;">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="row" style="justify-content: center;">
+                <div class="common-status">
+                    <h4 style="text-align:left"><%= __('Freezable')%>: <span id="freezableWinna" style="color: red;font-size: 18px;"></span></h4>
+                    <input type="text" id="frzAmt" style="padding: 10px; background-color: #000; border: 1px solid #666;border-radius: 4px;text-align: center;color: inherit;" />
+                    <button type="button" class="btn-withdraw" id="freezeConfirm">Confirm</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- unfreeze winna -->
+  <div class="modal fade overlay-freeze" id="unfreezeWinnaModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content modal-dividends" style="max-width: 350px;">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="row" style="justify-content: center;">
+                <div class="common-status">
+                    <h4 style="text-align:left"><%= __('Unfreezable')%>: <span id="unfreezableWinna" style="color: red;font-size: 18px;"></span></h4>
+                    <input type="text" id="unfrzAmt" style="padding: 10px; background-color: #000; border: 1px solid #666;border-radius: 4px;text-align: center;color: inherit;" />
+                    <button type="button" class="btn-withdraw" id="unfreezeConfirm">Confirm</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- claim or cancle unfreeze winna -->
+  <div class="modal fade overlay-freeze" id="claimWinnaModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content modal-dividends" style="max-width: 380px;">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="row" style="justify-content: center;">
+                <div class="common-status">
+                    <h4 style="text-align:center; margin-top: 10px"><%= __('Amount')%>: <span id="pendingFreezeeWinna" style="color: red;font-size: 18px;"></span></h4>
+                    <h4>Unfreeze time: <span id="unfreezeDate"></span></h4>
+                    <h4>Time till unfreeze: <span id="clock"></span></h4>
+                    <button type="button" class="btn-withdraw" id="unfreezeConfirm" style="width: 150px;"><span id="claimOrCancle">Claim</span></button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

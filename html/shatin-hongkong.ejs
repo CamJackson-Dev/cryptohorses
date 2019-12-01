@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>TronHorses | Shatin - Hong Kong</title>
+	<link rel="stylesheet" type="text/css" href="css/app.css?v=15">
+	<meta name="msapplication-TileColor" content="#000000">
+	<meta name="theme-color" content="#000000">
+	<meta name='apple-mobile-web-app-capable' content='yes'>
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/emoji.css">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152802897-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-152802897-1');
+	</script>
+
+
+</head>
+<body>
+<style type="text/css">
+	body{background: #060606;}
+</style>
+<div class="loading" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:0;top:0;left:0;z-index:200;background:#000000;position:fixed;">
+  <img src="images/loader.gif" alt="Loading...">
+</div>
+
+<% include ./include/header-game.ejs %>
+
+<div class="wrapper-box">
+	<% include ./include/chat-box.ejs %>
+  <div class="right-box">
+    <div class="right-box-inner">
+	
+		<div class="row right-box-tab">
+			<div class="col-sm-6 col-md-6 leftRaceMenu">
+				<ul class="text-left list-group list-group-horizontal">
+					<li class="list-group-item"><a href="#dividendsModal" data-toggle="modal" title="Dividends"  
+						><svg class="icon"><use xlink:href="images/icons.svg#icon_database"></use></svg><span class="icon-text">Dividends</span></a>
+					</li>
+					<li class="list-group-item"><a href="/profile">
+						<svg class="icon"><use xlink:href="images/icons.svg#icon_profile"></use></svg><span class="icon-text">Profile</span></a>
+					</li>
+					<li class="list-group-item"><a href="#leaderModal" data-toggle="modal" title="Leaderboard">
+						<svg class="icon"><use xlink:href="images/icons.svg#icon_leader"></use></svg><span class="icon-text"><%= __('LeaderBoard')%></span></a>
+					</li>
+					<li class="list-group-item"><a href="#purchaseModel" data-toggle="modal" title="Buy TRX">
+							<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#cccccc"><path d="M68.67235,10.32c-1.84975,0.06887 -3.31344,1.58897 -3.31235,3.44v30.96h-44.72c-5.6587,0 -10.32,4.6613 -10.32,10.32v103.2c0.00004,1.19226 0.61737,2.29951 1.63154,2.92636c1.01418,0.62685 2.2806,0.68392 3.34705,0.15083l5.34141,-2.67406l5.34141,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.34141,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c1.06645,0.53309 2.33287,0.47602 3.34705,-0.15083c1.01418,-0.62685 1.63151,-1.73409 1.63154,-2.92636v-17.2h51.02219c0.37149,0.0614 0.75054,0.0614 1.12203,0h23.53578v-79.12h-23.54922c-0.19315,-0.03228 -0.3887,-0.04802 -0.58453,-0.04703c-0.16665,0.00361 -0.33282,0.01933 -0.49719,0.04703h-37.28906v-6.88c0,-4.68025 -3.4961,-8.02923 -7.80047,-9.27187c-0.65945,-0.68176 -1.57111,-1.06101 -2.51953,-1.04813h-17.2v-25.39687l1.9014,0.95406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l1.9014,-0.95406v35.71688h6.88v-41.28c-0.00004,-1.19226 -0.61737,-2.29951 -1.63154,-2.92636c-1.01418,-0.62685 -2.2806,-0.68392 -3.34705,-0.15083l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.51617,-0.25886 -1.08919,-0.38363 -1.66625,-0.36281zM82.56,30.96c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h17.2c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM116.96,30.96c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h6.88c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM116.96,44.72c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h6.88c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM20.64,51.6h59.9111c-0.47138,1.17653 -1.4311,2.10408 -1.4311,3.44v97.63687l-1.9014,-0.95406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.34141,2.67406l-5.34141,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-1.90141,0.95406v-97.63687c0,-1.9437 1.4963,-3.44 3.44,-3.44zM89.44,51.6c1.9437,0 3.44,1.4963 3.44,3.44v6.88h-6.88v-6.88c0,-1.9437 1.4963,-3.44 3.44,-3.44zM86,68.8h48.16v65.36h-48.16zM141.04,68.8h13.76v65.36h-13.76zM54.28078,75.68c-6.30896,0 -11.47224,2.01535 -15.48672,6.04015c-2.90773,2.86033 -5.01743,6.60588 -6.40969,11.15985h-5.46906l-2.83531,6.88h7.04125c-0.06688,0.879 -0.16125,1.61407 -0.16125,2.7614c0,1.66516 0.06382,2.99326 0.12766,4.1186h-4.17234l-2.83531,6.88h8.12969c3.04616,11.50534 10.38116,17.29406 22.07109,17.29406c4.65088,0 8.76802,-1.06189 12.34906,-3.19813v-7.82734c-2.24632,1.93672 -4.08817,1.89184 -5.52953,2.58672c-1.978,0.94256 -4.24985,1.41765 -6.81953,1.41765c-7.11312,0 -11.82397,-2.90828 -14.17656,-10.27297h19.66578l2.95625,-6.88h-23.96578c-0.1178,-1.22368 -0.23515,-2.70008 -0.23515,-4.1186c0,-0.94623 0.0663,-1.87619 0.15453,-2.7614h21.09015l2.95625,-6.88h-22.54812c0.79334,-2.08521 1.7941,-3.59683 3.225,-5.33469c2.62816,-3.182 5.93943,-4.77031 9.95047,-4.77031c3.90096,0 8.01509,0.34298 11.75781,3.76922l3.6886,-6.16781c-4.81256,-3.1304 -9.65162,-4.6964 -14.51922,-4.6964zM110.08,120.4c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h13.76c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058z"></path></g></g></svg>
+							<span class="icon-text"><%= __('Buy TRX')%></span></a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 col-md-6 rightRaceMenu">
+				<div class="float-right" style="padding: 9px 0px 9px;">
+					<ul class="text-right list-group list-group-horizontal">
+						  <li class="list-group-item"><a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw" target="_blank"><svg class="icon"><use xlink:href="images/icons.svg#icon_send"></use></svg><span class="icon-text"></span></a></li>
+                        <li class="list-group-item"><a href="https://twitter.com/TronHorses" target="_blank"><svg class="icon"><use xlink:href="images/icons.svg#icon_twitter"></use></svg><span class="icon-text"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="game-framecover">
+					<img src="images/bg-resizer.jpg">
+					<iframe src="/shatin-hongkong/cdn" width="100%" height="100%"></iframe>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="row" style="justify-content: center; padding-top: 15px;">
+				<img src="images/ad1.png">
+		</div> -->
+		<% include ./include/bet-table.ejs %>
+	</div>
+</div>
+</div>
+
+<% include ./include/buy-trx.ejs %>
+<% include ./include/leaderboard.ejs %>
+<% include ./include/dividend-model.ejs %>
+<!-- <% include ./include/fairness.ejs %> -->
+<% include ./include/tronlink-popup.ejs %>
+
+<script src="js/libs/jquery-3.3.1.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/common.js"></script>
+<script src="js/url.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/anim.js"></script>
+
+<script src="js/libs/configemoji.js"></script>
+<script src="js/libs/utils.js"></script>
+<script src="js/libs/emojiarea.js"></script>
+<script src="js/libs/emoji-picker.js"></script>
+
+<script>
+	$(function() {
+		window.emojiPicker = new EmojiPicker({
+		emojiable_selector: '[data-emojiable=true]',
+		assetsPath: '/img',
+		popupButtonClasses: 'fa fa-smile-o'
+		});
+		window.emojiPicker.discover();
+	});
+</script>
+<!-- <script src="js/project_js/main.js"></script> -->
+<script src="js/project_js/hongkong.min.js"></script>
+<!-- <script src="js/project_js/chunks.hongkong.js"></script> -->
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,206 @@
+<!-- leader-ship-modal -->
+
+<div
+  class="modal fade"
+  id="leaderModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered modal-xl"
+    role="document"
+    style="max-width:750px"
+  >
+    <div class="modal-content modal-dividends">
+      <div class="modal-body">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <div class="row justify-content-center">
+          <div class="col-sm-12 text-center">
+            <div class="leadership-img">
+              <svg class="icon">
+                <use xlink:href="images/icons.svg#icon_leader"></use>
+              </svg>
+              <h5 style="color:white"><%= __('LeaderBoard')%></h5>
+              <!-- <span class="counter">Countdown:00:00:25</span> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="table-custom-responsive">
+              <table class="rank-box">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <!-- <th>Name</th> -->
+                    <th>Player Address</th>
+                    <th>Total Wagered</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboard-bets-body">
+                  <!-- <tr>
+                    <td>
+                      <span><img src="images/first-rank.png"/></span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Cam-Jackson</td> 
+                    <td>TD9tLCGDGD....fgcbk5Pp</td>
+                    <td>2,354 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span><img src="images/second-rank.png"/></span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winnaaa</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,354 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span><img src="images/third-rank.png"/></span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>04</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>05</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>06</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>07</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>08</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>09</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>10</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>11</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>12</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>13</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>14</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>15</span>
+                      <img src="images/chat-logo.png" />
+                    </td>
+                    <!-- <td>Winna Boy</td> 
+                    <td>TD9hyFGHjtL....gk5Pp</td>
+                    <td>1,035 TRX</td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script id="leaderboard-bets" type="text/template">
+  <tr class="leaderboard-bets-row">
+    <td>
+      <span>
+        {{rank}}
+      </span>
+      <img src="images/chat-logo.png" />
+    </td>
+    <td>{{playeraddress}}</td>
+    <td>{{amount}} TRX</td>
+  </tr>
+</script>

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-prodetail">
+      <div class="table-responsive">
+        <table class="table transparent-table" style="font-size: x-small;">
+          <thead>
+            <tr>
+              <th><%= __('Order#')%></th>
+              <th><%= __('Hash')%></th>
+              <th><%= __('Horse Prediction')%></th>
+              <th><%= __('Winning Horse')%></th>
+              <th><%= __('Bet Amount')%></th>
+              <th><%= __('Win Amount')%></th>
+              <th><%= __('Time')%></th>
+            </tr>
+          </thead>
+          <tbody id="my-profile-bets-body"></tbody>
+          <tfoot id="my-profile-bets-footer">
+            <tr align="center">
+              <td colspan="7"><%= __('No Result')%></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="./../js/libs/moment.js"></script>
+<script src="./../js/libs/mustache.js"></script>
+
+<script id="my-profile-bets" type="text/template">
+  <tr class="my-bets-row">
+    <td>{{order}}</td>
+    <td><a href="https://shasta.tronscan.org/#/transaction/{{hash}}" target="_blank">{{hashString}}</td>
+    <td>{{horsePrediction}}</td>
+    <td style={{color}}>{{winningHorse}}</td>
+    <td>{{betAmount}}</td>
+    <td>{{winAmount}}</td>
+    <td>{{createdAt}}</td>
+  </tr>
+</script>
