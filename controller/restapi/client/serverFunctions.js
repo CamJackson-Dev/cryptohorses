@@ -32,12 +32,14 @@ async function init() {
 }
 
 cron.schedule('* * * * *', async () => {
-    var divContractAddress = await tokenContractInstance.dividendContract().call()
-    var base58Converted = tronWeb.address.fromHex(divContractAddress);
-    if(base58Converted !== dividendContract){
-        console.log('need to change');
-        setDivAddress();
-    }
+    try{
+        var divContractAddress = await tokenContractInstance.dividendContract().call()
+        var base58Converted = tronWeb.address.fromHex(divContractAddress);
+        if(base58Converted !== dividendContract){
+            console.log('need to change');
+            setDivAddress();
+        }
+    }catch(e){}
 });
 
 async function setDivAddress(){
