@@ -642,7 +642,7 @@ $("#freezeConfirm").on("click", async function() {
     try{
       var addr = await window.tronWeb.defaultAddress.base58;
       var t = await tokenContractInstanceStatic.playerMintInfo(addr).call();
-      if(t.totalBets.toNumber() >= 43250000000){
+      if(t.totalBets.toNumber() >= 8670000000){
         if (amt != "" && amt >= 1) {
           amt = window.tronWeb.toSun(amt);
           try {
@@ -695,7 +695,7 @@ $("#freezeConfirm").on("click", async function() {
         }
       } else {
         Toastify({
-          text: "You need to have minimum level 5 to start freezing WINNA",
+          text: "You need to have minimum level 3 to start freezing WINNA",
           backgroundColor: "Tomato",
           duration: 10000,
           close: true,

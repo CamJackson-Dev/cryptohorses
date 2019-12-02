@@ -659,7 +659,7 @@ $("#freezeConfirm").on("click", async function() {
     try{
       var addr = await window.tronWeb.defaultAddress.base58;
       var t = await tokenContractInstanceStatic.playerMintInfo(addr).call();
-      if(t.totalBets.toNumber() >= 43250000000){
+      if(t.totalBets.toNumber() >= 8670000000){
         if (amt != "" && amt >= 1) {
           amt = window.tronWeb.toSun(amt);
           try {
@@ -712,7 +712,7 @@ $("#freezeConfirm").on("click", async function() {
         }
       } else {
         Toastify({
-          text: "You need to have minimum level 5 to start freezing WINNA",
+          text: "You need to have minimum level 3 to start freezing WINNA",
           backgroundColor: "Tomato",
           duration: 10000,
           close: true,
@@ -1143,7 +1143,7 @@ jQuery("#all-chats-form").on("submit", async e => {
       }
       if (!playerExist) {
         Toastify({
-          text: "You need to have level 5 to get chat access.",
+          text: "You need to have level 3 to get chat access.",
           backgroundColor: "Tomato",
           duration: 10000,
           stopOnFocus: true,
@@ -1202,7 +1202,7 @@ jQuery("#all-chats-form").on("submit", async e => {
         console.log(error)
         if (error.responseText.includes("is less than minimum allowed value")) {
           Toastify({
-            text: "You need to have minimum Level 5 to get Chat access",
+            text: "You need to have minimum level 3 to get Chat access",
             backgroundColor: "Tomato",
             duration: 10000,
             stopOnFocus: true,

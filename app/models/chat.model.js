@@ -15,7 +15,7 @@ const ChatSchema = mongoose.Schema(
     level: {
       type: Number,
       required: true,
-      min: 5
+      min: 3
     },
     message: {
       type: String,
