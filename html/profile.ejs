@@ -1,105 +1,140 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Tron Horses | Shatin - Hong Kong</title>
-	<link rel="stylesheet" type="text/css" href="css/app.css?v=15">
-	<meta name="msapplication-TileColor" content="#000000">
-  <meta name="theme-color" content="#000000">
-  <meta name='apple-mobile-web-app-capable' content='yes'>
-  <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/emoji.css">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78432775-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CryptoHorseRacing | Shatin - Hong Kong</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css?v=15">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#000000">
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-    gtag('config', 'UA-78432775-2');
-  </script> 
-</head>
-<body>
-<style type="text/css">
-	body{background: #060606;}
-</style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/emoji.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78432775-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-78432775-2');
+    </script>
+  </head>
+
+  <body>
+    <style type="text/css">
+      body {
+        background: #060606;
+      }
+    </style>
 
 
 
-<div class="loading" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:0;top:0;left:0;z-index:200;background:#000000;position:fixed;">
+    <!-- <div class="loading" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:0;top:0;left:0;z-index:200;background:#000000;position:fixed;">
   <img src="images/loader.gif" alt="Loading...">
-</div>
-    
-<% include ./include/header-game.ejs %>
+</div> -->
 
-<div class="wrapper-box">
-  <% include ./include/chat-box.ejs %>
-    <!-- //Start - Right Box -->
-  <div class="right-box">
-    <div class="right-box-inner">
-		<div class="row right-box-tab hide-box">
-			<div class="col-sm-6 col-md-6">
-				<ul class="text-left list-group list-group-horizontal">
-					<li class="list-group-item"><a href="#dividendsModal" data-toggle="modal" title="Dividends">
-            <svg class="icon"><use xlink:href="images/icons.svg#icon_database"></use></svg><span class="icon-text"><%= __('Dividends')%></span></a>
-					</li>
-					<li class="list-group-item"><a href="#leaderModal" data-toggle="modal" title="Leaderboard">
-						<svg class="icon"><use xlink:href="images/icons.svg#icon_leader"></use></svg><span class="icon-text"><%= __('Leaderboard')%></span></a>
-          </li>
-            <li class="list-group-item"><a href="#purchaseModel" data-toggle="modal" title="Buy TRX">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#cccccc"><path d="M68.67235,10.32c-1.84975,0.06887 -3.31344,1.58897 -3.31235,3.44v30.96h-44.72c-5.6587,0 -10.32,4.6613 -10.32,10.32v103.2c0.00004,1.19226 0.61737,2.29951 1.63154,2.92636c1.01418,0.62685 2.2806,0.68392 3.34705,0.15083l5.34141,-2.67406l5.34141,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.34141,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c1.06645,0.53309 2.33287,0.47602 3.34705,-0.15083c1.01418,-0.62685 1.63151,-1.73409 1.63154,-2.92636v-17.2h51.02219c0.37149,0.0614 0.75054,0.0614 1.12203,0h23.53578v-79.12h-23.54922c-0.19315,-0.03228 -0.3887,-0.04802 -0.58453,-0.04703c-0.16665,0.00361 -0.33282,0.01933 -0.49719,0.04703h-37.28906v-6.88c0,-4.68025 -3.4961,-8.02923 -7.80047,-9.27187c-0.65945,-0.68176 -1.57111,-1.06101 -2.51953,-1.04813h-17.2v-25.39687l1.9014,0.95406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l1.9014,-0.95406v35.71688h6.88v-41.28c-0.00004,-1.19226 -0.61737,-2.29951 -1.63154,-2.92636c-1.01418,-0.62685 -2.2806,-0.68392 -3.34705,-0.15083l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.51617,-0.25886 -1.08919,-0.38363 -1.66625,-0.36281zM82.56,30.96c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h17.2c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM116.96,30.96c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h6.88c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM116.96,44.72c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h6.88c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM20.64,51.6h59.9111c-0.47138,1.17653 -1.4311,2.10408 -1.4311,3.44v97.63687l-1.9014,-0.95406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.34141,2.67406l-5.34141,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-1.90141,0.95406v-97.63687c0,-1.9437 1.4963,-3.44 3.44,-3.44zM89.44,51.6c1.9437,0 3.44,1.4963 3.44,3.44v6.88h-6.88v-6.88c0,-1.9437 1.4963,-3.44 3.44,-3.44zM86,68.8h48.16v65.36h-48.16zM141.04,68.8h13.76v65.36h-13.76zM54.28078,75.68c-6.30896,0 -11.47224,2.01535 -15.48672,6.04015c-2.90773,2.86033 -5.01743,6.60588 -6.40969,11.15985h-5.46906l-2.83531,6.88h7.04125c-0.06688,0.879 -0.16125,1.61407 -0.16125,2.7614c0,1.66516 0.06382,2.99326 0.12766,4.1186h-4.17234l-2.83531,6.88h8.12969c3.04616,11.50534 10.38116,17.29406 22.07109,17.29406c4.65088,0 8.76802,-1.06189 12.34906,-3.19813v-7.82734c-2.24632,1.93672 -4.08817,1.89184 -5.52953,2.58672c-1.978,0.94256 -4.24985,1.41765 -6.81953,1.41765c-7.11312,0 -11.82397,-2.90828 -14.17656,-10.27297h19.66578l2.95625,-6.88h-23.96578c-0.1178,-1.22368 -0.23515,-2.70008 -0.23515,-4.1186c0,-0.94623 0.0663,-1.87619 0.15453,-2.7614h21.09015l2.95625,-6.88h-22.54812c0.79334,-2.08521 1.7941,-3.59683 3.225,-5.33469c2.62816,-3.182 5.93943,-4.77031 9.95047,-4.77031c3.90096,0 8.01509,0.34298 11.75781,3.76922l3.6886,-6.16781c-4.81256,-3.1304 -9.65162,-4.6964 -14.51922,-4.6964zM110.08,120.4c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h13.76c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058z"></path></g></g></svg>
-                <span class="icon-text"><%= __('Buy TRX')%></span></a>
-            </li>
-            <li class="list-group-item"><a href="/location-hongkong" title="Goto Location1 Race">
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-              width="20" height="20"
-              viewBox="0 0 172 172"
-              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#cccccc"><path d="M55.09375,0c-0.72786,1.42774 -1.39974,4.3112 -0.67187,7.16667c-7.89453,0.72787 -7.08268,3.49935 -8.51042,4.92708c-8.5944,8.5944 -15.08919,9.40625 -17.24479,12.98958v4.25521c0,3.58333 4.25521,5.09506 7.83854,5.82292c2.1556,0 2.1556,-2.85547 3.58333,-3.58333c10.75,-2.85547 23.79558,4.92708 23.06771,-12.98958c0.72787,7.89453 -0.16797,12.14974 -4.47917,15.00521c0.72787,5.01107 1.56771,16.6569 -2.01562,22.39583c-10.75,10.75 -16.57292,14.27735 -16.57292,15.00521c-0.72786,0.72787 -4.92708,2.09961 -4.92708,4.25521c0,2.1556 0.58789,3.63933 2.01563,6.49479c1.42774,2.1556 5.73893,8.5944 10.75,14.33333c0.72787,1.42774 2.1836,2.01563 2.91146,2.01563c0.72787,0 2.23958,0.89583 2.23958,0.89583c0.72787,0.72787 0.61589,1.34375 1.34375,1.34375l6.49479,3.58333c0,0 1.51172,-0.72786 2.23958,-3.58333c0.72787,-2.85547 0,-4.92708 0,-4.92708l-2.91146,-2.91146c-0.72786,-0.72786 -2.18359,0 -2.91146,0c0,-0.72786 -0.81185,-2.85547 -2.23958,-3.58333c-0.72786,-0.72786 -4.87109,-1.48372 -5.59896,-2.91146c-0.72786,-1.42774 -4.31119,-7.16667 -3.58333,-7.16667c7.16667,0 14.33333,-3.58333 14.33333,-3.58333c0,0 10.61003,21.5 27.09896,25.08333c1.42774,-2.85547 3.63933,-5.82292 13.66146,-9.40625c-10.75,7.16667 -11.42187,15.0612 -11.42187,17.91667c0.72787,2.1556 1.48372,3.75131 6.49479,8.0625c8.5944,7.89453 19.98828,14.24935 19.26042,15.67708c-1.42774,6.43881 -7.16667,10.13412 -7.16667,12.98958c0,1.42774 0.72787,1.25976 0,2.6875c-0.72786,1.42774 -0.61588,2.1836 -1.34375,2.91146c-0.72786,0.72787 -2.18359,1.51172 -2.91146,2.23958c-0.72786,0.72787 -1.34375,2.91146 -1.34375,2.91146c0,0 2.09961,0.67188 7.83854,0.67188c5.73893,0 6.49479,-2.18359 6.49479,-2.91146c0,-0.72786 -0.89583,-3.58333 -0.89583,-3.58333c0,0 2.1836,0.05599 2.91146,-0.67187c0.72787,-0.72786 1.56771,-1.51172 1.56771,-2.23958v-4.25521c0,-2.85547 4.19922,-11.50586 4.92708,-13.66146c0,-0.72786 -5.73893,-7.92253 -7.16667,-10.07812c-1.42774,-2.1556 -3.58333,-5.54297 -3.58333,-6.27083c0.72787,-1.42774 13.60547,-2.18359 17.91667,-17.24479c0.72787,-1.42774 1.51172,-1.56771 2.23958,-1.56771c15.0612,-3.58333 9.18229,20.24024 19.93229,33.14583v-2.91146c1.42774,6.43881 3.58333,8.51042 3.58333,8.51042v-4.25521c0.72787,4.3112 1.56771,7.89453 1.56771,7.16667c2.1556,0 6.27083,-4.25521 6.27083,-15.00521c0,-30.0944 -10.75,-40.17253 -28.66667,-31.57812c-1.42774,0.72787 -1.95963,1.48372 -2.6875,-0.67187c-1.42774,-2.1556 -1.51172,-13.74544 -20.15625,-19.48437c0,0 -15.81706,-6.32682 -24.41146,-19.93229c2.1556,0.72787 4.98308,5.59896 7.83854,5.59896c-0.72786,-5.01107 2.32357,-1.34375 4.47917,-1.34375c-0.72786,-2.1556 -2.32357,-6.41081 -4.47917,-7.83854c1.42774,-0.72786 2.99544,-0.05599 5.15104,0.67188c-0.72786,-2.85547 -3.63932,-6.4388 -6.49479,-7.16667c0.72787,-0.72786 2.1556,-2.23958 3.58333,-2.23958c-2.1556,-0.72786 -5.01107,-3.52734 -10.75,-4.25521c0,-2.1556 4.39518,1.48372 9.40625,-4.25521c-3.58333,0.72787 -8.5944,-4.19922 -10.75,-4.92708c-0.72786,-2.85547 4.3112,-2.96744 7.16667,-2.23958c-2.85547,-3.58333 -9.49024,-6.41081 -15.22917,-7.83854c-1.42774,0 2.32357,-1.51172 4.47917,-2.23958c-3.58333,-1.42774 -9.32226,-0.61588 -10.75,-1.34375c2.1556,-2.85547 4.19922,-5.06706 4.92708,-6.49479c-2.85547,0.72787 -12.14974,-1.34375 -15.00521,-1.34375c-1.42774,0 -3.72331,0.61589 -5.15104,1.34375zM51.51042,54.42188c0,0 -11.42187,-0.05599 -15.00521,0.67188c-0.72786,0 -2.1556,2.1836 -3.58333,2.91146c-7.16667,4.3112 -14.27734,7.16667 -15.00521,7.16667c-0.72786,0 -2.23958,2.1836 -2.23958,2.91146c-4.31119,2.1556 -8.51042,4.92708 -8.51042,4.92708c0,0 2.96745,0.81185 5.82292,2.23958c2.85547,1.42774 5.59896,1.34375 5.59896,1.34375c0,0 3.52735,-2.85547 4.25521,-3.58333c0.72787,-0.72786 2.1836,-0.61588 2.91146,-1.34375c1.42774,-1.42774 1.51172,-1.48372 2.23958,-2.91146c0,-1.42774 3.63933,-1.39974 6.49479,-4.25521c0.72787,-0.72786 2.01563,-1.34375 2.01563,-1.34375c1.42774,0.72787 4.25521,0.67188 4.25521,0.67188zM93.16667,119.59375c0,0 0.81185,2.29558 2.23958,5.15104c2.1556,4.3112 4.8431,9.99414 2.6875,11.42188c-2.85547,2.1556 -11.36588,10.02214 -12.09375,10.75c-0.72786,0.72787 -0.67187,1.51172 -0.67187,2.23958c0,0.72787 -1.51172,2.01563 -2.23958,2.01563c-5.01107,0.72787 -4.92708,5.82292 -4.92708,5.82292c0,0 1.20378,0.30794 2.91146,0.67188h-81.07292v14.33333h172v-14.33333h-80.40104c-0.16797,-0.92383 -0.36393,-2.99544 0.22396,-3.58333c0.72787,-0.72786 2.1556,0.67188 3.58333,0.67188c0.72787,0 1.28776,0.13997 2.01563,-2.01562c0,-2.1556 0.83985,-3.72331 1.56771,-5.15104c0.72787,-1.42774 2.77149,-3.44336 4.92708,-5.59896c2.1556,-2.1556 4.25521,-3.7513 4.25521,-4.47917v-5.59896c0,0 -9.99414,-7.30664 -15.00521,-12.31771z"></path></g></g></svg><span class="icon-text">Hongkong</span></a>
-              </li>
-				</ul>
-			</div>
-			<div class="col-sm-6 col-md-6">
-				<div class="float-right">
-					<ul class="text-right list-group list-group-horizontal">
-					   <li class="list-group-item"><a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw"><svg class="icon"><use xlink:href="images/icons.svg#icon_send"></use></svg><span class="icon-text"></span></a></li>
-             <li class="list-group-item"><a href="https://twitter.com/TronHorses"><svg class="icon"><use xlink:href="images/icons.svg#icon_twitter"></use></svg><span class="icon-text"></span></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-   
-		<!-- <div class="row">
+    <% include ./include/header-game.ejs %>
+
+    <div class="wrapper-box">
+      <% include ./include/chat-box.ejs %>
+      <!-- //Start - Right Box -->
+      <div class="right-box">
+        <div class="right-box-inner">
+          <div class="row right-box-tab hide-box">
+            <div class="col-sm-6 col-md-6">
+              <ul class="text-left list-group list-group-horizontal">
+                <li class="list-group-item"><a href="#dividendsModal" data-toggle="modal" title="Dividends">
+                    <svg class="icon">
+                      <use xlink:href="images/icons.svg#icon_database"></use>
+                    </svg><span class="icon-text"><%= __('Dividends')%></span></a>
+                </li>
+                <li class="list-group-item"><a href="#leaderModal" data-toggle="modal" title="Leaderboard">
+                    <svg class="icon">
+                      <use xlink:href="images/icons.svg#icon_leader"></use>
+                    </svg><span class="icon-text"><%= __('Leaderboard')%></span></a>
+                </li>
+                <li class="list-group-item"><a href="#purchaseModel" data-toggle="modal" title="Buy TRX">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                      style=" fill:#000000;">
+                      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                        style="mix-blend-mode: normal">
+                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                        <g fill="#cccccc">
+                          <path
+                            d="M68.67235,10.32c-1.84975,0.06887 -3.31344,1.58897 -3.31235,3.44v30.96h-44.72c-5.6587,0 -10.32,4.6613 -10.32,10.32v103.2c0.00004,1.19226 0.61737,2.29951 1.63154,2.92636c1.01418,0.62685 2.2806,0.68392 3.34705,0.15083l5.34141,-2.67406l5.34141,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.34141,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c1.06645,0.53309 2.33287,0.47602 3.34705,-0.15083c1.01418,-0.62685 1.63151,-1.73409 1.63154,-2.92636v-17.2h51.02219c0.37149,0.0614 0.75054,0.0614 1.12203,0h23.53578v-79.12h-23.54922c-0.19315,-0.03228 -0.3887,-0.04802 -0.58453,-0.04703c-0.16665,0.00361 -0.33282,0.01933 -0.49719,0.04703h-37.28906v-6.88c0,-4.68025 -3.4961,-8.02923 -7.80047,-9.27187c-0.65945,-0.68176 -1.57111,-1.06101 -2.51953,-1.04813h-17.2v-25.39687l1.9014,0.95406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l5.3414,-2.67406l5.3414,2.67406c0.96857,0.48429 2.10862,0.48429 3.07719,0l1.9014,-0.95406v35.71688h6.88v-41.28c-0.00004,-1.19226 -0.61737,-2.29951 -1.63154,-2.92636c-1.01418,-0.62685 -2.2806,-0.68392 -3.34705,-0.15083l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.51617,-0.25886 -1.08919,-0.38363 -1.66625,-0.36281zM82.56,30.96c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h17.2c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM116.96,30.96c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h6.88c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM116.96,44.72c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h6.88c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058zM20.64,51.6h59.9111c-0.47138,1.17653 -1.4311,2.10408 -1.4311,3.44v97.63687l-1.9014,-0.95406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.3414,2.67406l-5.3414,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-5.34141,2.67406l-5.34141,-2.67406c-0.96857,-0.48429 -2.10862,-0.48429 -3.07719,0l-1.90141,0.95406v-97.63687c0,-1.9437 1.4963,-3.44 3.44,-3.44zM89.44,51.6c1.9437,0 3.44,1.4963 3.44,3.44v6.88h-6.88v-6.88c0,-1.9437 1.4963,-3.44 3.44,-3.44zM86,68.8h48.16v65.36h-48.16zM141.04,68.8h13.76v65.36h-13.76zM54.28078,75.68c-6.30896,0 -11.47224,2.01535 -15.48672,6.04015c-2.90773,2.86033 -5.01743,6.60588 -6.40969,11.15985h-5.46906l-2.83531,6.88h7.04125c-0.06688,0.879 -0.16125,1.61407 -0.16125,2.7614c0,1.66516 0.06382,2.99326 0.12766,4.1186h-4.17234l-2.83531,6.88h8.12969c3.04616,11.50534 10.38116,17.29406 22.07109,17.29406c4.65088,0 8.76802,-1.06189 12.34906,-3.19813v-7.82734c-2.24632,1.93672 -4.08817,1.89184 -5.52953,2.58672c-1.978,0.94256 -4.24985,1.41765 -6.81953,1.41765c-7.11312,0 -11.82397,-2.90828 -14.17656,-10.27297h19.66578l2.95625,-6.88h-23.96578c-0.1178,-1.22368 -0.23515,-2.70008 -0.23515,-4.1186c0,-0.94623 0.0663,-1.87619 0.15453,-2.7614h21.09015l2.95625,-6.88h-22.54812c0.79334,-2.08521 1.7941,-3.59683 3.225,-5.33469c2.62816,-3.182 5.93943,-4.77031 9.95047,-4.77031c3.90096,0 8.01509,0.34298 11.75781,3.76922l3.6886,-6.16781c-4.81256,-3.1304 -9.65162,-4.6964 -14.51922,-4.6964zM110.08,120.4c-1.24059,-0.01754 -2.39452,0.63425 -3.01993,1.7058c-0.62541,1.07155 -0.62541,2.39684 0,3.46839c0.62541,1.07155 1.77935,1.72335 3.01993,1.7058h13.76c1.24059,0.01754 2.39452,-0.63425 3.01993,-1.7058c0.62541,-1.07155 0.62541,-2.39684 0,-3.46839c-0.62541,-1.07155 -1.77935,-1.72335 -3.01993,-1.7058z">
+                          </path>
+                        </g>
+                      </g>
+                    </svg>
+                    <span class="icon-text"><%= __('Buy TRX')%></span></a>
+                </li>
+                <li class="list-group-item"><a href="/location-hongkong" title="Goto Location1 Race">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 172 172"
+                      style=" fill:#000000;">
+                      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                        style="mix-blend-mode: normal">
+                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                        <g fill="#cccccc">
+                          <path
+                            d="M55.09375,0c-0.72786,1.42774 -1.39974,4.3112 -0.67187,7.16667c-7.89453,0.72787 -7.08268,3.49935 -8.51042,4.92708c-8.5944,8.5944 -15.08919,9.40625 -17.24479,12.98958v4.25521c0,3.58333 4.25521,5.09506 7.83854,5.82292c2.1556,0 2.1556,-2.85547 3.58333,-3.58333c10.75,-2.85547 23.79558,4.92708 23.06771,-12.98958c0.72787,7.89453 -0.16797,12.14974 -4.47917,15.00521c0.72787,5.01107 1.56771,16.6569 -2.01562,22.39583c-10.75,10.75 -16.57292,14.27735 -16.57292,15.00521c-0.72786,0.72787 -4.92708,2.09961 -4.92708,4.25521c0,2.1556 0.58789,3.63933 2.01563,6.49479c1.42774,2.1556 5.73893,8.5944 10.75,14.33333c0.72787,1.42774 2.1836,2.01563 2.91146,2.01563c0.72787,0 2.23958,0.89583 2.23958,0.89583c0.72787,0.72787 0.61589,1.34375 1.34375,1.34375l6.49479,3.58333c0,0 1.51172,-0.72786 2.23958,-3.58333c0.72787,-2.85547 0,-4.92708 0,-4.92708l-2.91146,-2.91146c-0.72786,-0.72786 -2.18359,0 -2.91146,0c0,-0.72786 -0.81185,-2.85547 -2.23958,-3.58333c-0.72786,-0.72786 -4.87109,-1.48372 -5.59896,-2.91146c-0.72786,-1.42774 -4.31119,-7.16667 -3.58333,-7.16667c7.16667,0 14.33333,-3.58333 14.33333,-3.58333c0,0 10.61003,21.5 27.09896,25.08333c1.42774,-2.85547 3.63933,-5.82292 13.66146,-9.40625c-10.75,7.16667 -11.42187,15.0612 -11.42187,17.91667c0.72787,2.1556 1.48372,3.75131 6.49479,8.0625c8.5944,7.89453 19.98828,14.24935 19.26042,15.67708c-1.42774,6.43881 -7.16667,10.13412 -7.16667,12.98958c0,1.42774 0.72787,1.25976 0,2.6875c-0.72786,1.42774 -0.61588,2.1836 -1.34375,2.91146c-0.72786,0.72787 -2.18359,1.51172 -2.91146,2.23958c-0.72786,0.72787 -1.34375,2.91146 -1.34375,2.91146c0,0 2.09961,0.67188 7.83854,0.67188c5.73893,0 6.49479,-2.18359 6.49479,-2.91146c0,-0.72786 -0.89583,-3.58333 -0.89583,-3.58333c0,0 2.1836,0.05599 2.91146,-0.67187c0.72787,-0.72786 1.56771,-1.51172 1.56771,-2.23958v-4.25521c0,-2.85547 4.19922,-11.50586 4.92708,-13.66146c0,-0.72786 -5.73893,-7.92253 -7.16667,-10.07812c-1.42774,-2.1556 -3.58333,-5.54297 -3.58333,-6.27083c0.72787,-1.42774 13.60547,-2.18359 17.91667,-17.24479c0.72787,-1.42774 1.51172,-1.56771 2.23958,-1.56771c15.0612,-3.58333 9.18229,20.24024 19.93229,33.14583v-2.91146c1.42774,6.43881 3.58333,8.51042 3.58333,8.51042v-4.25521c0.72787,4.3112 1.56771,7.89453 1.56771,7.16667c2.1556,0 6.27083,-4.25521 6.27083,-15.00521c0,-30.0944 -10.75,-40.17253 -28.66667,-31.57812c-1.42774,0.72787 -1.95963,1.48372 -2.6875,-0.67187c-1.42774,-2.1556 -1.51172,-13.74544 -20.15625,-19.48437c0,0 -15.81706,-6.32682 -24.41146,-19.93229c2.1556,0.72787 4.98308,5.59896 7.83854,5.59896c-0.72786,-5.01107 2.32357,-1.34375 4.47917,-1.34375c-0.72786,-2.1556 -2.32357,-6.41081 -4.47917,-7.83854c1.42774,-0.72786 2.99544,-0.05599 5.15104,0.67188c-0.72786,-2.85547 -3.63932,-6.4388 -6.49479,-7.16667c0.72787,-0.72786 2.1556,-2.23958 3.58333,-2.23958c-2.1556,-0.72786 -5.01107,-3.52734 -10.75,-4.25521c0,-2.1556 4.39518,1.48372 9.40625,-4.25521c-3.58333,0.72787 -8.5944,-4.19922 -10.75,-4.92708c-0.72786,-2.85547 4.3112,-2.96744 7.16667,-2.23958c-2.85547,-3.58333 -9.49024,-6.41081 -15.22917,-7.83854c-1.42774,0 2.32357,-1.51172 4.47917,-2.23958c-3.58333,-1.42774 -9.32226,-0.61588 -10.75,-1.34375c2.1556,-2.85547 4.19922,-5.06706 4.92708,-6.49479c-2.85547,0.72787 -12.14974,-1.34375 -15.00521,-1.34375c-1.42774,0 -3.72331,0.61589 -5.15104,1.34375zM51.51042,54.42188c0,0 -11.42187,-0.05599 -15.00521,0.67188c-0.72786,0 -2.1556,2.1836 -3.58333,2.91146c-7.16667,4.3112 -14.27734,7.16667 -15.00521,7.16667c-0.72786,0 -2.23958,2.1836 -2.23958,2.91146c-4.31119,2.1556 -8.51042,4.92708 -8.51042,4.92708c0,0 2.96745,0.81185 5.82292,2.23958c2.85547,1.42774 5.59896,1.34375 5.59896,1.34375c0,0 3.52735,-2.85547 4.25521,-3.58333c0.72787,-0.72786 2.1836,-0.61588 2.91146,-1.34375c1.42774,-1.42774 1.51172,-1.48372 2.23958,-2.91146c0,-1.42774 3.63933,-1.39974 6.49479,-4.25521c0.72787,-0.72786 2.01563,-1.34375 2.01563,-1.34375c1.42774,0.72787 4.25521,0.67188 4.25521,0.67188zM93.16667,119.59375c0,0 0.81185,2.29558 2.23958,5.15104c2.1556,4.3112 4.8431,9.99414 2.6875,11.42188c-2.85547,2.1556 -11.36588,10.02214 -12.09375,10.75c-0.72786,0.72787 -0.67187,1.51172 -0.67187,2.23958c0,0.72787 -1.51172,2.01563 -2.23958,2.01563c-5.01107,0.72787 -4.92708,5.82292 -4.92708,5.82292c0,0 1.20378,0.30794 2.91146,0.67188h-81.07292v14.33333h172v-14.33333h-80.40104c-0.16797,-0.92383 -0.36393,-2.99544 0.22396,-3.58333c0.72787,-0.72786 2.1556,0.67188 3.58333,0.67188c0.72787,0 1.28776,0.13997 2.01563,-2.01562c0,-2.1556 0.83985,-3.72331 1.56771,-5.15104c0.72787,-1.42774 2.77149,-3.44336 4.92708,-5.59896c2.1556,-2.1556 4.25521,-3.7513 4.25521,-4.47917v-5.59896c0,0 -9.99414,-7.30664 -15.00521,-12.31771z">
+                          </path>
+                        </g>
+                      </g>
+                    </svg><span class="icon-text">Hongkong</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="float-right">
+                <ul class="text-right list-group list-group-horizontal">
+                  <li class="list-group-item"><a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw"><svg class="icon">
+                        <use xlink:href="images/icons.svg#icon_send"></use>
+                      </svg><span class="icon-text"></span></a></li>
+                  <li class="list-group-item"><a href="https://twitter.com/cryptoracing"><svg class="icon">
+                        <use xlink:href="images/icons.svg#icon_twitter"></use>
+                      </svg><span class="icon-text"></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
       <div class="col-sm-12">
         <a href="#" class="btn btntrx-winna">TRX</a>
         <a href="#" class="btn btntrx-winna">WINNA</a>
       </div>
     </div> -->
-  
 
-    <div class="row mobile-content">
-			<div class="col-sm-12">
-			  <div class="profileuser">
-          <div class="table-responsive">
-            <table class="table">
-              <tr>
-                <td class="profile-img"><img src="images/chat-logo.png"><br>
-                  <!-- <span class="text-white"><%= __('Profile Picture')%></span></td> -->
-                <td><%= __('Rank')%><br><span id="playerRank">0</span></td>
-                <td><%= __('Level')%><br><span id="levelPlayer">0</span></td>
-                <td><%= __('Total Bets')%><br><span id="totalBets">0</span></td>
-                <td><%= __('Total WINNA')%><br><span id="totalWinna">0</span></td>
-                <td><%= __('Comulative Earnings')%><br><span id="totalEarning">0</span></td>
-                <td><%= __('Last Windrop')%><br><span id="lastDrop">0</span></td>
-              </tr>
-            </table>
-          </div>
-          </div>
-          <div class="row mt-4 m-0">
-              <div class="col-sm-3 mb-1" style="padding: 37px 20px 0px 20px;">
-                <!-- <div class="select-style">
+
+          <div class="row mobile-content">
+            <div class="col-sm-12">
+              <div class="profileuser">
+                <div class="table-responsive">
+                  <table class="table">
+                    <tr>
+                      <td class="profile-img"><img src="images/winnatokenlog.jpg"><br>
+                        <!-- <span class="text-white"><%= __('Profile Picture')%></span></td> -->
+                      <td><%= __('Rank')%><br><span id="playerRank">0</span></td>
+                      <td><%= __('Level')%><br><span id="levelPlayer">0</span></td>
+                      <td><%= __('Total Bets')%><br><span id="totalBets">0</span></td>
+                      <td><%= __('Total WINNA')%><br><span id="totalWinna">0</span></td>
+                      <td><%= __('Comulative Earnings')%><br><span id="totalEarning">0</span></td>
+                      <td><%= __('Last Windrop')%><br><span id="lastDrop">0</span></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="row mt-4 m-0">
+                <div class="col-sm-3 mb-1" style="padding: 37px 20px 0px 20px;">
+                  <!-- <div class="select-style">
                   <select id="location" class="form-control">
                     <option value="location1" class="dropdown-item">Location 1</option>
                     <option value="location2" class="dropdown-item">Location 2</option>
@@ -107,70 +142,70 @@
                     <option value="location4" class="dropdown-item">Location 4</option>
                   </select>
                 </div> -->
-                <div class="dropdown dropdown-filter">
+                  <div class="dropdown dropdown-filter">
                     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-                        <span id="currLocation">Hongkong</span>
-                      </button>
+                      <span id="currLocation">Hongkong</span>
+                    </button>
                     <div class="dropdown-menu">
                       <a class="dropdown-item locationChange" href="#" name="location1">Hongkong</a>
                       <a class="dropdown-item locationChange" href="#" name="location2">Paris</a>
                       <a class="dropdown-item locationChange" href="#" name="location3">UK</a>
                       <a class="dropdown-item locationChange" href="#" name="location4">Melbourne</a>
                     </div>
+                  </div>
                 </div>
-              </div>
 
-               <div class="col-sm-3 mb-1" style="padding: 37px 20px 0px 20px;">
-                <!-- <div class="select-style">
+                <div class="col-sm-3 mb-1" style="padding: 37px 20px 0px 20px;">
+                  <!-- <div class="select-style">
                   <select id="filter" class="form-control">
                     <option value="all">All</option>
                     <option value="win">Win</option>
                     <option value="lose">Lose</option>
                   </select>
                 </div> -->
-                <div class="dropdown dropdown-filter">
+                  <div class="dropdown dropdown-filter">
                     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-                        <span id="currFilter">ALL</span>
-                      </button>
+                      <span id="currFilter">ALL</span>
+                    </button>
                     <div class="dropdown-menu">
                       <a class="dropdown-item filterChange" href="#" name="all">All</a>
                       <a class="dropdown-item filterChange" href="#" name="win">WIN</a>
                       <a class="dropdown-item filterChange" href="#" name="lose">LOSE</a>
                     </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="col-sm-1 mb-1" style="margin-right: 28px;">
-                <label style="color: white; margin-bottom: .65rem;">Page&nbsp;Number: </label>
-                <!-- <div class="select-style">
+                <div class="col-sm-1 mb-1" style="margin-right: 28px;">
+                  <label style="color: white; margin-bottom: .65rem;">Page&nbsp;Number: </label>
+                  <!-- <div class="select-style">
                   <select id="skip" class="form-control">
                   </select>
                 </div> -->
 
-                <div class="dropdown dropdown-filter">
+                  <div class="dropdown dropdown-filter">
                     <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="min-width: 100px">
-                        <span id="currskip">1</span>
-                      </button>
+                      <span id="currskip">1</span>
+                    </button>
                     <div class="dropdown-menu" id="skip" style="min-width: 100px">
                     </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-1 mb-1">
+                <div class="col-sm-1 mb-1">
                   <label style="color: white; margin-bottom: .65rem;">Page&nbsp;Size: </label>
                   <div class="dropdown dropdown-filter">
-                      <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="min-width: 100px">
-                          <span id="currPage">10</span>
-                        </button>
-                      <div class="dropdown-menu" style="min-width: 100px">
-                        <a class="dropdown-item pageChange" href="#" name="5">5</a>
-                        <a class="dropdown-item pageChange" href="#" name="10">10</a>
-                        <a class="dropdown-item pageChange" href="#" name="25">25</a>
-                        <a class="dropdown-item pageChange" href="#" name="50">50</a>
-                        <a class="dropdown-item pageChange" href="#" name="100">100</a>
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" style="min-width: 100px">
+                      <span id="currPage">10</span>
+                    </button>
+                    <div class="dropdown-menu" style="min-width: 100px">
+                      <a class="dropdown-item pageChange" href="#" name="5">5</a>
+                      <a class="dropdown-item pageChange" href="#" name="10">10</a>
+                      <a class="dropdown-item pageChange" href="#" name="25">25</a>
+                      <a class="dropdown-item pageChange" href="#" name="50">50</a>
+                      <a class="dropdown-item pageChange" href="#" name="100">100</a>
 
-                      </div>
+                    </div>
                   </div>
-                <!-- <div class="select-style">
+                  <!-- <div class="select-style">
                   <select id="page" class="form-control">
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -179,12 +214,12 @@
                     <option value="100">100</option>
                   </select>
                 </div> -->
+                </div>
               </div>
             </div>
-        </div>
-      </div>
-      <% include ./include/profile-table.ejs %>
-      <!-- <div class="row"> 
+          </div>
+          <% include ./include/profile-table.ejs %>
+          <!-- <div class="row"> 
           <div class="col-sm-12">
             <div class="table-prodetail">
               <div class="table-responsive">
@@ -209,10 +244,10 @@
             </div>
           </div>
 			</div> -->
-		</div>
-</div>
+        </div>
+      </div>
 
-<!-- <nav class="menu-bar">
+      <!-- <nav class="menu-bar">
           <div class="row">
             <div class="col-sm-12">
               <ul>
@@ -234,45 +269,42 @@
                 </li>
                 <li><a href="#dividense" data-toggle="modal" title="Dividends">Dividends</a></li>
                 <li><a href="about-us.html" title="Help">Help</a></li>
-                <li><a href="https://tronhorses.com/doc/WhitePaper.pdf" title="Whitepaper" target="_blank">Whitepaper</a></li>
+                <li><a href="https://CryptoHorseRacing.com/doc/WhitePaper.pdf" title="Whitepaper" target="_blank">Whitepaper</a></li>
               </ul>
               
             </div>
           </div>
         </nav>
 </div> -->
-<% include ./include/buy-trx.ejs %>
-<% include ./include/tronlink-popup.ejs %>
- <% include ./include/dividend-model.ejs %>
- <% include ./include/leaderboard.ejs %>
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/app.js"></script>
-<script src="js/common.js"></script>
-<script src="js/url.js"></script>
-<script src="js/chat.js"></script>
-<script src="js/anim.js"></script>
-<script src="js/project_js/profile.min.js"></script>
-<!-- <script src="js/project_js/chunks.profile.js"></script> -->
+      <% include ./include/buy-trx.ejs %>
+      <% include ./include/tronlink-popup.ejs %>
+      <% include ./include/dividend-model.ejs %>
+      <% include ./include/leaderboard.ejs %>
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/app.js"></script>
+      <script src="js/common.js"></script>
+      <script src="js/url.js"></script>
+      <script src="js/chat.js"></script>
+      <script src="js/anim.js"></script>
+      <script src="js/project_js/profile.min.js"></script>
+      <!-- <script src="js/project_js/chunks.profile.js"></script> -->
 
 
-<script src="js/libs/configemoji.js"></script>
-<script src="js/libs/utils.js"></script>
-<script src="js/libs/emojiarea.js"></script>
-<script src="js/libs/emoji-picker.js"></script>
+      <script src="js/libs/configemoji.js"></script>
+      <script src="js/libs/utils.js"></script>
+      <script src="js/libs/emojiarea.js"></script>
+      <script src="js/libs/emoji-picker.js"></script>
 
-<script>
-	$(function() {
-		window.emojiPicker = new EmojiPicker({
-		emojiable_selector: '[data-emojiable=true]',
-		assetsPath: '/img',
-		popupButtonClasses: 'fa fa-smile-o'
-		});
-		window.emojiPicker.discover();
-	});
-</script>
-</body>
+      <script>
+        $(function () {
+          window.emojiPicker = new EmojiPicker({
+            emojiable_selector: '[data-emojiable=true]',
+            assetsPath: '/img',
+            popupButtonClasses: 'fa fa-smile-o'
+          });
+          window.emojiPicker.discover();
+        });
+      </script>
+  </body>
+
 </html>
-
-
-
-

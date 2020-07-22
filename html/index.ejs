@@ -1,716 +1,810 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Tron Horses</title>
 
-	<link rel="stylesheet" type="text/css" href="css/app.css?v=15">
-	<meta name="msapplication-TileColor" content="#000000">
-	<meta name="theme-color" content="#000000">
-	<meta name='apple-mobile-web-app-capable' content='yes'>
-	<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-78432775-2"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>CryptoHorseRacing</title>
 
-	gtag('config', 'UA-78432775-2');
-	</script>
+		<link rel="stylesheet" type="text/css" href="css/app.css?v=15">
+		<meta name="msapplication-TileColor" content="#000000">
+		<meta name="theme-color" content="#000000">
+		<meta name='apple-mobile-web-app-capable' content='yes'>
+		<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-78432775-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
 
-</head>
-<body>
+			gtag('config', 'UA-78432775-2');
+		</script>
 
-<div class="loading" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:0;top:0;left:0;z-index:200;background:#000000;position:fixed;">
+	</head>
+
+	<body>
+
+		<!-- <div class="loading" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;margin:0 auto;padding:0;top:0;left:0;z-index:200;background:#000000;position:fixed;">
   <img src="images/loader.gif" alt="Loading...">
-</div>
+</div> -->
 
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12">
-				<header>
-				    <div class="row align-items-center">
-				      <div class="col-md-3 col-lg-2">
-				        <a href="./" class="logo"><img src="images/logo.svg" alt="logo-image"></a>
-				        <div class="mobile-menu"></div>
-				      </div>
-				      <div class="col-md-9 col-lg-8 offset-lg-1 l1 text-center">
-				        <div class="dropdown dropdown-languages float-left">
-				          <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span id="currLang">English</span></button>
-				          <div class="dropdown-menu">
-				            <a class="dropdown-item languageDropDown" href="#" id="languageChange" name="en">English</a>
-								<a class="dropdown-item languageDropDown" href="#" id="languageChange" name="ru">Pусский</a>
-								<a class="dropdown-item languageDropDown" href="#" id="languageChange" name="de">Deutsch</a>
-								<a class="dropdown-item languageDropDown" href="#" id="languageChange" name="zh-CN">简体中文</a>
-								<a class="dropdown-item languageDropDown" href="#" id="languageChange" name="fr">Français</a>
-								<a class="dropdown-item languageDropDown" href="#" id="languageChange" name="kr">한국어</a>
-								<a class="dropdown-item languageDropDown" href="#" id="languageChange" name="es">Español</a>
-								<a class="dropdown-item languageDropDown" href="#" id="languageChange" name="po">Português</a>
-				          </div>
-				        </div>
-				        <div class="race-heading"><%= __('Total Won:')%> <span id="wonAmount">0</span> TRX</div>
-				        <div class="float-right">
-							<span id="userAddress" style="color:lightgrey"></span>
-							<a href="#" class="btn btn-login" id="isLoggedIn">Login</a>
-				          <div class="dropdown dropdown-tronlink">
-				            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
-									<span id="currWallet"><img src="images/tronlink.png"> TronLink</span>
-							</button>
-				            <div class="dropdown-menu">
-								<a class="dropdown-item walletDropDown" href="#" name="tronlink"><img src="images/tronlink.png" style="width: 30px; height: 30px;">TronLink</a>
-				              <a class="dropdown-item walletDropDown" href="#" name="guild-wallet"><img src="images/guild-wallet.png">Guild Wallet</a>
-				            </div>
-				          </div>
-				        </div>
-				      </div>
-				    </div>
-				</header>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<header>
+						<div class="row align-items-center">
+							<div class="col-md-3 col-lg-2">
+								<a href="./" class="logo"><img src="images/logotest.png" alt="logo-image"></a>
+								<div class="mobile-menu"></div>
+							</div>
+							<div class="col-md-9 col-lg-8 offset-lg-1 l1 text-center">
+								<div class="dropdown dropdown-languages float-left">
+									<button class="btn dropdown-toggle" type="button" data-toggle="dropdown"><span
+											id="currLang">English</span></button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="en">English</a>
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="ru">Pусский</a>
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="de">Deutsch</a>
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="zh-CN">简体中文</a>
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="fr">Français</a>
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="kr">한국어</a>
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="es">Español</a>
+										<a class="dropdown-item languageDropDown" href="#" id="languageChange"
+											name="po">Português</a>
+									</div>
+								</div>
+								<div class="race-heading"><%= __('Total Won:')%> <span id="wonAmount">0</span> TRX</div>
+								<div class="float-right">
+									<span id="userAddress" style="color:lightgrey"></span>
+									<a href="#" class="btn btn-login" id="isLoggedIn">Login</a>
+									<div class="dropdown dropdown-tronlink">
+										<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+											<span id="currWallet"><img src="images/tronlink.png"> TronLink</span>
+										</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item walletDropDown" href="#" name="tronlink"><img
+													src="images/tronlink.png"
+													style="width: 30px; height: 30px;">TronLink</a>
+											<a class="dropdown-item walletDropDown" href="#" name="guild-wallet"><img
+													src="images/guild-wallet.png">Guild Wallet</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</header>
 
-				<nav class="menu-bar">
-			    <div class="row">
-			      <div class="col-sm-12">
-			        <ul>
-			          <li><a href="/" title="Home"><%= __('Home')%></a></li>
-			          <li><a href="/profile" title="Profile"><%= __('Profile')%></a></li>
-			          <!-- <li class="sub-menu"><a href="#" title="Events"><%= __('Events')%></a> -->
-			            <div class="mega-menu-container">
-			                <div class="row justify-content-center h-100">
-			                  <div class="col-sm-7 text-center h-100">
-			                    <div class="menu-content h-100">
-			                    <h4>Melbourne Cup Day</h4>
-			                    <p>"The Race That Stops The Nation"</p>
-			                    <span>Go to the race page</span>
-			                    <a href="flemington-melbourne.html" target="_blank" class="btn-click">Bet Now</a>
-			                  </div>
-			                </div>
-			              </div>
-			            </div>
-			          </li>
-			          <li><a href="#dividendsModal" data-toggle="modal" title="Dividends" id="showDivs"><%= __('Dividends')%></a></li>
-			          <li><a href="/about-us" title="Help"><%= __('Help')%></a></li>
-					  <li><a href="/doc/WhitePaper.pdf" title="Whitepaper" target="_blank"><%= __('Whitepaper')%></a></li>
-					  <li><a href="#purchaseModel" data-toggle="modal" title="Purchase TRX" target="_blank" id="buyTRX">Buy TRX</a></li>
-					  <li><a href="https://winnamerch.com" title="Buy Merchandise" target="_blank">Buy Merchandise</a></li>
-			        </ul>
-			        
-			      </div>
-			    </div>
-				</nav>
-		</div>
-	</div>
-</div>
+					<nav class="menu-bar">
+						<div class="row">
+							<div class="col-sm-12">
+								<ul>
+									<li><a href="/" title="Home"><%= __('Home')%></a></li>
+									<li><a href="/profile" title="Profile"><%= __('Profile')%></a></li>
+									<li class="sub-menu"><a href="#" title="Events"><%= __('Events')%></a>
+										<div class="mega-menu-container">
+											<div class="row justify-content-center h-100">
+												<div class="col-sm-7 text-center h-100">
+													<div class="menu-content h-100">
+														<h4>Melbourne Cup Day</h4>
+														<p>"The Race That Stops The Nation"</p>
+														<span>Go to the race page</span>
+														<a href="flemington-melbourne.html" target="_blank"
+															class="btn-click">Bet Now</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li><a href="#dividendsModal" data-toggle="modal" title="Dividends"
+											id="showDivs"><%= __('Dividends')%></a></li>
+									<li><a href="/about-us" title="Help"><%= __('Help')%></a></li>
+									<li><a href="/doc/WhitePaper.pdf" title="Whitepaper"
+											target="_blank"><%= __('Whitepaper')%></a></li>
+									<li><a href="#purchaseModel" data-toggle="modal" title="Purchase TRX"
+											target="_blank" id="buyTRX">Buy TRX</a></li>
+								</ul>
 
-<div class="container">
-    <div class="row">
-		<div class="col-sm-12">
-			<div id="carouselMain" class="carousel slide mb-4" data-ride="carousel" data-pause="false" data-interval="4000">
-			  <ol class="carousel-indicators">
-			    <li data-target="#carouselMain" data-slide-to="0" class="active"></li>
-			    <li data-target="#carouselMain" data-slide-to="1"></li>
-			    <li data-target="#carouselMain" data-slide-to="2"></li>
-			    <li data-target="#carouselMain" data-slide-to="3"></li>
-			    <li data-target="#carouselMain" data-slide-to="4"></li>
-			    <!-- <li data-target="#carouselMain" data-slide-to="5"></li> -->
-			  </ol>
-			  <div class="carousel-inner">
-			    <!-- <div class="carousel-item active">
-			      <a href="/location-hongkong"><img src="images/slider-6.jpg" class="d-block w-100" alt="..."></a>
-				</div> -->
-			    <div class="carousel-item active">
-			      <img src="images/slider1.jpg" class="d-block w-100" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="images/slider2.jpg" class="d-block w-100" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="images/slider3.jpg" class="d-block w-100" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="images/slider4.jpg" class="d-block w-100" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      <img src="images/slider5.jpg" class="d-block w-100" alt="...">
-			    </div>
-			  </div>
+							</div>
+						</div>
+					</nav>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-sm-6 col-md-3">
-			<a href="/location-hongkong" class="location-box">
-				<img src="images/shatin-hongkong.jpg">
-				<div class="location-text">
-					<h4>ShaTin, Hong Kong</h4>
-					<p>Minimum Bet - 10 TRX</p>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="carouselMain" class="carousel slide mb-4" data-ride="carousel" data-pause="false"
+						data-interval="4000">
+						<ol class="carousel-indicators">
+							<li data-target="#carouselMain" data-slide-to="0" class="active"></li>
+							<li data-target="#carouselMain" data-slide-to="1"></li>
+							<li data-target="#carouselMain" data-slide-to="2"></li>
+							<li data-target="#carouselMain" data-slide-to="3"></li>
+							<li data-target="#carouselMain" data-slide-to="4"></li>
+							<!-- <li data-target="#carouselMain" data-slide-to="5"></li> -->
+						</ol>
+						<div class="carousel-inner">
+							<!-- <div class="carousel-item active">
+			      <a href="/location-hongkong"><img src="images/slider-6.jpg" class="d-block w-100" alt="..."></a>
+				</div> -->
+							<div class="carousel-item active">
+								<img src="images/slider1.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+								<img src="images/slider2.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+								<img src="images/slider3.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+								<img src="images/slider4.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+								<img src="images/slider5.jpg" class="d-block w-100" alt="...">
+							</div>
+						</div>
+					</div>
 				</div>
-			</a>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<a href="#" class="location-box">
-				<img src="images/longchamp-paris.jpg">
-				<div class="location-text">
-					<h4>Longchamp, Paris</h4>
-					<p>Minimum Bet - 100 TRX</p>
-					<p>Coming Next</p>
-				</div>
-			</a>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<a href="#" class="location-box">
-				<img src="images/royal-ascot-uk.jpg">
-				<div class="location-text">
-					<h4>Royal Ascot, UK</h4>
-					<p>Minimum Bet - 1000 TRX</p>
-					<p>Coming Soon</p>
-				</div>
-			</a>
-		</div>
-		<div class="col-sm-6 col-md-3">
-			<a href="#" class="location-box">
-				<img src="images/flemington-melbourne.jpg">
-				<div class="location-text">
-					<h4>Flemington, Melbourne</h4>
-					<p>Minimum Bet - 2500 TRX</p>
-					<p>Coming Soon</p>
-				</div>
-			</a>
-		</div>
-	</div>
+			</div>
 
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="advertisement-tab"   style="color:#BBBBBB; font-size:15px">
-				<ul class="nav nav-pills" id="pills-tab" role="tablist">
-				  <!-- <li class="nav-item">
+			<div class="row">
+				<div class="col-sm-6 col-md-3">
+					<a href="/location-hongkong" class="location-box">
+						<img src="images/shatin-hongkong.jpg">
+						<div class="location-text">
+							<h4>ShaTin, Hong Kong</h4>
+							<p>Minimum Bet - 10 TRX</p>
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<a href="#" class="location-box">
+						<img src="images/longchamp-paris.jpg">
+						<div class="location-text">
+							<h4>Longchamp, Paris</h4>
+							<p>Minimum Bet - 100 TRX</p>
+							<p>Coming Next</p>
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<a href="#" class="location-box">
+						<img src="images/royal-ascot-uk.jpg">
+						<div class="location-text">
+							<h4>Royal Ascot, UK</h4>
+							<p>Minimum Bet - 1000 TRX</p>
+							<p>Coming Soon</p>
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<a href="#" class="location-box">
+						<img src="images/flemington-melbourne.jpg">
+						<div class="location-text">
+							<h4>Flemington, Melbourne</h4>
+							<p>Minimum Bet - 2500 TRX</p>
+							<p>Coming Soon</p>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="advertisement-tab" style="color:#BBBBBB; font-size:15px">
+						<ul class="nav nav-pills" id="pills-tab" role="tablist">
+							<!-- <li class="nav-item">
 				    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><%= __('For Advertisers')%></a>
 				  </li> -->
-				  <li class="nav-item">
-				    <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true"><%= __('Contact Support')%></a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">FAQ</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-partners" role="tab" aria-controls="pills-partners" aria-selected="false"><%= __('Partners')%></a>
-				  </li>
-				</ul>
-				<div class="tab-content" id="pills-tabContent">
-				   <!-- <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+							<li class="nav-item">
+								<a class="nav-link active" id="pills-profile-tab" data-toggle="pill"
+									href="#pills-profile" role="tab" aria-controls="pills-profile"
+									aria-selected="true"><%= __('Contact Support')%></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"
+									role="tab" aria-controls="pills-contact" aria-selected="false">FAQ</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-partners"
+									role="tab" aria-controls="pills-partners"
+									aria-selected="false"><%= __('Partners')%></a>
+							</li>
+						</ul>
+						<div class="tab-content" id="pills-tabContent">
+							<!-- <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 				  	<div class="advertise-box">
 				  		<p>><%= __('If you want to Advertise here, please contact:')%></p>
-			  			<span><%=__('Email')%>:</span><a href="mailto: Tronhorses@gmail.com"> Tronhorses@gmail.com</a>
+			  			<span><%=__('Email')%>:</span><a href="mailto: CryptoHorseRacing.com@gmail.com"> CryptoHorseRacing.com@gmail.com</a>
 				  	</div>
 				  </div> -->
-				  <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-				  	<div class="contact-box" style="color:#BBBBBB; font-size:15px">
-				  		<p><%= __('If you have any issue contact us:')%></p>
-			  			<!-- <span>Telegram:</span><a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw" target="_blank"> https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw</a><br> -->
-						  <span><%=__('Email')%>:</span><a href="mailto: Tronhorses@gmail.com"> Tronhorses@gmail.com</a><br>	
-						  <span><%=__('Telegram')%>:</span><a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw">TronHorses</a>
-				  	</div>
-				  </div>
-				  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-				  	<div class="about-us-box" style="color:#BBBBBB; font-size:15px">
-				  		<div class="accordion" id="accordionExample">
-							<h2 class="accordon-heading"><%= __('About TRON')%></h2>
-							<div class="card">
-								<div class="card-header" id="headingOne">
-								<h2 class="mb-0">
-									<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									<%= __('1. What is TRON')%>
-									</button>
-								</h2>
-								</div>
-
-								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-								<div class="card-body">
-									<%= __('TRONIX is a MainNet token based on the TRON Protocol issued by TRON Foundation, known as TRX.')%><br><br>
-									<%= __('TRX is the basic unit of accounts on the TRON blockchain. The value of all other tokens derives from that of TRON. TRX is also a natural medium currency for all TRC-based tokens. TRX connects the entire TRON ecosystem, with abundant application scenarios that power transactions and applications on the chain.')%><br><br>
-									<%= __('To learn more')%> :<a href="https://tron.network" target="_blank">https://tron.network/</a><br>
-								</div>
+							<div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
+								aria-labelledby="pills-profile-tab">
+								<div class="contact-box" style="color:#BBBBBB; font-size:15px">
+									<p><%= __('If you have any issue contact us:')%></p>
+									<!-- <span>Telegram:</span><a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw" target="_blank"> https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw</a><br> -->
+									<span><%=__('Email')%>:</span><a href="mailto: CryptoHorseRacing.com@gmail.com">
+										CryptoHorseRacing.com@gmail.com</a><br>
+									<span><%=__('Telegram')%>:</span><a
+										href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw">CryptoHorseRacing.com</a>
 								</div>
 							</div>
-				  			<h2 class="accordon-heading"><%= __('Introduction')%></h2>
-							  <div class="card">
-							    <div class="card-header" id="headingOne">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							          <%= __('1. TronHorses Platform Introduction')%>
-							        </button>
-							      </h2>
-							    </div>
+							<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+								aria-labelledby="pills-contact-tab">
+								<div class="about-us-box" style="color:#BBBBBB; font-size:15px">
+									<div class="accordion" id="accordionExample">
+										<h2 class="accordon-heading"><%= __('About TRON')%></h2>
+										<div class="card">
+											<div class="card-header" id="headingOne">
+												<h2 class="mb-0">
+													<button class="btn btn-link" type="button" data-toggle="collapse"
+														data-target="#collapseOne" aria-expanded="true"
+														aria-controls="collapseOne">
+														<%= __('1. What is TRON')%>
+													</button>
+												</h2>
+											</div>
 
-							    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-							      <div class="card-body">
-									<%= __('TronHorses.com is the first Horse Racing Gambling Decentralised app to hit the Tron Mainnet. We have chosen the Tron network because of the speed of Transactions, it is capable of handling almost 2000 TPS (transactions per second), with the possibility of growing in the future. So why Horses?')%><br>
-									<%= __('Horse Racing is one of the most ancient of sports - it has been adopted all over the world bypeople who have added many variations such as restricting races to particular breeds, running over obstacles, running over different distances, running on different track surfaces and running in different gaits.')%><br>
-									<%= __('The sport is breathtaking, fun & addictive in nature - To many it is considered more than a hobby, but a way of life. The Sport has evolved over the years and now we have added a touch of revolutionary technology to take it to the next level - Horse Racing meets Blockchain Technology.')%><br>
-									<%= __('This technology is a game changer because it provides complete Transparency an Audibility, unlike traditional Gambling structures.')%><br>
-									<%= __('TronHorses allows the Community to Bet & Earn a piece of the Track by mining our native WINNA Token and receiving daily Dividend payouts in Tron (TRX).')%>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingTwo">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-							          <%= __('2. Game Languages')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-							      <div class="card-body">
-										<%= __('TronHorses currently supports 8 languages: English, German, Spanish, Portuguese, Simplified Chinese, Korean, Russian and French.')%>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingThree">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-							         <%= __(' 3. Supported Tokens')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-							      <div class="card-body">
-										<%= __('TronHorses supports only TRX to be used on the platform.')%>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingFour">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-							          <%= __('4. Level & Rank')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-							      <div class="card-body">
-										<%= __('As Users Bet on the Platform they will earn their right to progress though the Heirachy within the Horse Racing Industry until officially become a WINNA.')%>
-												<p><%= __('Level (1-5): Shoveller')%></p>
-												<p><%= __('Level (6-10): Float Driver')%></p>
-												<p><%= __('Level (11-15): Barrier Attendant')%></p>
-												<p><%= __('Level (16-20): StableHand')%></p>
-												<p><%= __('Level (21-25): Track Rider')%></p>
-												<p><%= __('Level (26-30): Farrier')%></p>
-												<p><%= __('Level (31-35): Horse Breaker')%></p>
-												<p><%= __('Level (36-40): Strapper')%></p>
-												<p><%= __('Level (41-45): Effinex')%></p>
-												<p><%= __('Level (46-50): Apprentice')%></p>
-												<p><%= __('Level (51-55): Jockey')%></p>
-												<p><%= __('Level (56-60): Race Caller')%></p>
-												<p><%= __('Level (61-65): Thoroughbred Trainer')%></p>
-												<p><%= __('Level (66-70): Steward')%></p>
-												<p><%= __('Level (71-75): Bloodstock Agent')%></p>
-												<p><%= __('Level (76-80): Pro Syndicator')%></p>
-												<p><%= __('Level (81-85): First Dude')%></p>
-												<p><%= __('Level (86-90): G3 Owner')%></p>
-												<p><%= __('Level (91-95): G2 Owner')%></p>
-												<p><%= __('Level (96-99): G1 Owner')%></p>
-												<p><%= __('Level(100): WINNA')%></p>
+											<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('TRONIX is a MainNet token based on the TRON Protocol issued by TRON Foundation, known as TRX.')%><br><br>
+													<%= __('TRX is the basic unit of accounts on the TRON blockchain. The value of all other tokens derives from that of TRON. TRX is also a natural medium currency for all TRC-based tokens. TRX connects the entire TRON ecosystem, with abundant application scenarios that power transactions and applications on the chain.')%><br><br>
+													<%= __('To learn more')%> :<a href="https://tron.network"
+														target="_blank">https://tron.network/</a><br>
+												</div>
+											</div>
+										</div>
+										<h2 class="accordon-heading"><%= __('Introduction')%></h2>
+										<div class="card">
+											<div class="card-header" id="headingOne">
+												<h2 class="mb-0">
+													<button class="btn btn-link" type="button" data-toggle="collapse"
+														data-target="#collapseOne" aria-expanded="true"
+														aria-controls="collapseOne">
+														<%= __('1. CryptoHorseRacing.com Platform Introduction')%>
+													</button>
+												</h2>
+											</div>
 
-												<h4><%= __('Horse Ranking :')%></h4>
-												<p>
-													<%= __('All Horses in game have different types of payouts for different types of bet like win, place and show. Horse ranking will be generated through our smart contract using weighted random number generator principal. The horse has higher the payout has the lower chance to win then the horse has lower payouts.')%><br>
-													<%= __('This way all the results are toally fair and transparent.')%>	  
-												</p>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingFive">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-							         <%= __(' 5. Community')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-							      <div class="card-body">
-										Telegram: <a href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw">https://t.me/joinchat/E3BK1g_aw8KZS0SjAN9NXA</a>
-										<br>
-										Follow us on Twitter: <a href="https://twitter.com/TronHorses" target="_blank">https://twitter.com/TronHorses</a>
+											<div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('CryptoHorseRacing.com is the first Horse Racing Gambling Decentralised app to hit the Loom Network. We have chosen the Loom Network because of the speed of Transactions, described as a Layer 2 solution that ensures scalability and future-proofing the dapp itself. So why Horses?')%><br>
+													<%= __('Horse Racing is one of the most ancient of sports - it has been adopted all over the world bypeople who have added many variations such as restricting races to particular breeds, running over obstacles, running over different distances, running on different track surfaces and running in different gaits.')%><br>
+													<%= __('The sport is breathtaking, fun & addictive in nature - To many it is considered more than a hobby, but a way of life. The Sport has evolved over the years and now we have added a touch of revolutionary technology to take it to the next level - Horse Racing meets Blockchain Technology.')%><br>
+													<%= __('This technology is a game changer because it provides complete Transparency an Audibility, unlike traditional Gambling structures.')%><br>
+													<%= __('CryptoHorseRacing.com allows the Community to Bet & Earn a piece of the Track by mining our native WINNA Token and receiving daily Dividend payouts in Tron (TRX).')%>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingTwo">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseTwo"
+														aria-expanded="false" aria-controls="collapseTwo">
+														<%= __('2. Game Languages')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('CryptoHorseRacing.com currently supports 8 languages: English, German, Spanish, Portuguese, Simplified Chinese, Korean, Russian and French.')%>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingThree">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseThree"
+														aria-expanded="false" aria-controls="collapseThree">
+														<%= __(' 3. Supported Tokens')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('CryptoHorseRacing.com supports only TRX to be used on the platform.')%>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingFour">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseFour"
+														aria-expanded="false" aria-controls="collapseThree">
+														<%= __('4. Level & Rank')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('As Users Bet on the Platform they will earn their right to progress though the Heirachy within the Horse Racing Industry until officially become a WINNA.')%>
+													<p><%= __('Level (1-5): Shoveller')%></p>
+													<p><%= __('Level (6-10): Float Driver')%></p>
+													<p><%= __('Level (11-15): Barrier Attendant')%></p>
+													<p><%= __('Level (16-20): StableHand')%></p>
+													<p><%= __('Level (21-25): Track Rider')%></p>
+													<p><%= __('Level (26-30): Farrier')%></p>
+													<p><%= __('Level (31-35): Horse Breaker')%></p>
+													<p><%= __('Level (36-40): Strapper')%></p>
+													<p><%= __('Level (41-45): Effinex')%></p>
+													<p><%= __('Level (46-50): Apprentice')%></p>
+													<p><%= __('Level (51-55): Jockey')%></p>
+													<p><%= __('Level (56-60): Race Caller')%></p>
+													<p><%= __('Level (61-65): Thoroughbred Trainer')%></p>
+													<p><%= __('Level (66-70): Steward')%></p>
+													<p><%= __('Level (71-75): Bloodstock Agent')%></p>
+													<p><%= __('Level (76-80): Pro Syndicator')%></p>
+													<p><%= __('Level (81-85): First Dude')%></p>
+													<p><%= __('Level (86-90): G3 Owner')%></p>
+													<p><%= __('Level (91-95): G2 Owner')%></p>
+													<p><%= __('Level (96-99): G1 Owner')%></p>
+													<p><%= __('Level(100): WINNA')%></p>
 
-											<p class="pt-4"><%= __('(We have decided against the implementation of a Referral Program as Advised by legal team)')%></p>
+													<h4><%= __('Horse Ranking :')%></h4>
+													<p>
+														<%= __('All Horses in game have different types of payouts for different types of bet like win, place and show. Horse ranking will be generated through our smart contract using weighted random number generator principal. The horse has higher the payout has the lower chance to win then the horse has lower payouts.')%><br>
+														<%= __('This way all the results are toally fair and transparent.')%>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingFive">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseFive"
+														aria-expanded="false" aria-controls="collapseThree">
+														<%= __(' 5. Community')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													Telegram: <a
+														href="https://t.me/joinchat/E3BK1lLbBk1bSLw5u5cVmw">https://t.me/joinchat/E3BK1g_aw8KZS0SjAN9NXA</a>
+													<br>
+													Follow us on Twitter: <a
+														href="https://twitter.com/CryptoHorseRacing.com"
+														target="_blank">https://twitter.com/CryptoHorseRacing.com</a>
 
-							      </div>
-							    </div>
-							  </div>
-							  <h2 class="accordon-heading"><%= __('WINNA drops')%></h2>
-							  <div class="card">
-							    <div class="card-header" id="headingSix">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-										<%= __('1. What is WINNA?')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-							      <div class="card-body">
-										<%= __('WINNA Token is a TRC-20 token that is via playing and betting on the platform and will be used to incentivise users and share in daily TRX dividends. The Total Supply is 100 000 000.')%>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingSeven">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-							          <%= __('2. How to get WINNA?')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <style type="text/css">
-							    	.table-textcolor thead tr td, .table-textcolor tbody tr td{
-							    		color: #fff;
-							    	}
-							    </style>
-							    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
-							      <div class="card-body">
-										<%= __('You can Earn WINNA by Betting on the TronHorses Platform whether you win or lose - otherwise known as mining. WINNA can be mined on the Platform in 5 Stages, each broken down into 5 Levels. Mining will increase in Difficulty as the Platform progresses as per the Table Below:')%>
-							        <div class="table-responsive">
-							     <table class="table table-textcolor">
-										<thead>
-										  <tr>
-										    <td>Stage<br>1</td>
-										    <td>PER<br>BET</td>
-										    <td>MINE</td>
-										    <td>Stage<br>2</td>
-										    <td>PER<br>BET</td>
-										    <td>MINE</td>
-										    <td>Stage<br>3</td>
-										    <td>PER<br>BET</td>
-										    <td>MINE</td>
-										    <td>Stage<br>4</td>
-										    <td>PER<br>BET</td>
-										    <td>MINE</td>
-										    <td>Stage<br>5</td>
-										    <td>PER<br>BET</td>
-										    <td>MINE</td>
-										  </tr>
-										  <tr>
-										    <td>Level</td>
-										    <td>TRX</td>
-										    <td>WINNA</td>
-										    <td>Level</td>
-										    <td>TRX</td>
-										    <td>WINNA</td>
-										    <td>Level</td>
-										    <td>TRX</td>
-										    <td>WINNA</td>
-										    <td>Level</td>
-										    <td>TRX</td>
-										    <td>WINNA</td>
-										    <td>Level</td>
-										    <td>TRX</td>
-										    <td>WINNA</td>
-										  </tr> 
-										</thead>
-										<tbody>
-										  <tr>
-										    <td>1</td>
-										    <td>100</td>
-										    <td>1</td>
-										    <td>1</td>
-										    <td>200</td>
-										    <td>1</td>
-										    <td>1</td>
-										    <td>300</td>
-										    <td>1</td>
-										    <td>1</td>
-										    <td>400</td>
-										    <td>1</td>
-										    <td>1</td>
-										    <td>500</td>
-										    <td>1</td>
-										  </tr>
-										  <tr>
-										    <td>2</td>
-										    <td>120</td>
-										    <td>1</td>
-										    <td>2</td>
-										    <td>220</td>
-										    <td>1</td>
-										    <td>2</td>
-										    <td>320</td>
-										    <td>1</td>
-										    <td>2</td>
-										    <td>420</td>
-										    <td>1</td>
-										    <td>2</td>
-										    <td>520</td>
-										    <td>1</td>
-										  </tr>
-										  <tr>
-										    <td>3</td>
-										    <td>140</td>
-										    <td>1</td>
-										    <td>3</td>
-										    <td>240</td>
-										    <td>1</td>
-										    <td>3</td>
-										    <td>340</td>
-										    <td>1</td>
-										    <td>3</td>
-										    <td>440</td>
-										    <td>1</td>
-										    <td>3</td>
-										    <td>540</td>
-										    <td>1</td>
-										  </tr>
-										  <tr>
-										    <td>4</td>
-										    <td>160</td>
-										    <td>1</td>
-										    <td>4</td>
-										    <td>260</td>
-										    <td>1</td>
-										    <td>4</td>
-										    <td>360</td>
-										    <td>1</td>
-										    <td>4</td>
-										    <td>460</td>
-										    <td>1</td>
-										    <td>4</td>
-										    <td>560</td>
-										    <td>1</td>
-										  </tr>
-										  <tr>
-										    <td>5</td>
-										    <td>180</td>
-										    <td>1</td>
-										    <td>5</td>
-										    <td>280</td>
-										    <td>1</td>
-										    <td>5</td>
-										    <td>380</td>
-										    <td>1</td>
-										    <td>5</td>
-										    <td>480</td>
-										    <td>1</td>
-										    <td>5</td>
-										    <td>580</td>
-										    <td>1</td>
-										  </tr>
-										</tbody>
-										</table>
-							        </div>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingeight">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseeight" aria-expanded="false" aria-controls="collapseeight">
-											<%= __('3. What is WINNA used for?')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseeight" class="collapse" aria-labelledby="headingeight" data-parent="#accordionExample">
-							      <div class="card-body">
-									<%= __('By freezing WINNA users will be able to receive daily WINNAdrops paid in (TRX).')%><br>
-									<%= __('WINNAdrops = Current platform earnings x (amount of WINNA frozen / Total WINNA frozen across the network).')%>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingnine">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsenine" aria-expanded="false" aria-controls="collapsenine">
-							          <%= __('4. Freezing for WINNAdrops?')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapsenine" class="collapse" aria-labelledby="headingnine" data-parent="#accordionExample">
-							      <div class="card-body">
-										<%= __('WINNA mined from actions on TronHorses are locked in a smart contract. Users need to withdraw the WINNA gained from the smart contract to their own wallet before it can be frozen for WINNAdrops. Minimum WINNA for freezing = 1 WINNA. For freezing or unfreezing, users must ensure that they have atleast 1 TRX in their wallet. When WINNAdrops are being transferred to their respective wallets, users will not be able to freeze or unfreeze their WINNA. Unfreezing WINNA requires 24 hours. WINNA that is unfreezing will not be able to participate in WINNAdrops. WINNA that stays frozen will technically be able to receive lifetime WINNAdrops - Representing ownership of the Track.')%>
-							      </div>
-							    </div>
-							  </div>
-							  <h2 class="accordon-heading"><%= __('How to Play')%></h2>
-							  <div class="card">
-							    <div class="card-header" id="headingten">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseten" aria-expanded="false" aria-controls="collapseten">
-							          <%= __('Horse Racing Game')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseten" class="collapse" aria-labelledby="headingten" data-parent="#accordionExample">
-							      <div class="card-body">
-							        <h4 class="sub-tab-heading"><%= __('Mobile Device:')%></h4>
-										  <p>
-											<%= __('Users must download a mobile compatible wallet for their respective phone operating system. You will then need to create or import your wallet using your private key. Most wallets will require you to input <a href="#">Tronhorses.com</a> into their browser.')%>
-										  </p>
-										  <p>
-											<%= __('Recommended')%>: Tronwallet, GuildChat.
-										  </p>
+													<p class="pt-4">
+														<%= __('(We have decided against the implementation of a Referral Program as Advised by legal team)')%>
+													</p>
 
-										  <p>
-											<%= __('Setting up a Wallet on Desktop PC')%>:<br>
-										    <%= __('Users will need to use Google Chrome or any other web browser that support wallet extensions.')%><br>
-										    <%= __('Recommended Wallets')%>: GuildWallet (Browser Extension), TronLink (Browser Extension), Scatter (Desktop Wallet)
-										  </p>
-										  
-										  <p>
-											<%= __('Tronhorses will allow users to bet on a race consisting of 8 Horses to the finish line. They will have the ability to bet on Win, Place or Show for their horse(s) using Tron (TRX) with instant payment remittance in the same currency when they win. Even with this, all players will be rewarded in WINNA token for betting regardless of the outcome. WINNA token holders will be given ownership of the Track with a portion of all revenue from the site being shared with the WINNA holders to ensure that the use case and demand of the token is sustained. Our betting structure pays win/place on 8 horses, this allows for div pool to fund div payouts every day. Payouts will occur for Win/Place or Show. (Win being 1st, Place being 1st-2nd & Show being 1st-3rd)')%>
-										  </p>
-										  <p>
-											<%= __('The site has a homepage consisting of 4 Race Locations options to choose from')%>:
-										  </p>
-										  <ul>
-										    <li>ShaTin, Hong Kong (10 TRX Min Bet)</li>
-										    <li>Longchamp, Paris (100 TRX Min Bet)</li>
-										    <li>Roayl Ascot, UK (1000 TRX Min Bet)</li>
-										    <li>Flemington, Melbourne (2500 TRX Min Bet)</li>
-										  </ul>
+												</div>
+											</div>
+										</div>
+										<h2 class="accordon-heading"><%= __('WINNA drops')%></h2>
+										<div class="card">
+											<div class="card-header" id="headingSix">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseSix"
+														aria-expanded="false" aria-controls="collapseSix">
+														<%= __('1. What is WINNA?')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('WINNA Token is a ERC-20 Token that is via playing and betting on the platform and will be used to incentivise users and share in daily TRX dividends. The Total Supply is 100 000 000.')%>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingSeven">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseSeven"
+														aria-expanded="false" aria-controls="collapseSeven">
+														<%= __('2. How to get WINNA?')%>
+													</button>
+												</h2>
+											</div>
+											<style type="text/css">
+												.table-textcolor thead tr td,
+												.table-textcolor tbody tr td {
+													color: #fff;
+												}
+											</style>
+											<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('You can Earn WINNA by Betting on the CryptoHorseRacing.com Platform whether you win or lose - otherwise known as mining. WINNA can be mined on the Platform in 5 Stages, each broken down into 5 Levels. Mining will increase in Difficulty as the Platform progresses as per the Table Below:')%>
+													<div class="table-responsive">
+														<table class="table table-textcolor">
+															<thead>
+																<tr>
+																	<td>Stage<br>1</td>
+																	<td>PER<br>BET</td>
+																	<td>MINE</td>
+																	<td>Stage<br>2</td>
+																	<td>PER<br>BET</td>
+																	<td>MINE</td>
+																	<td>Stage<br>3</td>
+																	<td>PER<br>BET</td>
+																	<td>MINE</td>
+																	<td>Stage<br>4</td>
+																	<td>PER<br>BET</td>
+																	<td>MINE</td>
+																	<td>Stage<br>5</td>
+																	<td>PER<br>BET</td>
+																	<td>MINE</td>
+																</tr>
+																<tr>
+																	<td>Level</td>
+																	<td>TRX</td>
+																	<td>WINNA</td>
+																	<td>Level</td>
+																	<td>TRX</td>
+																	<td>WINNA</td>
+																	<td>Level</td>
+																	<td>TRX</td>
+																	<td>WINNA</td>
+																	<td>Level</td>
+																	<td>TRX</td>
+																	<td>WINNA</td>
+																	<td>Level</td>
+																	<td>TRX</td>
+																	<td>WINNA</td>
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td>1</td>
+																	<td>100</td>
+																	<td>1</td>
+																	<td>1</td>
+																	<td>200</td>
+																	<td>1</td>
+																	<td>1</td>
+																	<td>300</td>
+																	<td>1</td>
+																	<td>1</td>
+																	<td>400</td>
+																	<td>1</td>
+																	<td>1</td>
+																	<td>500</td>
+																	<td>1</td>
+																</tr>
+																<tr>
+																	<td>2</td>
+																	<td>120</td>
+																	<td>1</td>
+																	<td>2</td>
+																	<td>220</td>
+																	<td>1</td>
+																	<td>2</td>
+																	<td>320</td>
+																	<td>1</td>
+																	<td>2</td>
+																	<td>420</td>
+																	<td>1</td>
+																	<td>2</td>
+																	<td>520</td>
+																	<td>1</td>
+																</tr>
+																<tr>
+																	<td>3</td>
+																	<td>140</td>
+																	<td>1</td>
+																	<td>3</td>
+																	<td>240</td>
+																	<td>1</td>
+																	<td>3</td>
+																	<td>340</td>
+																	<td>1</td>
+																	<td>3</td>
+																	<td>440</td>
+																	<td>1</td>
+																	<td>3</td>
+																	<td>540</td>
+																	<td>1</td>
+																</tr>
+																<tr>
+																	<td>4</td>
+																	<td>160</td>
+																	<td>1</td>
+																	<td>4</td>
+																	<td>260</td>
+																	<td>1</td>
+																	<td>4</td>
+																	<td>360</td>
+																	<td>1</td>
+																	<td>4</td>
+																	<td>460</td>
+																	<td>1</td>
+																	<td>4</td>
+																	<td>560</td>
+																	<td>1</td>
+																</tr>
+																<tr>
+																	<td>5</td>
+																	<td>180</td>
+																	<td>1</td>
+																	<td>5</td>
+																	<td>280</td>
+																	<td>1</td>
+																	<td>5</td>
+																	<td>380</td>
+																	<td>1</td>
+																	<td>5</td>
+																	<td>480</td>
+																	<td>1</td>
+																	<td>5</td>
+																	<td>580</td>
+																	<td>1</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingeight">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseeight"
+														aria-expanded="false" aria-controls="collapseeight">
+														<%= __('3. What is WINNA used for?')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseeight" class="collapse" aria-labelledby="headingeight"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('By freezing WINNA users will be able to receive daily WINNAdrops paid in (TRX).')%><br>
+													<%= __('WINNAdrops = Current platform earnings x (amount of WINNA frozen / Total WINNA frozen across the network).')%>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingnine">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapsenine"
+														aria-expanded="false" aria-controls="collapsenine">
+														<%= __('4. Freezing for WINNAdrops?')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapsenine" class="collapse" aria-labelledby="headingnine"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('WINNA mined from actions on CryptoHorseRacing.com are locked in a smart contract. Users need to withdraw the WINNA gained from the smart contract to their own wallet before it can be frozen for WINNAdrops. Minimum WINNA for freezing = 1 WINNA. For freezing or unfreezing, users must ensure that they have atleast 1 TRX in their wallet. When WINNAdrops are being transferred to their respective wallets, users will not be able to freeze or unfreeze their WINNA. Unfreezing WINNA requires 24 hours. WINNA that is unfreezing will not be able to participate in WINNAdrops. WINNA that stays frozen will technically be able to receive lifetime WINNAdrops - Representing ownership of the Track.')%>
+												</div>
+											</div>
+										</div>
+										<h2 class="accordon-heading"><%= __('How to Play')%></h2>
+										<div class="card">
+											<div class="card-header" id="headingten">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseten"
+														aria-expanded="false" aria-controls="collapseten">
+														<%= __('Horse Racing Game')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseten" class="collapse" aria-labelledby="headingten"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<h4 class="sub-tab-heading"><%= __('Mobile Device:')%></h4>
+													<p>
+														<%= __('Users must download a mobile compatible wallet for their respective phone operating system. You will then need to create or import your wallet using your private key. Most wallets will require you to input <a href="#">CryptoHorseRacing.com</a> into their browser.')%>
+													</p>
+													<p>
+														<%= __('Recommended')%>: Tronwallet, GuildChat.
+													</p>
 
-										  <p>
-											<%= __('Theses locations also have specifications outlined for the # for Horses the User is able to bet on as follows:')%>
-										  </p>
-										  <ul>
-										    <li>ShaTin - 1</li>
-										    <li>LongChamp - 2</li>
-										    <li>Roayl Ascot - 3</li>
-										    <li>Flemington - <%= __('Unlimited:')%>.</li>
-										  </ul>
-							      </div>
-							    </div>
-							  </div>
-							  <h2 class="accordon-heading"><%= __('Fairness')%></h2>
-							  <div class="card">
-							    <div class="card-header" id="headingeleven">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseeleven" aria-expanded="false" aria-controls="collapseeleven">
-							          <%= __('1 - Random Number Generator (RNG)')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapseeleven" class="collapse" aria-labelledby="headingeleven" data-parent="#accordionExample">
-							      <div class="card-body">
-										<%= __('When a player triggers the Smart Contract, the contract will generate a random SHA-256 hash, the current time stamp and the previous block hash from CoinBase. These will then be mixed together to generate a random hash. If a user uses their own seed, it will then be mixed with time stamp and previous block hash to generate a random number.')%>
-							      </div>
-							    </div>
-							  </div>
-							  <div class="card">
-							    <div class="card-header" id="headingtwelve">
-							      <h2 class="mb-0">
-							        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsetwelve" aria-expanded="false" aria-controls="collapsetwelve">
-											<%= __('2 - Checking transactions')%>
-							        </button>
-							      </h2>
-							    </div>
-							    <div id="collapsetwelve" class="collapse" aria-labelledby="headingtwelve" data-parent="#accordionExample">
-							      <div class="card-body">
-									<%= __('All TronHorses transactions are executed through our smart contracts on the TRON network. This ensures that all data is fair even allowing users to change the seed they want to use. If not seed is changed, then a random seed will be generated to ensure fairness')%>.
-							      </div>
-							    </div>
-							  </div>
+													<p>
+														<%= __('Setting up a Wallet on Desktop PC')%>:<br>
+														<%= __('Users will need to use Google Chrome or any other web browser that support wallet extensions.')%><br>
+														<%= __('Recommended Wallets')%>: GuildWallet (Browser
+														Extension), TronLink (Browser Extension), Scatter (Desktop
+														Wallet)
+													</p>
+
+													<p>
+														<%= __('CryptoHorseRacing.com will allow users to bet on a race consisting of 8 Horses to the finish line. They will have the ability to bet on Win, Place or Show for their horse(s) using Tron (TRX) with instant payment remittance in the same currency when they win. Even with this, all players will be rewarded in WINNA token for betting regardless of the outcome. WINNA token holders will be given ownership of the Track with a portion of all revenue from the site being shared with the WINNA holders to ensure that the use case and demand of the token is sustained. Our betting structure pays win/place on 8 horses, this allows for div pool to fund div payouts every day. Payouts will occur for Win/Place or Show. (Win being 1st, Place being 1st-2nd & Show being 1st-3rd)')%>
+													</p>
+													<p>
+														<%= __('The site has a homepage consisting of 4 Race Locations options to choose from')%>:
+													</p>
+													<ul>
+														<li>ShaTin, Hong Kong (10 TRX Min Bet)</li>
+														<li>Longchamp, Paris (100 TRX Min Bet)</li>
+														<li>Roayl Ascot, UK (1000 TRX Min Bet)</li>
+														<li>Flemington, Melbourne (2500 TRX Min Bet)</li>
+													</ul>
+
+													<p>
+														<%= __('Theses locations also have specifications outlined for the # for Horses the User is able to bet on as follows:')%>
+													</p>
+													<ul>
+														<li>ShaTin - 1</li>
+														<li>LongChamp - 2</li>
+														<li>Roayl Ascot - 3</li>
+														<li>Flemington - <%= __('Unlimited:')%>.</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<h2 class="accordon-heading"><%= __('Fairness')%></h2>
+										<div class="card">
+											<div class="card-header" id="headingeleven">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapseeleven"
+														aria-expanded="false" aria-controls="collapseeleven">
+														<%= __('1 - Random Number Generator (RNG)')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapseeleven" class="collapse" aria-labelledby="headingeleven"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('When a player triggers the Smart Contract, the contract will generate a random SHA-256 hash, the current time stamp and the previous block hash from CoinBase. These will then be mixed together to generate a random hash. If a user uses their own seed, it will then be mixed with time stamp and previous block hash to generate a random number.')%>
+												</div>
+											</div>
+										</div>
+										<div class="card">
+											<div class="card-header" id="headingtwelve">
+												<h2 class="mb-0">
+													<button class="btn btn-link collapsed" type="button"
+														data-toggle="collapse" data-target="#collapsetwelve"
+														aria-expanded="false" aria-controls="collapsetwelve">
+														<%= __('2 - Checking transactions')%>
+													</button>
+												</h2>
+											</div>
+											<div id="collapsetwelve" class="collapse" aria-labelledby="headingtwelve"
+												data-parent="#accordionExample">
+												<div class="card-body">
+													<%= __('All CryptoHorseRacing.com transactions are executed through our smart contracts on the Loom Network. This ensures that all data is fair even allowing users to change the seed they want to use. If not seed is changed, then a random seed will be generated to ensure fairness')%>.
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-				  	</div>
-				  </div>
-				  <div class="tab-pane fade" id="pills-partners" role="tabpanel" aria-labelledby="pills-contact-tab">
-				  	<div class="partner-box" style="color:#BBBBBB; font-size:15px">
-				  		<p><%= __('If you want to list your product here, please')%> <a href="mailto:tronhorses@gmail.com">contact</a></p>
-				  		<div class="row">
-				  			<div class="col-sm-6 col-md-2">
-				  				<h4 class="heading-wallet"><%= __('Wallet')%></h4>
-				  			</div>
+							<div class="tab-pane fade" id="pills-partners" role="tabpanel"
+								aria-labelledby="pills-contact-tab">
+								<div class="partner-box" style="color:#BBBBBB; font-size:15px">
+									<p><%= __('If you want to list your product here, please')%> <a
+											href="mailto:CryptoHorseRacing.com@gmail.com">contact</a></p>
+									<div class="row">
+										<div class="col-sm-6 col-md-2">
+											<h4 class="heading-wallet"><%= __('Wallet')%></h4>
+										</div>
 
-				  			<div class="col-sm-6 col-md-10">
-				  				<ul>
-									  <li>
-						  					<img src="images/guilt-wallet.jpg">
-						  					<span>Guild wallet</span>
-									  </li>
-									  <li>
-						  					<img src="images/Tronlink.jpg">
-						  					<span>TronLink</span>
-									  </li>
-									  <!-- <li>
+										<div class="col-sm-6 col-md-10">
+											<ul>
+												<li>
+													<img src="images/guilt-wallet.jpg">
+													<span>Guild wallet</span>
+												</li>
+												<li>
+													<img src="images/Tronlink.jpg">
+													<span>TronLink</span>
+												</li>
+												<!-- <li>
 						  					<img src="images/Scatter.jpg">
 						  					<span>Scatter</span>
 				  					</li> -->
-									</ul>
-				  			</div>
-				  		</div>
+											</ul>
+										</div>
+									</div>
 
-				  		<div class="row">
-				  			<div class="col-sm-6 col-md-2">
-				  				<h4 class="heading-wallet"><%= __('Exchange')%></h4>
-				  			</div>
-				  			<div class="col-sm-6 col-md-10">
-				  				<ul class="pt-4 pb-2">
-				  					<li><img src="images/ddex.jpg"></li>
-				  					<li><img src="images/tronwallet.jpg"></li>
-				  					<li></li>
-				  				</ul>
-				  			</div>
-				  		</div>
+									<div class="row">
+										<div class="col-sm-6 col-md-2">
+											<h4 class="heading-wallet"><%= __('Exchange')%></h4>
+										</div>
+										<div class="col-sm-6 col-md-10">
+											<ul class="pt-4 pb-2">
+												<li><img src="images/ddex.jpg"></li>
+												<li><img src="images/tronwallet.jpg"></li>
+												<li></li>
+											</ul>
+										</div>
+									</div>
 
 
-				  		<div class="row border-line-none">
-				  			<div class="col-sm-6 col-md-2">
-				  				<h4 class="heading-wallet"><%= __('Dapp Information Platform')%></h4>
-				  			</div>
-				  			<div class="col-sm-6 col-md-10 pt-3">
-				  				<ul>
-									<li>
-										<img src="images/dappstats.jpg" style="width: 75px;height: 75px;">
-										<span>DappStats</span>
-									</li>
-				  					<li>
-				  						<img src="images/dapp-review.jpg" style="width: 75px;height: 75px;">
-					  					<span>DappReview</span>
-					  				</li>
-				  					<li>
-				  						<img src="images/dapp-radar.jpg" style="width: 75px;height: 75px;">
-					  					<span>Dapp Radar</span>
-					  				</li>
-				  					<li>
-				  						<img src="images/dappcom.jpg" style="width: 75px;height: 75px;">
-					  					<span>Dapp.com</span>
-					  				</li>
-				  				</ul>
-				  			</div>
-				  			
-				  		</div>
-				  	</div>
-				  </div>
+									<div class="row border-line-none">
+										<div class="col-sm-6 col-md-2">
+											<h4 class="heading-wallet"><%= __('Dapp Information Platform')%></h4>
+										</div>
+										<div class="col-sm-6 col-md-10 pt-3">
+											<ul>
+												<li>
+													<img src="images/dappstats.jpg" style="width: 75px;height: 75px;">
+													<span>DappStats</span>
+												</li>
+												<li>
+													<img src="images/dapp-review.jpg" style="width: 75px;height: 75px;">
+													<span>DappReview</span>
+												</li>
+												<li>
+													<img src="images/dapp-radar.jpg" style="width: 75px;height: 75px;">
+													<span>Dapp Radar</span>
+												</li>
+												<li>
+													<img src="images/dappcom.jpg" style="width: 75px;height: 75px;">
+													<span>Dapp.com</span>
+												</li>
+											</ul>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mt-2">
+				<div class="col-sm-12">
+					<div class="note-box" style="color:#BBBBBB; font-size:15px">
+						<p class="mb-0">If you reside in a location where lottery, gambling, or betting over the
+							internet is illegal, please do not click on anything related to these activities on
+							CryptoHorseRacing.com website.You must be 21 years of age to click on any gambling related
+							items
+							even
+							if it is legal to do so in your location. Recognizing that the laws and regulations
+							involving online gaming are different everywhere, players are advised to check with the laws
+							that exist within their own jurisdiction or region to ascertain the legality of the
+							activities which are covered.</p>
+						</br>
+						<p class="mb-0">Citizens of the United States and China are not permitted to use, play or engage
+							in any betting activity on the platform due to regulatory restrictons. The games provided by
+							CryptoHorseRacing.com are based on blockchain, fair, and transparency. When you start
+							playing
+							these
+							games, please take note that online gambling and lottery is an entertainment tool that
+							involves some level of financial risk.</p>
+						</br>
+						<p>As such, players should be aware of these risks and govern themselves accordingly</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="row mt-2">
-		<div class="col-sm-12">
-			<div class="note-box" style="color:#BBBBBB; font-size:15px">
-				<p class="mb-0">If you reside in a location where lottery, gambling, or betting over the internet is illegal, please do not click on anything related to these activities on Tronhorses website.You must be 21 years of age to click on any gambling related items even if it is legal to do so in your location. Recognizing that the laws and regulations involving online gaming are different everywhere, players are advised to check with the laws that exist within their own jurisdiction or region to ascertain the legality of the activities which are covered.</p>
-				</br><p class="mb-0">Citizens of the United States and China are not permitted to use, play or engage in any betting activity on the platform due to regulatory restrictons. The games provided by Tronhorses are based on blockchain, fair, and transparency. When you start playing these games, please take note that online gambling and lottery is an entertainment tool that involves some level of financial risk.</p>
-			</br><p>As such, players should be aware of these risks and govern themselves accordingly</p>
-			</div>
-		</div>
-	</div>
-</div>
+		<% include ./include/buy-trx.ejs %>
+		<% include ./include/tronlink-popup.ejs %>
+		<% include ./include/dividend-model.ejs %>
+		<% include ./include/footer.ejs %>
 
-<% include ./include/buy-trx.ejs %>
-<% include ./include/tronlink-popup.ejs %>
-<% include ./include/dividend-model.ejs %>
-<% include ./include/footer.ejs %>
+		<script src="js/url.js"></script>
+		<script src="js/anim.js"></script>
+		<!-- <script src="js/project_js/login-bundle.js"></script> -->
+		<script src="js/project_js/login.min.js"></script>
+		<script>
+			$("#buyTRX, #showDivs").on('click', function () {
+				console.log('clicked')
+				$('.mobile-menu,.menu-bar').toggleClass('active');
+			})
+		</script>
 
-<script src="js/url.js"></script>
-<script src="js/anim.js"></script>
-<!-- <script src="js/project_js/login-bundle.js"></script> -->
-<script src="js/project_js/login.min.js"></script>
-<script>
-$("#buyTRX, #showDivs").on('click', function(){
-	console.log('clicked')
-	$('.mobile-menu,.menu-bar').toggleClass('active');
-})
-</script>
+	</body>
 
-</body>
 </html>

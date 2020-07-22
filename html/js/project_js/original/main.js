@@ -1,47 +1,47 @@
 var global = {
-  userAddress: "",
-  userAddressHex: "",
-  tronscanName: "",
-  username: "",
+  userAddress: '',
+  userAddressHex: '',
+  tronscanName: '',
+  username: '',
   loggedIn: false,
-  shortAddress: "",
+  shortAddress: '',
   level: 0,
-  userSigned: false
+  userSigned: false,
 };
 
 let allBets = [];
 let myBets = [];
-let filter = "all";
+let filter = 'all';
 let page = 50;
 let skip = 0;
 let selected = 1;
 let count = 0;
 
 const horseNames = [
-  "Winnathunder",
-  "Trontrot",
-  "Troncruise",
-  "Spuntino",
-  "Blazer",
-  "DarkMatter",
-  "Mr. Ed",
-  "Redhorse"
+  'Winnathunder',
+  'Trontrot',
+  'Troncruise',
+  'Spuntino',
+  'Blazer',
+  'DarkMatter',
+  'Mr. Ed',
+  'Redhorse',
 ];
 
-var tokenContract = "TSr7ULAqrYwxUHDLaZqsudktKcsJW6VKh9";
-var dividendContract = "TUbFTjPcEv2k9iF82E6f3PhWV4cKQ7CjGs";
-var gameLocation1Contract = "TKXAsb3oJwYhCmBjB15wj5tJuLuvJg3aYe";
+var tokenContract = 'TSr7ULAqrYwxUHDLaZqsudktKcsJW6VKh9';
+var dividendContract = 'TUbFTjPcEv2k9iF82E6f3PhWV4cKQ7CjGs';
+var gameLocation1Contract = 'TKXAsb3oJwYhCmBjB15wj5tJuLuvJg3aYe';
 
-var tronNode = "https://api.shasta.trongrid.io";
+var tronNode = 'https://api.shasta.trongrid.io';
 // var tronNode = "https://api.trongrid.io"
 
 var tokenContractInstance,
   dividendContractInstance,
   gameLocation1ContractInstance;
 
-$(document).ready(async function() {
+$(document).ready(async function () {
   getCurrentLangAndWallet();
-  var tronLinkLoginCheck = getCookie("tronLinkLoginTracker");
+  var tronLinkLoginCheck = getCookie('tronLinkLoginTracker');
   if (tronLinkLoginCheck == 1) {
     autotronLinkloginCheck();
   }
@@ -49,29 +49,29 @@ $(document).ready(async function() {
 
 // Login & Default Initialization
 
-$("#isLoggedIn").on("click", function() {
+$('#isLoggedIn').on('click', function () {
   tronLinkloginCheck();
 });
 
 function autotronLinkloginCheck() {
   let counter = 0;
   const maxAttempts = 4;
-  window.addEventListener("tronWebInjected", { once: true });
+  window.addEventListener('tronWebInjected', { once: true });
   const intervalId = setInterval(() => {
     const { tronWeb } = window;
     counter++;
     if (counter > maxAttempts) {
-      window.removeEventListener("tronWebInjected", { once: true });
-      listClick("all");
+      window.removeEventListener('tronWebInjected', { once: true });
+      listClick('all');
       return clearInterval(intervalId);
     }
     if (tronWeb) {
       if (tronWeb.ready) {
         initGlobalData();
         console.log(global);
-        setCookie("tronLinkLoginTracker", "1", 10);
+        setCookie('tronLinkLoginTracker', '1', 10);
         clearInterval(intervalId);
-        dispatchEvent(new Event("tronWebInjected"));
+        dispatchEvent(new Event('tronWebInjected'));
       }
     }
   }, 1000);
@@ -80,23 +80,23 @@ function autotronLinkloginCheck() {
 async function tronLinkloginCheck() {
   let counter = 0;
   const maxAttempts = 4;
-  window.addEventListener("tronWebInjected", { once: true });
+  window.addEventListener('tronWebInjected', { once: true });
   const intervalId = setInterval(() => {
     const { tronWeb } = window;
     counter++;
     if (counter > maxAttempts) {
-      $("#login-popup").modal("show");
-      window.removeEventListener("tronWebInjected", { once: true });
-      listClick("all");
+      $('#login-popup').modal('show');
+      window.removeEventListener('tronWebInjected', { once: true });
+      listClick('all');
       return clearInterval(intervalId);
     }
     if (tronWeb) {
       if (tronWeb.ready) {
         initGlobalData();
         console.log(global);
-        setCookie("tronLinkLoginTracker", "1", 10);
+        setCookie('tronLinkLoginTracker', '1', 10);
         clearInterval(intervalId);
-        dispatchEvent(new Event("tronWebInjected"));
+        dispatchEvent(new Event('tronWebInjected'));
       }
     }
   }, 1000);
@@ -104,14 +104,14 @@ async function tronLinkloginCheck() {
 
 async function initGlobalData() {
   global.shortAddress = getUserAddress(tronWeb.defaultAddress.base58);
-  $("#userAddress").text(global.shortAddress);
-  $("#isLoggedIn").hide();
+  $('#userAddress').text(global.shortAddress);
+  $('#isLoggedIn').hide();
 
   global.tronscanName = await getTronscanName(tronWeb.defaultAddress.base58);
   global.userAddress = tronWeb.defaultAddress.base58;
   global.userAddressHex = tronWeb.defaultAddress.hex;
   global.loggedIn = true;
-  listClick("all");
+  listClick('all');
   let response = null;
   try {
     response = await $.get(`${url}/isSigned/${global.userAddress}`);
@@ -128,19 +128,19 @@ async function initGlobalData() {
 
   try {
     const profileData = await $.get(`${url}/getProfile/${global.userAddress}`);
-    console.log(profileData)
-    if(profileData.msg == "success"){
-      $("#levelPlayer").text(profileData.data.level);
-      $("#totalBets").text(profileData.data.totalBets.toLocaleString("en"));
-      $("#totalWinna").text(profileData.data.totalWinna.toLocaleString("en"));
-      $("#totalEarning").text(
-        profileData.data.comulativeEarning.toLocaleString("en") + " TRX"
+    console.log(profileData);
+    if (profileData.msg == 'success') {
+      $('#levelPlayer').text(profileData.data.level);
+      $('#totalBets').text(profileData.data.totalBets.toLocaleString('en'));
+      $('#totalWinna').text(profileData.data.totalWinna.toLocaleString('en'));
+      $('#totalEarning').text(
+        profileData.data.comulativeEarning.toLocaleString('en') + ' TRX'
       );
-      $("#lastDrop").text(profileData.data.lastWinDrop + " TRX");
+      $('#lastDrop').text(profileData.data.lastWinDrop + ' TRX');
     }
 
-    if (document.getElementById("my-profile-bets-body")) {
-      filter = "all";
+    if (document.getElementById('my-profile-bets-body')) {
+      filter = 'all';
       skip = 0;
       selected = 1;
       count = 0;
@@ -151,20 +151,14 @@ async function initGlobalData() {
       count = response.count;
       const options = Math.ceil(parseFloat(count / page));
 
-      $("#skip")
-        .children("option")
-        .remove();
+      $('#skip').children('option').remove();
       for (let i = 1; i <= options; i++) {
-        $("#skip").append(
-          $("<option></option>")
-            .attr("value", i)
-            .text(i)
-        );
+        $('#skip').append($('<option></option>').attr('value', i).text(i));
       }
 
       if (myBets.length !== 0) {
-        document.getElementById("my-profile-bets-footer").style.display =
-          "none";
+        document.getElementById('my-profile-bets-footer').style.display =
+          'none';
       }
 
       myBets.forEach(
@@ -174,33 +168,33 @@ async function initGlobalData() {
           transactionHash,
           predictedHorse,
           winAmount,
-          createdAt
+          createdAt,
         }) => {
-          const id = "my-profile-bets";
+          const id = 'my-profile-bets';
           var template = jQuery(`#${id}`).html();
           var html = Mustache.render(template, {
             order: orderId,
             hash: transactionHash,
             hashString: transactionHash.slice(0, 13),
-            horsePrediction: horseNames[predictedHorse[0]["horse"]],
+            horsePrediction: horseNames[predictedHorse[0]['horse']],
             winningHorse:
-              "[ 1st: " +
+              '[ 1st: ' +
               horseNames[leaderboard[0]] +
-              ", 2nd: " +
+              ', 2nd: ' +
               horseNames[leaderboard[1]] +
-              ", 3rd: " +
+              ', 3rd: ' +
               horseNames[leaderboard[2]] +
-              " ]",
+              ' ]',
             betAmount:
-              (predictedHorse[0]["win"] +
-                predictedHorse[0]["place"] +
-                predictedHorse[0]["show"]) /
+              (predictedHorse[0]['win'] +
+                predictedHorse[0]['place'] +
+                predictedHorse[0]['show']) /
               1000000,
-            winAmount: winAmount === 0 ? "-" : winAmount / 1000000,
-            color: winAmount === 0 ? "color:#ff5959" : "color:#01F593",
-            createdAt: new Date(createdAt).toLocaleString()
+            winAmount: winAmount === 0 ? '-' : winAmount / 1000000,
+            color: winAmount === 0 ? 'color:#ff5959' : 'color:#01F593',
+            createdAt: new Date(createdAt).toLocaleString(),
           });
-          jQuery("#my-profile-bets-body").append(html);
+          jQuery('#my-profile-bets-body').append(html);
         }
       );
     }
@@ -212,12 +206,12 @@ async function initGlobalData() {
 function getUserAddress(userAddress) {
   var firstFive = userAddress.substring(0, 5);
   var lastFive = userAddress.substr(userAddress.length - 5);
-  return firstFive + "..." + lastFive;
+  return firstFive + '...' + lastFive;
 }
 
 // Setting username with level, leveltag and player username for chat
 async function getPlayerLevel() {
-  return new Promise(async function(resolve, reject) {
+  return new Promise(async function (resolve, reject) {
     try {
       const response = await $.get(`${url}/getLevel/${global.userAddress}`);
 
@@ -227,53 +221,53 @@ async function getPlayerLevel() {
       var levelTag;
 
       if (level == 0) {
-        levelTag = "Visitor";
+        levelTag = 'Visitor';
       } else if (level >= 1 && level <= 5) {
-        levelTag = "Shoveller";
+        levelTag = 'Shoveller';
       } else if (level >= 6 && level <= 10) {
-        levelTag = "Float Driver";
+        levelTag = 'Float Driver';
       } else if (level >= 11 && level <= 15) {
-        levelTag = "Barrier Attendant";
+        levelTag = 'Barrier Attendant';
       } else if (level >= 16 && level <= 20) {
-        levelTag = "StableHand";
+        levelTag = 'StableHand';
       } else if (level >= 21 && level <= 25) {
-        levelTag = "Track Rider";
+        levelTag = 'Track Rider';
       } else if (level >= 26 && level <= 30) {
-        levelTag = "Farrier";
+        levelTag = 'Farrier';
       } else if (level >= 31 && level <= 35) {
-        levelTag = "Horse Breaker";
+        levelTag = 'Horse Breaker';
       } else if (level >= 36 && level <= 40) {
-        levelTag = "Strapper";
+        levelTag = 'Strapper';
       } else if (level >= 41 && level <= 45) {
-        levelTag = "Effinex";
+        levelTag = 'Effinex';
       } else if (level >= 46 && level <= 50) {
-        levelTag = "Apprentice";
+        levelTag = 'Apprentice';
       } else if (level >= 51 && level <= 55) {
-        levelTag = "Jockey";
+        levelTag = 'Jockey';
       } else if (level >= 56 && level <= 60) {
-        levelTag = "Race Caller";
+        levelTag = 'Race Caller';
       } else if (level >= 61 && level <= 65) {
-        levelTag = "Thoroughbred Trainer";
+        levelTag = 'Thoroughbred Trainer';
       } else if (level >= 66 && level <= 70) {
-        levelTag = "Steward";
+        levelTag = 'Steward';
       } else if (level >= 71 && level <= 75) {
-        levelTag = "Bloodstock Agent";
+        levelTag = 'Bloodstock Agent';
       } else if (level >= 76 && level <= 80) {
-        levelTag = "Pro Syndicator";
+        levelTag = 'Pro Syndicator';
       } else if (level >= 81 && level <= 85) {
-        levelTag = "First Dude";
+        levelTag = 'First Dude';
       } else if (level >= 86 && level <= 90) {
-        levelTag = "G3 Owner";
+        levelTag = 'G3 Owner';
       } else if (level >= 91 && level <= 95) {
-        levelTag = "G2 Owner";
+        levelTag = 'G2 Owner';
       } else if (level >= 96 && level <= 99) {
-        levelTag = "G1 Owner";
+        levelTag = 'G1 Owner';
       } else if (level == 100) {
-        levelTag = "WINNA";
+        levelTag = 'WINNA';
       }
 
       global.username =
-        "[ LVL " + level + " | " + levelTag + " ] " + global.tronscanName;
+        '[ LVL ' + level + ' | ' + levelTag + ' ] ' + global.tronscanName;
       resolve(true);
     } catch (error) {
       console.error(error);
@@ -282,31 +276,30 @@ async function getPlayerLevel() {
 }
 
 function getTronscanName(address) {
-  return new Promise(function(resolve, reject){
-    var _returnName = "";
+  return new Promise(function (resolve, reject) {
+    var _returnName = '';
     $.ajax({
-      url: "https://apilist.tronscan.org/api/account?address=" + address,
-      dataType: "json",
+      url: 'https://apilist.tronscan.org/api/account?address=' + address,
+      dataType: 'json',
       async: true,
-      success: function(data) {
-        if (data.name != "") {
+      success: function (data) {
+        if (data.name != '') {
           _returnName = data.name;
         } else {
           _returnName = getUserAddress(address);
         }
-        console.log(_returnName)
+        console.log(_returnName);
         resolve(_returnName);
       },
-      error: function(jqXHR, textStatus, errorThrown) {
+      error: function (jqXHR, textStatus, errorThrown) {
         _returnName = getUserAddress(address);
         resolve(_returnName);
-      }
-    }); 
-
-  }) 
+      },
+    });
+  });
 }
 
-setTimeout(function() {
+setTimeout(function () {
   setInterval(updateWonAmont, 5000);
 }, 6000);
 
@@ -321,16 +314,16 @@ async function updateWonAmont() {
 
 /****************check for address change in tronlink --START*************************/
 //Try to set handle address change event
-let intervalID = setInterval(async function() {
-  if (typeof window.tronWeb == "object") {
+let intervalID = setInterval(async function () {
+  if (typeof window.tronWeb == 'object') {
     // window.tronWeb.on("addressChanged", initGlobalData);
     try {
       var userAddress = await window.tronWeb.defaultAddress.base58;
       var userAddressHex = await window.tronWeb.defaultAddress.hex;
-      if (global.userAddress == "" && userAddress != "") {
+      if (global.userAddress == '' && userAddress != '') {
         // initGlobalData()
       }
-      if (global.userAddress != "" && global.userAddress != userAddress) {
+      if (global.userAddress != '' && global.userAddress != userAddress) {
         global.userAddress = userAddress;
         global.userAddressHex = userAddressHex;
         clearInterval(intervalID);
@@ -343,52 +336,52 @@ let intervalID = setInterval(async function() {
 /****************check for address change in tronlink --END*************************/
 /**************** Detect and set current language and wallet --START*************************/
 
-$(".walletDropDown").on("click", function() {
-  var wallet = $(this).attr("name");
-  if (wallet == "guild-wallet") {
-    setCookie("wallet", wallet, 5);
-    $("#currWallet").html('<img src="images/' + wallet + '.png">Guild Wallet');
+$('.walletDropDown').on('click', function () {
+  var wallet = $(this).attr('name');
+  if (wallet == 'guild-wallet') {
+    setCookie('wallet', wallet, 5);
+    $('#currWallet').html('<img src="images/' + wallet + '.png">Guild Wallet');
   } else {
-    setCookie("wallet", wallet, 5);
-    $("#currWallet").html('<img src="images/' + wallet + '.png">TronLink');
+    setCookie('wallet', wallet, 5);
+    $('#currWallet').html('<img src="images/' + wallet + '.png">TronLink');
   }
 });
 
-$(".languageDropDown").on("click", function() {
-  var lang = $(this).attr("name");
+$('.languageDropDown').on('click', function () {
+  var lang = $(this).attr('name');
   // console.log(lang);
-  setCookie("language", lang, 30);
+  setCookie('language', lang, 30);
   location.reload();
-  $("#currLang").text($(this).text());
+  $('#currLang').text($(this).text());
 });
 
 function getCurrentLangAndWallet() {
-  var lang = getCookie("language");
-  if (lang == "ru") {
-    $("#currLang").text("Pусский");
-  } else if (lang == "de") {
-    $("#currLang").text("Deutsch");
-  } else if (lang == "zh-CN") {
-    $("#currLang").text("简体中文");
-  } else if (lang == "kr") {
-    $("#currLang").text("한국어");
-  } else if (lang == "es") {
-    $("#currLang").text("Español");
-  } else if (lang == "po") {
-    $("#currLang").text("Português");
-  } else if (lang == "fr") {
-    $("#currLang").text("Français");
+  var lang = getCookie('language');
+  if (lang == 'ru') {
+    $('#currLang').text('Pусский');
+  } else if (lang == 'de') {
+    $('#currLang').text('Deutsch');
+  } else if (lang == 'zh-CN') {
+    $('#currLang').text('简体中文');
+  } else if (lang == 'kr') {
+    $('#currLang').text('한국어');
+  } else if (lang == 'es') {
+    $('#currLang').text('Español');
+  } else if (lang == 'po') {
+    $('#currLang').text('Português');
+  } else if (lang == 'fr') {
+    $('#currLang').text('Français');
   } else {
-    setCookie("language", "en", 5);
-    $("#currLang").text("English");
+    setCookie('language', 'en', 5);
+    $('#currLang').text('English');
   }
 
-  var wallet = getCookie("wallet");
-  if (wallet == "guild-wallet") {
-    $("#currWallet").html('<img src="images/' + wallet + '.png">Guild Wallet');
+  var wallet = getCookie('wallet');
+  if (wallet == 'guild-wallet') {
+    $('#currWallet').html('<img src="images/' + wallet + '.png">Guild Wallet');
   } else {
-    setCookie("wallet", "tronlink", 5);
-    $("#currWallet").html('<img src="images/tronlink.png">TronLink');
+    setCookie('wallet', 'tronlink', 5);
+    $('#currWallet').html('<img src="images/tronlink.png">TronLink');
   }
 }
 
@@ -399,58 +392,53 @@ function getCurrentLangAndWallet() {
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  var expires = 'expires=' + d.toGMTString();
+  document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
 }
 
 function getCookie(cname) {
-  var name = cname + "=";
+  var name = cname + '=';
   var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(";");
+  var ca = decodedCookie.split(';');
   for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
-    while (c.charAt(0) == " ") {
+    while (c.charAt(0) == ' ') {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
       return c.substring(name.length, c.length);
     }
   }
-  return "";
+  return '';
 }
 
 /**************** Function to update dividend panel data --START*************************/
-nextDropTimer()
+nextDropTimer();
 
-async function nextDropTimer(){
+async function nextDropTimer() {
   var res = await $.get(`${url}/nextDrop`);
-  console.log(res.nextWinnaDrop)
+  console.log(res.nextWinnaDrop);
 
   var registrationStart = new Date(res.nextWinnaDrop * 1000);
   var countDownDate = new Date(registrationStart).getTime();
-  var x = setInterval(function(){
+  var x = setInterval(function () {
     var hours, minutes, seconds;
 
     var now = new Date().getTime();
 
     var distance = countDownDate - now;
-    hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
+    hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     seconds = Math.floor((distance % (1000 * 60)) / 1000);
     // console.log(hours + ':' + minutes + ':' + seconds);
 
-    $("#nextWinnaDrop").text(hours + ":" + minutes + ":" + seconds);
+    $('#nextWinnaDrop').text(hours + ':' + minutes + ':' + seconds);
     if (distance < 0) {
       clearInterval(x);
-      $("#nextWinnaDrop").text('Distributing dividends...');
+      $('#nextWinnaDrop').text('Distributing dividends...');
     }
-
-  }, 1000)
-  
+  }, 1000);
 }
-
 
 setInterval(updateMintInfo, 4000);
 async function updateMintInfo() {
@@ -477,88 +465,74 @@ async function updateMintInfo() {
 
       var availableTRXDrop = tronWeb.fromSun(availableDrop[1]);
       if (availableDrop[0] || availableTRXDrop == 0) {
-        $("#availableWinnaDrop").text(
-          parseFloat(availableTRXDrop)
-            .toFixed(2)
-            .toLocaleString("en") + " TRX"
+        $('#availableWinnaDrop').text(
+          parseFloat(availableTRXDrop).toFixed(2).toLocaleString('en') + ' TRX'
         );
       } else {
-        $("#availableWinnaDrop").text(
-          "-" +
-            parseFloat(availableTRXDrop)
-              .toFixed(2)
-              .toLocaleString("en") +
-            " TRX"
+        $('#availableWinnaDrop').text(
+          '-' +
+            parseFloat(availableTRXDrop).toFixed(2).toLocaleString('en') +
+            ' TRX'
         );
       }
 
       totalFrozenWinna = tronWeb.fromSun(totalFrozenWinna);
-      $("#totalFrozenWinna").text(
-        parseFloat(totalFrozenWinna)
-          .toFixed(2)
-          .toLocaleString("en") + " WINNA"
+      $('#totalFrozenWinna').text(
+        parseFloat(totalFrozenWinna).toFixed(2).toLocaleString('en') + ' WINNA'
       );
 
       availDivPlayer = tronWeb.fromSun(availDivPlayer);
-      $("#playerDividend").text(
-        parseFloat(availDivPlayer)
-          .toFixed(2)
-          .toLocaleString("en") + " TRX"
+      $('#playerDividend').text(
+        parseFloat(availDivPlayer).toFixed(2).toLocaleString('en') + ' TRX'
       );
 
-      $("#stage").text(stage);
-      $("#level").text(level);
-      $("#difficulty").text(miningDifficulty + " TRX");
-      $("#mintedtillNow").text(
-        parseFloat(mintedTillNow)
-          .toFixed(2)
-          .toLocaleString("en")
+      $('#stage').text(stage);
+      $('#level').text(level);
+      $('#difficulty').text(miningDifficulty + ' TRX');
+      $('#mintedtillNow').text(
+        parseFloat(mintedTillNow).toFixed(2).toLocaleString('en')
       );
-      $("#mintLimit").text(parseFloat(totalMintLimit).toLocaleString("en"));
+      $('#mintLimit').text(parseFloat(totalMintLimit).toLocaleString('en'));
 
-      var percentage = (mintedTillNow / totalMintLimit) * 100 + "%";
+      var percentage = (mintedTillNow / totalMintLimit) * 100 + '%';
 
-      $("#progressBar").css({ width: percentage });
+      $('#progressBar').css({ width: percentage });
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   } else {
     try {
       const res = await $.get(`${url}/getMintData`);
       // console.log(res.data)
-      $("#stage").text(res.data.stage);
-      $("#level").text(res.data.level);
-      $("#difficulty").text(res.data.miningDifficulty + " TRX");
-      $("#mintedtillNow").text(
-        parseFloat(res.data.mintedTillNow)
-          .toFixed(2)
-          .toLocaleString("en")
+      $('#stage').text(res.data.stage);
+      $('#level').text(res.data.level);
+      $('#difficulty').text(res.data.miningDifficulty + ' TRX');
+      $('#mintedtillNow').text(
+        parseFloat(res.data.mintedTillNow).toFixed(2).toLocaleString('en')
       );
-      $("#mintLimit").text(
-        parseFloat(res.data.totalMintLimit).toLocaleString("en")
+      $('#mintLimit').text(
+        parseFloat(res.data.totalMintLimit).toLocaleString('en')
       );
 
-      $("#availableWinnaDrop").text(
-        parseFloat(res.data.availableDrop)
-          .toFixed(2)
-          .toLocaleString("en") + " TRX"
+      $('#availableWinnaDrop').text(
+        parseFloat(res.data.availableDrop).toFixed(2).toLocaleString('en') +
+          ' TRX'
       );
-      $("#totalFrozenWinna").text(
-        parseFloat(res.data.totalFrozenWinna)
-          .toFixed(2)
-          .toLocaleString("en") + " WINNA"
+      $('#totalFrozenWinna').text(
+        parseFloat(res.data.totalFrozenWinna).toFixed(2).toLocaleString('en') +
+          ' WINNA'
       );
-      $("#playerDividend").text("0.00 TRX");
+      $('#playerDividend').text('0.00 TRX');
 
       var percentage =
-        (res.data.mintedTillNow / res.data.totalMintLimit) * 100 + "%";
+        (res.data.mintedTillNow / res.data.totalMintLimit) * 100 + '%';
 
-      $("#progressBar").css({ width: percentage });
+      $('#progressBar').css({ width: percentage });
     } catch (error) {
       // console.log("error", error);
-      $("#totalFrozenWinna").text("0 TRX");
-      $("#availableWinnaDrop").text("0 TRX");
-      $("#playerDividend").text("0.00 TRX");
+      $('#totalFrozenWinna').text('0 TRX');
+      $('#availableWinnaDrop').text('0 TRX');
+      $('#playerDividend').text('0.00 TRX');
     }
   }
 }
@@ -567,9 +541,9 @@ var globalInfo = {
   frozenWinna: 0,
   pendingWithdraw: 0,
   withdrawTime: 0,
-  systemHalt: false
+  systemHalt: false,
 };
-setTimeout(function() {
+setTimeout(function () {
   setInterval(updateWinnaInfo, 1000);
 }, 3000);
 async function updateWinnaInfo() {
@@ -589,18 +563,18 @@ async function updateWinnaInfo() {
 
       balance =
         balance.toNumber() > 0
-          ? balance.toNumber().toFixed(2) / 1000000 + " WINNA"
-          : "0 WINNA";
+          ? balance.toNumber().toFixed(2) / 1000000 + ' WINNA'
+          : '0 WINNA';
       var playerFrozenWinna =
         playerStackInfo.frozenWinna.toNumber() > 0
           ? playerStackInfo.frozenWinna.toNumber().toFixed(2) / 1000000 +
-            " WINNA"
-          : "0 WINNA";
+            ' WINNA'
+          : '0 WINNA';
       var playerPendingWithdraw =
         playerStackInfo.pendingWithdraw.toNumber() > 0
           ? playerStackInfo.pendingWithdraw.toNumber().toFixed(2) / 1000000 +
-            " WINNA"
-          : "0 WINNA";
+            ' WINNA'
+          : '0 WINNA';
       var pendingWithdrawTime = playerStackInfo.withdrawTime.toNumber();
 
       // globalInfo.winnaBalance = (balance.toNumber()).toFixed(2) / 1000000;
@@ -613,12 +587,12 @@ async function updateWinnaInfo() {
       // console.log(globalInfo)
 
       if (globalInfo.withdrawTime != 0) {
-        $("#claim").attr("disabled", false);
+        $('#claim').attr('disabled', false);
         var registrationStart = new Date(globalInfo.withdrawTime * 1000);
         var countDownDate = new Date(registrationStart).getTime();
         var unfreezeDate = new Date(registrationStart).toLocaleString();
 
-        $("#unfreezeDate").text(unfreezeDate);
+        $('#unfreezeDate').text(unfreezeDate);
 
         var hours, minutes, seconds;
 
@@ -632,48 +606,48 @@ async function updateWinnaInfo() {
         seconds = Math.floor((distance % (1000 * 60)) / 1000);
         // console.log(hours + ':' + minutes + ':' + seconds);
 
-        $("#clock").text(hours + ":" + minutes + ":" + seconds);
-        $("#claimOrCancle").text("Cancle Unfreeze");
+        $('#clock').text(hours + ':' + minutes + ':' + seconds);
+        $('#claimOrCancle').text('Cancle Unfreeze');
         if (distance < 0) {
           // clearInterval(x);
-          $("#claimOrCancle").text("Claim WINNA");
+          $('#claimOrCancle').text('Claim WINNA');
           // console.log("Registration has started.");
         }
         // }, 1000)
       } else {
-        $("#claim").attr("disabled", true);
+        $('#claim').attr('disabled', true);
         // clearInterval(x);
       }
 
-      $("#availableWinna").val(globalInfo.winnaBalance + " WINNA");
-      $("#frozenWinna").val(globalInfo.frozenWinna + " WINNA");
-      $("#unfreezeAmt").val(globalInfo.pendingWithdraw + " WINNA");
+      $('#availableWinna').val(globalInfo.winnaBalance + ' WINNA');
+      $('#frozenWinna').val(globalInfo.frozenWinna + ' WINNA');
+      $('#unfreezeAmt').val(globalInfo.pendingWithdraw + ' WINNA');
 
       //Freeze popup
-      $("#freezableWinna").text(globalInfo.winnaBalance + " WINNA");
-      $("#unfreezableWinna").text(globalInfo.frozenWinna + " WINNA");
-      $("#pendingFreezeeWinna").text(globalInfo.pendingWithdraw + " WINNA");
+      $('#freezableWinna').text(globalInfo.winnaBalance + ' WINNA');
+      $('#unfreezableWinna').text(globalInfo.frozenWinna + ' WINNA');
+      $('#pendingFreezeeWinna').text(globalInfo.pendingWithdraw + ' WINNA');
     } catch (e) {
       console.log(e);
-      $("#availableWinna").val("0 WINNA");
-      $("#frozenWinna").val("0 WINNA");
-      $("#unfreezeAmt").val("0 WINNA");
+      $('#availableWinna').val('0 WINNA');
+      $('#frozenWinna').val('0 WINNA');
+      $('#unfreezeAmt').val('0 WINNA');
     }
   } else {
-    $("#availableWinna").val("0 WINNA");
-    $("#frozenWinna").val("0 WINNA");
-    $("#unfreezeAmt").val("0 WINNA");
+    $('#availableWinna').val('0 WINNA');
+    $('#frozenWinna').val('0 WINNA');
+    $('#unfreezeAmt').val('0 WINNA');
   }
 }
 
-$("#freezableWinna").on("click", function() {
-  $("#frzAmt").val(globalInfo.winnaBalance);
+$('#freezableWinna').on('click', function () {
+  $('#frzAmt').val(globalInfo.winnaBalance);
 });
 
-$("#unfreezableWinna").on("click", function() {
-  $("#unfrzAmt").val(globalInfo.frozenWinna);
+$('#unfreezableWinna').on('click', function () {
+  $('#unfrzAmt').val(globalInfo.frozenWinna);
 });
-$("#freeze").on("click", async function() {
+$('#freeze').on('click', async function () {
   console.log(tronWeb.eventServer.host);
   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
     try {
@@ -682,54 +656,54 @@ $("#freeze").on("click", async function() {
         .call();
       if (systemHalt == true) {
         return alert(
-          "We are distributing dividend now. All Functionality is not accesable at the moment"
+          'We are distributing dividend now. All Functionality is not accesable at the moment'
         );
       } else {
-        $("#freezeWinnaModal").modal("show");
+        $('#freezeWinnaModal').modal('show');
       }
     } catch (e) {
       //error
     }
   } else {
-    $("#login-popup").modal("show");
+    $('#login-popup').modal('show');
   }
 });
 
-$("#frzAmt").on("keyup", function() {
-  var inputVal = $("#frzAmt").val();
+$('#frzAmt').on('keyup', function () {
+  var inputVal = $('#frzAmt').val();
   if (!isNaN(inputVal)) {
     if (globalInfo.winnaBalance == 0) {
-      $("#frzAmt").val(0);
+      $('#frzAmt').val(0);
     } else if (inputVal > globalInfo.winnaBalance) {
-      $("#frzAmt").val(globalInfo.winnaBalance);
+      $('#frzAmt').val(globalInfo.winnaBalance);
     }
   } else {
-    $("#frzAmt").val(0);
+    $('#frzAmt').val(0);
   }
 });
 
-$("#freezeConfirm").on("click", async function() {
+$('#freezeConfirm').on('click', async function () {
   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
-    var amt = $("#frzAmt").val();
-    if (amt != "" && amt >= 1) {
+    var amt = $('#frzAmt').val();
+    if (amt != '' && amt >= 1) {
       amt = tronWeb.toSun(amt);
       try {
         var frzTx = await tokenContractInstance.approveAndFreeze(amt).send({
           shouldPollResponse: true,
-          feeLimit: 1000000
+          feeLimit: 1000000,
         });
-        alert("Successfully Frozen WINNA");
-        $("#freezeWinnaModal").modal("hide");
+        alert('Successfully Frozen WINNA');
+        $('#freezeWinnaModal').modal('hide');
       } catch (error) {
-        console.log("error", error);
+        console.log('error', error);
       }
     }
   } else {
-    $("#login-popup").modal("show");
+    $('#login-popup').modal('show');
   }
 });
 
-$("#unfreeze").on("click", async function() {
+$('#unfreeze').on('click', async function () {
   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
     try {
       var systemHalt = await dividendContractInstance
@@ -742,67 +716,67 @@ $("#unfreeze").on("click", async function() {
         playerStackInfo.pendingWithdraw.toNumber().toFixed(2) / 1000000;
       if (systemHalt == true) {
         return alert(
-          "We are distributing dividend now. All Functionality is not accesable at the moment"
+          'We are distributing dividend now. All Functionality is not accesable at the moment'
         );
       } else if (pendingWithdraw != 0) {
         return alert(
-          "You have already pending frozen winna. You can unfreeze after claiming that or cancle that unfreeze process"
+          'You have already pending frozen winna. You can unfreeze after claiming that or cancle that unfreeze process'
         );
       } else {
-        $("#unfreezeWinnaModal").modal("show");
+        $('#unfreezeWinnaModal').modal('show');
       }
     } catch (e) {
       console.log(e);
     }
   } else {
-    $("#login-popup").modal("show");
+    $('#login-popup').modal('show');
   }
 });
 
-$("#unfrzAmt").on("keyup", function() {
-  var inputVal = $("#unfrzAmt").val();
+$('#unfrzAmt').on('keyup', function () {
+  var inputVal = $('#unfrzAmt').val();
   if (!isNaN(inputVal)) {
     if (globalInfo.frozenWinna == 0) {
-      $("#unfrzAmt").val(0);
+      $('#unfrzAmt').val(0);
     } else if (inputVal > globalInfo.frozenWinna) {
-      $("#unfrzAmt").val(globalInfo.frozenWinna);
+      $('#unfrzAmt').val(globalInfo.frozenWinna);
     }
   } else {
-    $("#unfrzAmt").val(0);
+    $('#unfrzAmt').val(0);
   }
 });
 
-$("#unfreezeConfirm").on("click", async function() {
+$('#unfreezeConfirm').on('click', async function () {
   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
-    var amt = $("#unfrzAmt").val();
-    if (amt != "" && amt >= 1) {
+    var amt = $('#unfrzAmt').val();
+    if (amt != '' && amt >= 1) {
       amt = tronWeb.toSun(amt);
 
       try {
         var unfrzTx = await dividendContractInstance.Unfreeze(amt).send({
           shouldPollResponse: true,
-          feeLimit: 1000000
+          feeLimit: 1000000,
         });
-        $("#unfreezeWinnaModal").modal("hide");
-        alert("Successfully Unfrozen WINNA");
+        $('#unfreezeWinnaModal').modal('hide');
+        alert('Successfully Unfrozen WINNA');
       } catch (error) {
-        console.log("error", error);
+        console.log('error', error);
       }
     }
   } else {
-    $("#login-popup").modal("show");
+    $('#login-popup').modal('show');
   }
 });
 
-$("#claim").on("click", function() {
+$('#claim').on('click', function () {
   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
-    $("#claimWinnaModal").modal("show");
+    $('#claimWinnaModal').modal('show');
   } else {
-    $("#login-popup").modal("show");
+    $('#login-popup').modal('show');
   }
 });
 
-$("#claimOrCancle").on("click", async function() {
+$('#claimOrCancle').on('click', async function () {
   // console.log('clicked')
   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
     try {
@@ -815,13 +789,13 @@ $("#claimOrCancle").on("click", async function() {
         try {
           var claimTx = await dividendContractInstance.ClaimWinna().send({
             shouldPollResponse: true,
-            feeLimit: 1000000
+            feeLimit: 1000000,
           });
-          $("#claimWinnaModal").modal("hide");
-          alert("Successfully Claimed WINNA. It is credited to your account.");
+          $('#claimWinnaModal').modal('hide');
+          alert('Successfully Claimed WINNA. It is credited to your account.');
         } catch (error) {
           console.log(error);
-          console.log("error", error);
+          console.log('error', error);
         }
       } else if (
         unfreezeTimestamp > currentTimestamp &&
@@ -830,16 +804,16 @@ $("#claimOrCancle").on("click", async function() {
         try {
           var claimTx = await dividendContractInstance.CancleUnfreeze().send({
             shouldPollResponse: true,
-            feeLimit: 1000000
+            feeLimit: 1000000,
           });
-          $("#claimWinnaModal").modal("hide");
-          alert("WINNA unfrozen process cancled");
+          $('#claimWinnaModal').modal('hide');
+          alert('WINNA unfrozen process cancled');
         } catch (error) {
           console.log(error);
-          console.log("error", error);
+          console.log('error', error);
         }
       } else {
-        $("#login-popup").modal("show");
+        $('#login-popup').modal('show');
       }
     } catch (e) {
       //error
@@ -872,7 +846,7 @@ async function initContractInstance() {
       );
       // updateWinnaInfo()
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   }
 }
@@ -881,72 +855,72 @@ async function initContractInstance() {
 
 /******************************** chat box code --START********************************/
 
-let roomName = "";
+let roomName = '';
 var socket = io();
 // scroll to bottom
 function scrollToBottom() {
-  var messages = jQuery("#messages");
-  var scrollHeight = messages.prop("scrollHeight");
+  var messages = jQuery('#messages');
+  var scrollHeight = messages.prop('scrollHeight');
   messages.scrollTop(scrollHeight);
 }
 
-$(".changeChatRoom").on("click", function(){
-  var room = $(this).attr('name')
+$('.changeChatRoom').on('click', function () {
+  var room = $(this).attr('name');
   listClick(room);
-})
+});
 
 function listClick(room) {
   roomName = room;
-  $("#messages").empty();
-  socket.emit("join", {
+  $('#messages').empty();
+  socket.emit('join', {
     room: room,
     username: global.username,
-    address: global.userAddress
+    address: global.userAddress,
   });
 }
 
 // Socket Code
 
-function getUserameClass(lvl){
-  if(lvl>=1 && lvl <=24){
-    return "usernames1"
-  } else if(lvl>=25 && lvl<=49){
-    return "usernames2"
-  } else if(lvl>=50 && lvl<=74){
-    return "usernames3"
-  } else if(lvl>=75 && lvl<=98){
-    return "usernames4"
-  } else if(lvl==99){
-    return "usernames5"
+function getUserameClass(lvl) {
+  if (lvl >= 1 && lvl <= 24) {
+    return 'usernames1';
+  } else if (lvl >= 25 && lvl <= 49) {
+    return 'usernames2';
+  } else if (lvl >= 50 && lvl <= 74) {
+    return 'usernames3';
+  } else if (lvl >= 75 && lvl <= 98) {
+    return 'usernames4';
+  } else if (lvl == 99) {
+    return 'usernames5';
   }
 }
 
-socket.on("connect", function() {
+socket.on('connect', function () {
   // console.log("user connected");
 });
 
-socket.on("disconnect", function() {
+socket.on('disconnect', function () {
   // console.log("Disconnected from server");
 });
 
-socket.on("getMessage", async ({ address }) => {
+socket.on('getMessage', async ({ address }) => {
   try {
     const response = await $.get(`${url}/chat/${roomName}`);
-    console.log(response)
+    console.log(response);
     response.chats.forEach(({ userName, userAddress, message, level }) => {
       const id =
         address === userAddress
-          ? "message-template-sender"
-          : "message-template-receiver";
+          ? 'message-template-sender'
+          : 'message-template-receiver';
       var template = jQuery(`#${id}`).html();
-      var color = getUserameClass(level)
+      var color = getUserameClass(level);
       var html = Mustache.render(template, {
         color,
         userName,
         message,
-        image: "1"
+        image: '1',
       });
-      jQuery("#messages").prepend(html);
+      jQuery('#messages').prepend(html);
     });
     scrollToBottom();
   } catch (error) {
@@ -954,64 +928,62 @@ socket.on("getMessage", async ({ address }) => {
   }
 });
 
-socket.on("newMessage", function({ userName, message, level }) {
-  console.log(level)
+socket.on('newMessage', function ({ userName, message, level }) {
+  console.log(level);
   const id =
     userName === global.username
-      ? "message-template-sender"
-      : "message-template-receiver";
+      ? 'message-template-sender'
+      : 'message-template-receiver';
   var template = jQuery(`#${id}`).html();
-  var color = getUserameClass(level)
+  var color = getUserameClass(level);
   var html = Mustache.render(template, {
     color,
     userName,
     message,
-    image: "1"
+    image: '1',
   });
-  jQuery("#messages").append(html);
+  jQuery('#messages').append(html);
   scrollToBottom();
 });
 
 // Get message from All group textarea
 
-jQuery("#all-chats-form").on("submit", async e => {
+jQuery('#all-chats-form').on('submit', async (e) => {
   e.preventDefault();
   if (global.userSigned == false) {
     let playerExist = false;
     try {
-      const res = await $.get(
-        `${url}/check/player/${global.userAddress}`
-      );
+      const res = await $.get(`${url}/check/player/${global.userAddress}`);
       playerExist = res.flag;
     } catch (error) {
       // console.log("error", error);
     }
     if (!playerExist) {
-      jQuery("[name=all-message]").val("");
+      jQuery('[name=all-message]').val('');
       return alert(
-        "You need to have level 1 to get chat access. For that you need to wagger 10 TRX"
+        'You need to have level 1 to get chat access. For that you need to wagger 10 TRX'
       );
     }
 
-    var hex = tronWeb.toHex("tronhorses");
+    var hex = tronWeb.toHex('CryptoHorseRacing.com');
     hex = hex.substring(2);
     try {
       var signed = await tronWeb.trx.sign(hex);
       console.log(signed);
-      if (signed != "") {
+      if (signed != '') {
         try {
           await $.ajax({
             url: `${url}/update/signchat/${global.userAddress}`,
-            type: "PUT",
+            type: 'PUT',
             data: { signChat: signed },
-            success: function(result) {
+            success: function (result) {
               // console.log(result)
               global.userSigned = true;
-              $("#sendMsg").trigger("click");
-            }
+              $('#sendMsg').trigger('click');
+            },
           });
         } catch (error) {
-          console.log("error", error);
+          console.log('error', error);
         }
       }
     } catch (e) {
@@ -1021,30 +993,31 @@ jQuery("#all-chats-form").on("submit", async e => {
     try {
       await getPlayerLevel();
 
-      var messageTextbox = jQuery("[name=all-message]");
+      var messageTextbox = jQuery('[name=all-message]');
       const data = {
         userAddress: global.userAddress,
         userName: global.username,
         level: global.level,
         message: messageTextbox.val(),
-        room: roomName
+        room: roomName,
       };
       // const response = await $.post(`${url}/chat`, data);
       // console.log(response);
-      socket.emit("createMessage",
+      socket.emit(
+        'createMessage',
         {
           userName: response.chat.userName,
           message: response.chat.message,
           room: response.chat.room,
-          level: response.chat.level
+          level: response.chat.level,
         },
-        function() {
-          messageTextbox.val("");
+        function () {
+          messageTextbox.val('');
         }
       );
     } catch (error) {
-      if (error.responseText.includes("is less than minimum allowed value")) {
-        alert("You need to have minimum Level 5 to get Chat access");
+      if (error.responseText.includes('is less than minimum allowed value')) {
+        alert('You need to have minimum Level 5 to get Chat access');
       }
       // console.error(error);
     }
@@ -1052,45 +1025,45 @@ jQuery("#all-chats-form").on("submit", async e => {
 });
 
 // Press Enter Submit form
-$(".textarea-chat-inputfield").keypress(function(e) {
+$('.textarea-chat-inputfield').keypress(function (e) {
   if (e.which == 13) {
-    $("form#all-chats-form").submit();
+    $('form#all-chats-form').submit();
     return false; //<---- Add this line
   }
 });
 
 async function loadMyBetsData() {
   var horseNames = [
-    "Winnathunder",
-    "Trontrot",
-    "Troncruise",
-    "Spuntino",
-    "Blazer",
-    "DarkMatter",
-    "Mr. Ed",
-    "Redhorse"
+    'Winnathunder',
+    'Trontrot',
+    'Troncruise',
+    'Spuntino',
+    'Blazer',
+    'DarkMatter',
+    'Mr. Ed',
+    'Redhorse',
   ];
   try {
     let response = await $.get(`${url}/hongkong/${global.userAddress}`);
     // console.log(response);
 
     myBets = response.location1bets;
-    response.location1bets.forEach(data => {
+    response.location1bets.forEach((data) => {
       // console.log(data)
 
       var playerAddress =
         data.playerAddress.substring(0, 5) +
-        "..." +
+        '...' +
         data.playerAddress.substr(data.playerAddress.length - 5);
       var predictedH = horseNames[data.predictedHorse[0].horse];
       var result =
-        "[ 1st: " +
+        '[ 1st: ' +
         horseNames[data.leaderboard[0]] +
-        ", 2nd: " +
+        ', 2nd: ' +
         horseNames[data.leaderboard[1]] +
-        ", 3rd: " +
+        ', 3rd: ' +
         horseNames[data.leaderboard[2]] +
-        " ]";
+        ' ]';
       var betAmt =
         (data.predictedHorse[0].win +
           data.predictedHorse[0].place +
@@ -1099,42 +1072,42 @@ async function loadMyBetsData() {
 
       if (data.winAmount === 0) {
         betHtml =
-          "<tr>" +
-          "<td>" +
+          '<tr>' +
+          '<td>' +
           playerAddress +
-          "</td>" +
-          "<td>" +
+          '</td>' +
+          '<td>' +
           predictedH +
-          "</td>" +
+          '</td>' +
           '<td style="color:#ff5959">' +
           result +
-          "</td>" +
-          "<td>" +
+          '</td>' +
+          '<td>' +
           betAmt +
-          " TRX</td>" +
+          ' TRX</td>' +
           '<td style="color:#ff5959">-</td>' +
-          "</tr>";
+          '</tr>';
       } else {
         betHtml =
-          "<tr>" +
-          "<td>" +
+          '<tr>' +
+          '<td>' +
           playerAddress +
-          "</td>" +
-          "<td>" +
+          '</td>' +
+          '<td>' +
           predictedH +
-          "</td>" +
+          '</td>' +
           '<td style="color:#01F593">' +
           result +
-          "</td>" +
-          "<td>" +
+          '</td>' +
+          '<td>' +
           betAmt +
-          " TRX</td>" +
+          ' TRX</td>' +
           '<td style="color:#01F593">' +
           data.winAmount / 1000000 +
-          " TRX</td>" +
-          "</tr>";
+          ' TRX</td>' +
+          '</tr>';
       }
-      $("#my-bets-body").append(betHtml);
+      $('#my-bets-body').append(betHtml);
     });
   } catch (e) {}
 }
@@ -1142,14 +1115,14 @@ async function loadMyBetsData() {
 async function liveMyBets() {
   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
     var horseNames = [
-      "Winnathunder",
-      "Trontrot",
-      "Troncruise",
-      "Spuntino",
-      "Blazer",
-      "DarkMatter",
-      "Mr. Ed",
-      "Redhorse"
+      'Winnathunder',
+      'Trontrot',
+      'Troncruise',
+      'Spuntino',
+      'Blazer',
+      'DarkMatter',
+      'Mr. Ed',
+      'Redhorse',
     ];
     try {
       var contractInfo = await tronWeb.trx.getContract(gameLocation1Contract);
@@ -1157,97 +1130,101 @@ async function liveMyBets() {
         contractInfo.abi.entrys,
         contractInfo.contract_address
       );
-      contractInstance.RaceResult().watch({filter: {"_bettor": global.userAddressHex}}, (err, event) => {
-        console.log("listining event main.js");
-        console.log(event);
-        var playerAddress = tronWeb.address.fromHex(event.result._bettor);
-        var firstFive = playerAddress.substring(0, 5);
-        var lastFive = playerAddress.substr(playerAddress.length - 5);
-        playerAddress = firstFive + "..." + lastFive;
+      contractInstance
+        .RaceResult()
+        .watch({ filter: { _bettor: global.userAddressHex } }, (err, event) => {
+          console.log('listining event main.js');
+          console.log(event);
+          var playerAddress = tronWeb.address.fromHex(event.result._bettor);
+          var firstFive = playerAddress.substring(0, 5);
+          var lastFive = playerAddress.substr(playerAddress.length - 5);
+          playerAddress = firstFive + '...' + lastFive;
 
-        var predictedHourse = event.result._horseNum;
-        var predictedHourseWin = event.result._p1;
-        var predictedHoursePlace = event.result._p2;
-        var predictedHourseShow = event.result._p3;
+          var predictedHourse = event.result._horseNum;
+          var predictedHourseWin = event.result._p1;
+          var predictedHoursePlace = event.result._p2;
+          var predictedHourseShow = event.result._p3;
 
-        var result =
-          "[ 1st: " +
-          horseNames[
-            parseInt("0x" + event.result.leaderBoard.slice(513, 576))
-          ] +
-          ", 2nd: " +
-          horseNames[
-            parseInt("0x" + event.result.leaderBoard.slice(577, 640))
-          ] +
-          ", 3rd: " +
-          horseNames[
-            parseInt("0x" + event.result.leaderBoard.slice(641, 704))
-          ] +
-          " ]";
+          var result =
+            '[ 1st: ' +
+            horseNames[
+              parseInt('0x' + event.result.leaderBoard.slice(513, 576))
+            ] +
+            ', 2nd: ' +
+            horseNames[
+              parseInt('0x' + event.result.leaderBoard.slice(577, 640))
+            ] +
+            ', 3rd: ' +
+            horseNames[
+              parseInt('0x' + event.result.leaderBoard.slice(641, 704))
+            ] +
+            ' ]';
 
-        var winAmount = parseInt(event.result._winAmount) / 1000000;
-        var betAmount =
-          (parseInt(predictedHourseWin) +
-            parseInt(predictedHoursePlace) +
-            parseInt(predictedHourseShow)) /
-          1000000;
+          var winAmount = parseInt(event.result._winAmount) / 1000000;
+          var betAmount =
+            (parseInt(predictedHourseWin) +
+              parseInt(predictedHoursePlace) +
+              parseInt(predictedHourseShow)) /
+            1000000;
 
-        var betHtml;
-        if (winAmount === 0) {
-          betHtml =
-            "<tr>" +
-            "<td>" +
-            playerAddress +
-            "</td>" +
-            "<td>" +
-            horseNames[predictedHourse] +
-            "</td>" +
-            '<td style="color:#ff5959">' +
-            result +
-            "</td>" +
-            "<td>" +
-            betAmount +
-            " TRX</td>" +
-            '<td style="color:#ff5959">-</td>' +
-            "</tr>";
-        } else {
-          betHtml =
-            "<tr>" +
-            "<td>" +
-            playerAddress +
-            "</td>" +
-            "<td>" +
-            horseNames[predictedHourse] +
-            "</td>" +
-            '<td style="color:#01F593">' +
-            result +
-            "</td>" +
-            "<td>" +
-            betAmount +
-            " TRX</td>" +
-            '<td style="color:#01F593">' +
-            winAmount +
-            " TRX</td>" +
-            "</tr>";
-        }
-        console.log(betHtml);
-        setTimeout(function() {
-          $("#my-bets-body").prepend(betHtml);
-        }, 33000);
-      });
-    } catch (e) {console.log(e)}
+          var betHtml;
+          if (winAmount === 0) {
+            betHtml =
+              '<tr>' +
+              '<td>' +
+              playerAddress +
+              '</td>' +
+              '<td>' +
+              horseNames[predictedHourse] +
+              '</td>' +
+              '<td style="color:#ff5959">' +
+              result +
+              '</td>' +
+              '<td>' +
+              betAmount +
+              ' TRX</td>' +
+              '<td style="color:#ff5959">-</td>' +
+              '</tr>';
+          } else {
+            betHtml =
+              '<tr>' +
+              '<td>' +
+              playerAddress +
+              '</td>' +
+              '<td>' +
+              horseNames[predictedHourse] +
+              '</td>' +
+              '<td style="color:#01F593">' +
+              result +
+              '</td>' +
+              '<td>' +
+              betAmount +
+              ' TRX</td>' +
+              '<td style="color:#01F593">' +
+              winAmount +
+              ' TRX</td>' +
+              '</tr>';
+          }
+          console.log(betHtml);
+          setTimeout(function () {
+            $('#my-bets-body').prepend(betHtml);
+          }, 33000);
+        });
+    } catch (e) {
+      console.log(e);
+    }
   } else {
     // $("#login-popup").modal("show");
   }
-} 
+}
 
 const locationChange = () => {
-  const value = document.getElementById("location").value;
+  const value = document.getElementById('location').value;
 };
 
 const filterChange = async () => {
-  $("#my-profile-bets-body").empty();
-  let selectValue = document.getElementById("filter").value;
+  $('#my-profile-bets-body').empty();
+  let selectValue = document.getElementById('filter').value;
   filter = selectValue;
   skip = 0;
   selected = 1;
@@ -1256,26 +1233,20 @@ const filterChange = async () => {
   let response = await $.get(
     `${url}/hongkong/filter/${global.userAddress}?filter=${filter}&page=${page}&skip=${skip}`
   );
-  console.log("response", response);
+  console.log('response', response);
   myBets = response.location1bets;
   count = response.count;
 
   const options = Math.ceil(parseFloat(count / page));
-  $("#skip")
-    .children("option")
-    .remove();
+  $('#skip').children('option').remove();
   for (let i = 1; i <= options; i++) {
-    $("#skip").append(
-      $("<option></option>")
-        .attr("value", i)
-        .text(i)
-    );
+    $('#skip').append($('<option></option>').attr('value', i).text(i));
   }
 
   if (myBets.length === 0)
-    document.getElementById("my-profile-bets-footer").style.display =
-      "table-footer-group";
-  else document.getElementById("my-profile-bets-footer").style.display = "none";
+    document.getElementById('my-profile-bets-footer').style.display =
+      'table-footer-group';
+  else document.getElementById('my-profile-bets-footer').style.display = 'none';
 
   myBets.forEach(
     ({
@@ -1284,40 +1255,40 @@ const filterChange = async () => {
       transactionHash,
       predictedHorse,
       winAmount,
-      createdAt
+      createdAt,
     }) => {
-      const id = "my-profile-bets";
+      const id = 'my-profile-bets';
       var template = jQuery(`#${id}`).html();
       var html = Mustache.render(template, {
         order: orderId,
         hash: transactionHash,
         hashString: transactionHash.slice(0, 13),
-        horsePrediction: horseNames[predictedHorse[0]["horse"]],
+        horsePrediction: horseNames[predictedHorse[0]['horse']],
         winningHorse:
-          "[ 1st: " +
+          '[ 1st: ' +
           horseNames[leaderboard[0]] +
-          ", 2nd: " +
+          ', 2nd: ' +
           horseNames[leaderboard[1]] +
-          ", 3rd: " +
+          ', 3rd: ' +
           horseNames[leaderboard[2]] +
-          " ]",
+          ' ]',
         betAmount:
-          (predictedHorse[0]["win"] +
-            predictedHorse[0]["place"] +
-            predictedHorse[0]["show"]) /
+          (predictedHorse[0]['win'] +
+            predictedHorse[0]['place'] +
+            predictedHorse[0]['show']) /
           1000000,
-        winAmount: winAmount === 0 ? "-" : winAmount / 1000000,
-        color: winAmount === 0 ? "color:#ff5959" : "color:#01F593",
-        createdAt: new Date(createdAt).toLocaleString()
+        winAmount: winAmount === 0 ? '-' : winAmount / 1000000,
+        color: winAmount === 0 ? 'color:#ff5959' : 'color:#01F593',
+        createdAt: new Date(createdAt).toLocaleString(),
       });
-      jQuery("#my-profile-bets-body").append(html);
+      jQuery('#my-profile-bets-body').append(html);
     }
   );
 };
 
 const pageChange = async () => {
-  $("#my-profile-bets-body").empty();
-  let selectValue = document.getElementById("page").value;
+  $('#my-profile-bets-body').empty();
+  let selectValue = document.getElementById('page').value;
   page = parseInt(selectValue);
   skip = 0;
   selected = 1;
@@ -1330,21 +1301,15 @@ const pageChange = async () => {
   count = response.count;
 
   const options = Math.ceil(parseFloat(count / page));
-  $("#skip")
-    .children("option")
-    .remove();
+  $('#skip').children('option').remove();
   for (let i = 1; i <= options; i++) {
-    $("#skip").append(
-      $("<option></option>")
-        .attr("value", i)
-        .text(i)
-    );
+    $('#skip').append($('<option></option>').attr('value', i).text(i));
   }
 
   if (myBets.length === 0)
-    document.getElementById("my-profile-bets-footer").style.display =
-      "table-footer-group";
-  else document.getElementById("my-profile-bets-footer").style.display = "none";
+    document.getElementById('my-profile-bets-footer').style.display =
+      'table-footer-group';
+  else document.getElementById('my-profile-bets-footer').style.display = 'none';
 
   myBets.forEach(
     ({
@@ -1353,40 +1318,40 @@ const pageChange = async () => {
       transactionHash,
       predictedHorse,
       winAmount,
-      createdAt
+      createdAt,
     }) => {
-      const id = "my-profile-bets";
+      const id = 'my-profile-bets';
       var template = jQuery(`#${id}`).html();
       var html = Mustache.render(template, {
         order: orderId,
         hash: transactionHash,
         hashString: transactionHash.slice(0, 13),
-        horsePrediction: horseNames[predictedHorse[0]["horse"]],
+        horsePrediction: horseNames[predictedHorse[0]['horse']],
         winningHorse:
-          "[ 1st: " +
+          '[ 1st: ' +
           horseNames[leaderboard[0]] +
-          ", 2nd: " +
+          ', 2nd: ' +
           horseNames[leaderboard[1]] +
-          ", 3rd: " +
+          ', 3rd: ' +
           horseNames[leaderboard[2]] +
-          " ]",
+          ' ]',
         betAmount:
-          (predictedHorse[0]["win"] +
-            predictedHorse[0]["place"] +
-            predictedHorse[0]["show"]) /
+          (predictedHorse[0]['win'] +
+            predictedHorse[0]['place'] +
+            predictedHorse[0]['show']) /
           1000000,
-        winAmount: winAmount === 0 ? "-" : winAmount / 1000000,
-        color: winAmount === 0 ? "color:#ff5959" : "color:#01F593",
-        createdAt: new Date(createdAt).toLocaleString()
+        winAmount: winAmount === 0 ? '-' : winAmount / 1000000,
+        color: winAmount === 0 ? 'color:#ff5959' : 'color:#01F593',
+        createdAt: new Date(createdAt).toLocaleString(),
       });
-      jQuery("#my-profile-bets-body").append(html);
+      jQuery('#my-profile-bets-body').append(html);
     }
   );
 };
 
 const skipChange = async () => {
-  $("#my-profile-bets-body").empty();
-  let selectValue = document.getElementById("skip").value;
+  $('#my-profile-bets-body').empty();
+  let selectValue = document.getElementById('skip').value;
   skip = parseInt(selectValue) - 1;
   selected = skip + 1;
 
@@ -1396,12 +1361,12 @@ const skipChange = async () => {
   myBets = response.location1bets;
   count = response.count;
 
-  $("#skip select").val(selected);
+  $('#skip select').val(selected);
 
   if (myBets.length === 0)
-    document.getElementById("my-profile-bets-footer").style.display =
-      "table-footer-group";
-  else document.getElementById("my-profile-bets-footer").style.display = "none";
+    document.getElementById('my-profile-bets-footer').style.display =
+      'table-footer-group';
+  else document.getElementById('my-profile-bets-footer').style.display = 'none';
 
   myBets.forEach(
     ({
@@ -1410,54 +1375,51 @@ const skipChange = async () => {
       transactionHash,
       predictedHorse,
       winAmount,
-      createdAt
+      createdAt,
     }) => {
-      const id = "my-profile-bets";
+      const id = 'my-profile-bets';
       var template = jQuery(`#${id}`).html();
       var html = Mustache.render(template, {
         order: orderId,
         hash: transactionHash,
         hashString: transactionHash.slice(0, 13),
-        horsePrediction: horseNames[predictedHorse[0]["horse"]],
+        horsePrediction: horseNames[predictedHorse[0]['horse']],
         winningHorse:
-          "[ 1st: " +
+          '[ 1st: ' +
           horseNames[leaderboard[0]] +
-          ", 2nd: " +
+          ', 2nd: ' +
           horseNames[leaderboard[1]] +
-          ", 3rd: " +
+          ', 3rd: ' +
           horseNames[leaderboard[2]] +
-          " ]",
+          ' ]',
         betAmount:
-          (predictedHorse[0]["win"] +
-            predictedHorse[0]["place"] +
-            predictedHorse[0]["show"]) /
+          (predictedHorse[0]['win'] +
+            predictedHorse[0]['place'] +
+            predictedHorse[0]['show']) /
           1000000,
-        winAmount: winAmount === 0 ? "-" : winAmount / 1000000,
-        color: winAmount === 0 ? "color:#ff5959" : "color:#01F593",
-        createdAt: new Date(createdAt).toLocaleString()
+        winAmount: winAmount === 0 ? '-' : winAmount / 1000000,
+        color: winAmount === 0 ? 'color:#ff5959' : 'color:#01F593',
+        createdAt: new Date(createdAt).toLocaleString(),
       });
-      jQuery("#my-profile-bets-body").append(html);
+      jQuery('#my-profile-bets-body').append(html);
     }
   );
 };
 
-
-
 const handleLeaderboard = async () => {
   let response = await $.get(`${url}/top-players`);
-  console.log(response)
-  $("#leaderboard-bets-body").empty();
+  console.log(response);
+  $('#leaderboard-bets-body').empty();
   response.leaderBoard.forEach(
     ({ playerAddress, totalBetAmountAll }, index) => {
-
-      var addr = getUserAddress(playerAddress)
-      let html = "";
+      var addr = getUserAddress(playerAddress);
+      let html = '';
       if (index === 0)
         html = `
         <tr>
           <td>
             <span><img src="images/first-rank.png"/></span>
-            <img src="images/chat-logo.png" />
+            <img src="images/chat-logotest.png" />
           </td>
           <td>${addr}</td>
           <td>${totalBetAmountAll / 1000000} TRX</td>
@@ -1468,7 +1430,7 @@ const handleLeaderboard = async () => {
         <tr>
           <td>
             <span><img src="images/second-rank.png"/></span>
-            <img src="images/chat-logo.png" />
+            <img src="images/chat-logotest.png" />
           </td>
           <td>${addr}</td>
           <td>${totalBetAmountAll / 1000000} TRX</td>
@@ -1479,7 +1441,7 @@ const handleLeaderboard = async () => {
         <tr>
           <td>
             <span><img src="images/third-rank.png"/></span>
-            <img src="images/chat-logo.png" />
+            <img src="images/chat-logotest.png" />
           </td>
           <td>${addr}</td>
           <td>${totalBetAmountAll / 1000000} TRX</td>
@@ -1490,17 +1452,17 @@ const handleLeaderboard = async () => {
         <tr>
           <td>
             <span>${index + 1}</span>
-            <img src="images/chat-logo.png" />
+            <img src="images/chat-logotest.png" />
           </td>
           <td>${addr}</td>
           <td>${totalBetAmountAll / 1000000} TRX</td>
         </tr>
       `;
-      $("#leaderboard-bets-body").append(html);
+      $('#leaderboard-bets-body').append(html);
     }
   );
 };
 
 function changeLanguage(lang) {
-  document.cookie = `language=${lang}`
+  document.cookie = `language=${lang}`;
 }
