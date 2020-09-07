@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/client": "^8.2.1",
     "cookie-parser": "^1.4.3",
     "date-format": "^2.0.0",
     "ejs": "^2.6.1",
