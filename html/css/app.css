@@ -126,7 +126,7 @@ blockquote {
   margin: 0 0 1rem;
 }
 b,
-strong {
+sETHEREUMg {
   font-weight: bolder;
 }
 small {
@@ -4681,18 +4681,18 @@ a.badge-dark:focus {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
 }
-.jumbotron {
+.jumboETHEREUM {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
   border-radius: 0.3rem;
 }
 @media (min-width: 576px) {
-  .jumbotron {
+  .jumboETHEREUM {
     padding: 4rem 2rem;
   }
 }
-.jumbotron-fluid {
+.jumboETHEREUM-fluid {
   padding-right: 0;
   padding-left: 0;
   border-radius: 0;
@@ -9358,32 +9358,32 @@ header {
   background-color: #ffffff;
   color: #ff0000;
 }
-.dropdown-tronlink {
+.dropdown-ETHEREUMlink {
   vertical-align: middle;
   display: inline-block;
 }
-.dropdown-tronlink .btn {
+.dropdown-ETHEREUMlink .btn {
   color: #ffffff;
   font-size: 16px;
   box-shadow: none;
 }
-.dropdown-tronlink .btn img {
+.dropdown-ETHEREUMlink .btn img {
   width: 32px;
   height: 32px;
   margin-right: 5px;
 }
-.dropdown-tronlink .dropdown-menu {
+.dropdown-ETHEREUMlink .dropdown-menu {
   min-width: 100%;
   background: rgba(0, 0, 0, 0.75);
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
   border-radius: 15px 15px;
   border: none;
 }
-.dropdown-tronlink .dropdown-menu img {
+.dropdown-ETHEREUMlink .dropdown-menu img {
   vertical-align: middle;
   margin: -2px 6px 0 10px;
 }
-.dropdown-tronlink .dropdown-menu a.dropdown-item {
+.dropdown-ETHEREUMlink .dropdown-menu a.dropdown-item {
   font-family: 'Roboto-Light', Arial, sans-serif;
   color: #fff;
   font-size: 16px;
@@ -9391,10 +9391,10 @@ header {
   margin: 2px 0;
   background: transparent;
 }
-.dropdown-tronlink .dropdown-menu a.dropdown-item:hover {
+.dropdown-ETHEREUMlink .dropdown-menu a.dropdown-item:hover {
   background: #ff0000;
 }
-.dropdown-tronlink.show .btn {
+.dropdown-ETHEREUMlink.show .btn {
   color: #ff0000;
 }
 .dropdown-toggle::after {
@@ -10446,7 +10446,7 @@ header .dropdown-menu {
   margin: 0px;
   padding: 10px 0px 8px 10px;
 }
-.btntrx-winna {
+.btnETHEREUM-winna {
   border: 1px solid #f00;
   color: #fff;
   min-width: 100px;
@@ -10487,7 +10487,7 @@ header .dropdown-menu {
   color: #fff;
   font-size: 16px;
 }
-.btntrx-winna {
+.btnETHEREUM-winna {
   border: 1px solid #f00;
   color: #fff;
   min-width: 100px;
@@ -10496,7 +10496,7 @@ header .dropdown-menu {
   border-radius: 0px;
   margin-right: 15px;
 }
-.btntrx-winna:hover {
+.btnETHEREUM-winna:hover {
   color: #fff;
 }
 .select-style {
@@ -10767,17 +10767,17 @@ header .dropdown-menu {
     margin-right: 2px;
     font-size: 12px;
   }
-  .dropdown-tronlink .btn {
+  .dropdown-ETHEREUMlink .btn {
     font-size: 14px;
   }
-  .dropdown-tronlink .btn img {
+  .dropdown-ETHEREUMlink .btn img {
     width: 33px;
     height: 33px;
   }
-  .dropdown-tronlink .dropdown-menu {
+  .dropdown-ETHEREUMlink .dropdown-menu {
     margin-left: -15px;
   }
-  .dropdown-tronlink .dropdown-menu a.dropdown-item {
+  .dropdown-ETHEREUMlink .dropdown-menu a.dropdown-item {
     padding: 8px 15px 8px 0;
   }
   .location-banner {
@@ -10832,7 +10832,7 @@ header .dropdown-menu {
     margin-top: 4px;
     margin-left: 2px;
   }
-  .dropdown-tronlink .btn img {
+  .dropdown-ETHEREUMlink .btn img {
     width: 30px;
     height: 30px;
   }

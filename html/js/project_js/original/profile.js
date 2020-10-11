@@ -1,7 +1,7 @@
 var global = {
   userAddress: '',
   userAddressHex: '',
-  tronscanName: '',
+  ETHEREUMscanName: '',
   username: '',
   loggedIn: false,
   shortAddress: '',
@@ -19,8 +19,8 @@ let count = 0;
 
 const horseNames = [
   'Winnathunder',
-  'Trontrot',
-  'Troncruise',
+  'ETHEREUMtrot',
+  'ETHEREUMcruise',
   'Spuntino',
   'Blazer',
   'DarkMatter',
@@ -32,14 +32,19 @@ var tokenContract = 'TAjAMF7XZGexASiQDfa8XJ1xFLcqtYNcrg';
 var dividendContract = 'TAa3BAntM7Cz5RMcci8jtN3Q8yccxGwGnF';
 var gameLocation1Contract = 'TVqdSYfGpPQXeBHQUgAAqqkgCiqmvQBY1p';
 
-// var tronNode = "https://api.shasta.trongrid.io";
-var tronNode = 'https://api.trongrid.io';
+// var ETHEREUMNode = "https://api.shasta.ETHEREUMgrid.io";
+var ETHEREUMNode = 'https://api.ETHEREUMgrid.io';
 
-const tW = require('tronweb');
+const tW = require('ETHEREUMweb');
 const privateKey =
   'b551d8c006243277095acc3461f398cf9800685ab1d69742c758ae17306f125e';
 
-const staticObject = new tW(tronNode, tronNode, tronNode, privateKey);
+const staticObject = new tW(
+  ETHEREUMNode,
+  ETHEREUMNode,
+  ETHEREUMNode,
+  privateKey
+);
 
 var tokenContractInstance,
   dividendContractInstance,
@@ -52,67 +57,67 @@ $(document).ready(async function () {
   initInstanceStatic();
   getCurrentLangAndWallet();
   startLoginListener();
-  // var tronLinkLoginCheck = getCookie("tronLinkLoginTracker");
-  // if (tronLinkLoginCheck == 1) {
-  // autotronLinkloginCheck();
+  // var ETHEREUMLinkLoginCheck = getCookie("ETHEREUMLinkLoginTracker");
+  // if (ETHEREUMLinkLoginCheck == 1) {
+  // autoETHEREUMLinkloginCheck();
   // }
 });
 
 // Login & Default Initialization
 
 $('#isLoggedIn').on('click', function () {
-  // tronLinkloginCheck();
+  // ETHEREUMLinkloginCheck();
   if (global.loggedIn == false) {
     $('#login-popup').modal('show');
   } else {
-    autotronLinkloginCheck();
+    autoETHEREUMLinkloginCheck();
   }
 });
 
-function autotronLinkloginCheck() {
+function autoETHEREUMLinkloginCheck() {
   let counter = 0;
   const maxAttempts = 4;
-  window.addEventListener('tronWebInjected', { once: true });
+  window.addEventListener('ETHEREUMWebInjected', { once: true });
   a;
   const intervalId = setInterval(() => {
-    const { tronWeb } = window;
+    const { ETHEREUMWeb } = window;
     counter++;
     if (counter > maxAttempts) {
-      window.removeEventListener('tronWebInjected', { once: true });
+      window.removeEventListener('ETHEREUMWebInjected', { once: true });
       return clearInterval(intervalId);
     }
-    if (tronWeb) {
-      if (tronWeb.ready) {
+    if (ETHEREUMWeb) {
+      if (ETHEREUMWeb.ready) {
         initGlobalData();
         // console.log(global);
-        setCookie('tronLinkLoginTracker', '1', 10);
+        setCookie('ETHEREUMLinkLoginTracker', '1', 10);
         clearInterval(intervalId);
-        dispatchEvent(new Event('tronWebInjected'));
+        dispatchEvent(new Event('ETHEREUMWebInjected'));
       }
     }
   }, 1000);
 }
 
-async function tronLinkloginCheck() {
+async function ETHEREUMLinkloginCheck() {
   let counter = 0;
   const maxAttempts = 4;
-  window.addEventListener('tronWebInjected', { once: true });
+  window.addEventListener('ETHEREUMWebInjected', { once: true });
   const intervalId = setInterval(() => {
-    const { tronWeb } = window;
+    const { ETHEREUMWeb } = window;
     counter++;
     if (counter > maxAttempts) {
       startLoginListener();
       $('#login-popup').modal('show');
-      window.removeEventListener('tronWebInjected', { once: true });
+      window.removeEventListener('ETHEREUMWebInjected', { once: true });
       return clearInterval(intervalId);
     }
-    if (tronWeb) {
-      if (tronWeb.ready) {
+    if (ETHEREUMWeb) {
+      if (ETHEREUMWeb.ready) {
         initGlobalData();
         // console.log(global);
-        setCookie('tronLinkLoginTracker', '1', 10);
+        setCookie('ETHEREUMLinkLoginTracker', '1', 10);
         clearInterval(intervalId);
-        dispatchEvent(new Event('tronWebInjected'));
+        dispatchEvent(new Event('ETHEREUMWebInjected'));
       }
     }
   }, 1000);
@@ -120,8 +125,8 @@ async function tronLinkloginCheck() {
 
 function startLoginListener() {
   var start = setInterval(() => {
-    if (window.tronWeb && window.tronWeb.ready) {
-      if (window.tronWeb.eventServer.host.includes(tronNode)) {
+    if (window.ETHEREUMWeb && window.ETHEREUMWeb.ready) {
+      if (window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)) {
         initGlobalData();
         clearInterval(start);
       } else {
@@ -145,8 +150,8 @@ function startLoginListener() {
 
 function listenForNetworkChange() {
   var start = setInterval(() => {
-    if (window.tronWeb && window.tronWeb.ready) {
-      if (window.tronWeb.eventServer.host.includes(tronNode)) {
+    if (window.ETHEREUMWeb && window.ETHEREUMWeb.ready) {
+      if (window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)) {
         initGlobalData();
         clearInterval(start);
       }
@@ -155,13 +160,17 @@ function listenForNetworkChange() {
 }
 
 async function initGlobalData() {
-  global.shortAddress = getUserAddress(window.tronWeb.defaultAddress.base58);
+  global.shortAddress = getUserAddress(
+    window.ETHEREUMWeb.defaultAddress.base58
+  );
   $('#userAddress').text(global.shortAddress);
   $('#isLoggedIn').hide();
 
-  global.tronscanName = await getTronscanName(tronWeb.defaultAddress.base58);
-  global.userAddress = window.tronWeb.defaultAddress.base58;
-  global.userAddressHex = window.tronWeb.defaultAddress.hex;
+  global.ETHEREUMscanName = await getETHEREUMscanName(
+    ETHEREUMWeb.defaultAddress.base58
+  );
+  global.userAddress = window.ETHEREUMWeb.defaultAddress.base58;
+  global.userAddressHex = window.ETHEREUMWeb.defaultAddress.hex;
   global.loggedIn = true;
   // listClick("all");
   let response = null;
@@ -184,9 +193,9 @@ async function initGlobalData() {
       $('#totalBets').text(profileData.data.totalBets.toLocaleString('en'));
       $('#totalWinna').text(profileData.data.totalWinna.toLocaleString('en'));
       $('#totalEarning').text(
-        profileData.data.comulativeEarning.toLocaleString('en') + ' TRX'
+        profileData.data.comulativeEarning.toLocaleString('en') + ' ETHEREUM'
       );
-      $('#lastDrop').text(profileData.data.lastWinDrop + ' TRX');
+      $('#lastDrop').text(profileData.data.lastWinDrop + ' ETHEREUM');
     }
 
     if (document.getElementById('my-profile-bets-body')) {
@@ -327,7 +336,7 @@ async function getPlayerLevel() {
       }
 
       global.username =
-        '[ LVL ' + level + ' | ' + levelTag + ' ] ' + global.tronscanName;
+        '[ LVL ' + level + ' | ' + levelTag + ' ] ' + global.ETHEREUMscanName;
       resolve(true);
     } catch (error) {
       console.error(error);
@@ -335,11 +344,11 @@ async function getPlayerLevel() {
   });
 }
 
-function getTronscanName(address) {
+function getETHEREUMscanName(address) {
   return new Promise(function (resolve, reject) {
     var _returnName = '';
     $.ajax({
-      url: 'https://apilist.tronscan.org/api/account?address=' + address,
+      url: 'https://apilist.ETHEREUMscan.org/api/account?address=' + address,
       dataType: 'json',
       async: true,
       success: function (data) {
@@ -372,14 +381,14 @@ async function updateWonAmont() {
   }
 }
 
-/****************check for address change in tronlink --START*************************/
+/****************check for address change in ETHEREUMlink --START*************************/
 //Try to set handle address change event
 let intervalID = setInterval(async function () {
-  if (typeof window.tronWeb == 'object') {
-    // window.tronWeb.on("addressChanged", initGlobalData);
+  if (typeof window.ETHEREUMWeb == 'object') {
+    // window.ETHEREUMWeb.on("addressChanged", initGlobalData);
     try {
-      var userAddress = await window.tronWeb.defaultAddress.base58;
-      var userAddressHex = await window.tronWeb.defaultAddress.hex;
+      var userAddress = await window.ETHEREUMWeb.defaultAddress.base58;
+      var userAddressHex = await window.ETHEREUMWeb.defaultAddress.hex;
       if (global.userAddress == '' && userAddress != '') {
         // initGlobalData()
       }
@@ -393,7 +402,7 @@ let intervalID = setInterval(async function () {
   }
 }, 1000);
 
-/****************check for address change in tronlink --END*************************/
+/****************check for address change in ETHEREUMlink --END*************************/
 /**************** Detect and set current language and wallet --START*************************/
 
 $('.walletDropDown').on('click', function () {
@@ -403,7 +412,7 @@ $('.walletDropDown').on('click', function () {
     $('#currWallet').html('<img src="images/' + wallet + '.png">Guild Wallet');
   } else {
     setCookie('wallet', wallet, 5);
-    $('#currWallet').html('<img src="images/' + wallet + '.png">TronLink');
+    $('#currWallet').html('<img src="images/' + wallet + '.png">ETHEREUMLink');
   }
 });
 
@@ -440,8 +449,8 @@ function getCurrentLangAndWallet() {
   if (wallet == 'guild-wallet') {
     $('#currWallet').html('<img src="images/' + wallet + '.png">Guild Wallet');
   } else {
-    setCookie('wallet', 'tronlink', 5);
-    $('#currWallet').html('<img src="images/tronlink.png">TronLink');
+    setCookie('wallet', 'ETHEREUMlink', 5);
+    $('#currWallet').html('<img src="images/ETHEREUMlink.png">ETHEREUMLink');
   }
 }
 
@@ -501,7 +510,7 @@ async function nextDropTimer() {
 
 setInterval(updateMintInfo, 4000);
 async function updateMintInfo() {
-  //   if (tronWeb && tronWeb.ready && tronWeb.eventServer.host.includes(tronNode)) {
+  //   if (ETHEREUMWeb && ETHEREUMWeb.ready && ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)) {
   try {
     var stage = await tokenContractInstanceStatic.stage().call();
     var level = await tokenContractInstanceStatic.level().call();
@@ -519,16 +528,17 @@ async function updateMintInfo() {
     var totalMintLimit = staticObject.fromSun(mintInfo.totalMintLimit);
     var mintedTillNow = staticObject.fromSun(mintInfo.mintedTillNow);
 
-    var availableTRXDrop = staticObject.fromSun(availableDrop[1]);
-    if (availableDrop[0] || availableTRXDrop == 0) {
+    var availableETHEREUMDrop = staticObject.fromSun(availableDrop[1]);
+    if (availableDrop[0] || availableETHEREUMDrop == 0) {
       $('#availableWinnaDrop').text(
-        parseFloat(availableTRXDrop).toFixed(2).toLocaleString('en') + ' TRX'
+        parseFloat(availableETHEREUMDrop).toFixed(2).toLocaleString('en') +
+          ' ETHEREUM'
       );
     } else {
       $('#availableWinnaDrop').text(
         '-' +
-          parseFloat(availableTRXDrop).toFixed(2).toLocaleString('en') +
-          ' TRX'
+          parseFloat(availableETHEREUMDrop).toFixed(2).toLocaleString('en') +
+          ' ETHEREUM'
       );
     }
 
@@ -538,25 +548,27 @@ async function updateMintInfo() {
     );
 
     if (
-      window.tronWeb &&
-      window.tronWeb.ready &&
-      window.tronWeb.eventServer.host.includes(tronNode)
+      window.ETHEREUMWeb &&
+      window.ETHEREUMWeb.ready &&
+      window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
     ) {
       var availDivPlayer = await dividendContractInstanceStatic
-        .availableDividendIndividualLive(window.tronWeb.defaultAddress.base58)
+        .availableDividendIndividualLive(
+          window.ETHEREUMWeb.defaultAddress.base58
+        )
         .call();
 
       availDivPlayer = staticObject.fromSun(availDivPlayer);
       $('#playerDividend').text(
-        parseFloat(availDivPlayer).toFixed(2).toLocaleString('en') + ' TRX'
+        parseFloat(availDivPlayer).toFixed(2).toLocaleString('en') + ' ETHEREUM'
       );
     } else {
-      $('#playerDividend').text('0 TRX');
+      $('#playerDividend').text('0 ETHEREUM');
     }
 
     $('#stage').text(stage);
     $('#level').text(level);
-    $('#difficulty').text(miningDifficulty + ' TRX');
+    $('#difficulty').text(miningDifficulty + ' ETHEREUM');
     $('#mintedtillNow').text(
       parseFloat(mintedTillNow).toFixed(2).toLocaleString('en')
     );
@@ -582,16 +594,16 @@ setTimeout(function () {
 
 async function updateWinnaInfo() {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     try {
       var balance = await tokenContractInstance
-        .balanceOf(window.tronWeb.defaultAddress.base58)
+        .balanceOf(window.ETHEREUMWeb.defaultAddress.base58)
         .call();
       var playerStackInfo = await dividendContractInstance
-        .playerStackInfoByAddress(window.tronWeb.defaultAddress.base58)
+        .playerStackInfoByAddress(window.ETHEREUMWeb.defaultAddress.base58)
         .call();
       var systemHalt = await dividendContractInstance
         .dividendSystemHalt()
@@ -688,9 +700,9 @@ $('#unfreezableWinna').on('click', function () {
 });
 $('#freeze').on('click', async function () {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     try {
       var systemHalt = await dividendContractInstance
@@ -733,17 +745,17 @@ $('#frzAmt').on('keyup', function () {
 
 $('#freezeConfirm').on('click', async function () {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     var amt = $('#frzAmt').val();
     try {
-      var addr = await window.tronWeb.defaultAddress.base58;
+      var addr = await window.ETHEREUMWeb.defaultAddress.base58;
       var t = await tokenContractInstanceStatic.playerMintInfo(addr).call();
       if (t.totalBets.toNumber() >= 8670000000) {
         if (amt != '' && amt >= 1) {
-          amt = window.tronWeb.toSun(amt);
+          amt = window.ETHEREUMWeb.toSun(amt);
           try {
             var frzTx = await tokenContractInstance.approveAndFreeze(amt).send({
               shouldPollResponse: false,
@@ -815,9 +827,9 @@ $('#freezeConfirm').on('click', async function () {
 
 $('#unfreeze').on('click', async function () {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     try {
       var systemHalt = await dividendContractInstance
@@ -876,13 +888,13 @@ $('#unfrzAmt').on('keyup', function () {
 
 $('#unfreezeConfirm').on('click', async function () {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     var amt = $('#unfrzAmt').val();
     if (amt != '' && amt >= 1) {
-      amt = window.tronWeb.toSun(amt);
+      amt = window.ETHEREUMWeb.toSun(amt);
 
       try {
         var unfrzTx = await dividendContractInstance.Unfreeze(amt).send({
@@ -941,9 +953,9 @@ $('#unfreezeConfirm').on('click', async function () {
 
 $('#claim').on('click', function () {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     $('#claimWinnaModal').modal('show');
   } else {
@@ -953,9 +965,9 @@ $('#claim').on('click', function () {
 
 $('#claimOrCancle').on('click', async function () {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     try {
       var playerStackInfo = await dividendContractInstance
@@ -1055,31 +1067,31 @@ $('#claimOrCancle').on('click', async function () {
 });
 async function initContractInstance() {
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     try {
-      var tokenContractInfo = await window.tronWeb.trx.getContract(
+      var tokenContractInfo = await window.ETHEREUMWeb.ETHEREUM.getContract(
         tokenContract
       );
-      tokenContractInstance = await window.tronWeb.contract(
+      tokenContractInstance = await window.ETHEREUMWeb.contract(
         tokenContractInfo.abi.entrys,
         tokenContractInfo.contract_address
       );
 
-      var dividendContractInfo = await window.tronWeb.trx.getContract(
+      var dividendContractInfo = await window.ETHEREUMWeb.ETHEREUM.getContract(
         dividendContract
       );
-      dividendContractInstance = await window.tronWeb.contract(
+      dividendContractInstance = await window.ETHEREUMWeb.contract(
         dividendContractInfo.abi.entrys,
         dividendContractInfo.contract_address
       );
 
-      //   var gameContractInfo = await window.tronWeb.trx.getContract(
+      //   var gameContractInfo = await window.ETHEREUMWeb.ETHEREUM.getContract(
       //     gameLocation1Contract
       //   );
-      //   gameLocation1ContractInstance = await window.tronWeb.contract(
+      //   gameLocation1ContractInstance = await window.ETHEREUMWeb.contract(
       //     gameContractInfo.abi.entrys,
       //     gameContractInfo.contract_address
       //   );
@@ -1092,13 +1104,15 @@ async function initContractInstance() {
 
 async function initInstanceStatic() {
   try {
-    var tokenContractInfo = await staticObject.trx.getContract(tokenContract);
+    var tokenContractInfo = await staticObject.ETHEREUM.getContract(
+      tokenContract
+    );
     tokenContractInstanceStatic = await staticObject.contract(
       tokenContractInfo.abi.entrys,
       tokenContractInfo.contract_address
     );
 
-    var dividendContractInfo = await staticObject.trx.getContract(
+    var dividendContractInfo = await staticObject.ETHEREUM.getContract(
       dividendContract
     );
     dividendContractInstanceStatic = await staticObject.contract(
@@ -1112,7 +1126,7 @@ function waitForTxConfirmation(txId) {
   return new Promise(function (resolve, reject) {
     var checkTxStatus = setInterval(async function () {
       try {
-        var status = await tronWeb.trx.getTransactionInfo(txId);
+        var status = await ETHEREUMWeb.ETHEREUM.getTransactionInfo(txId);
         if (status) {
           if (status.receipt.result == 'SUCCESS') {
             clearInterval(checkTxStatus);
@@ -1133,7 +1147,7 @@ function waitForTxConfirmationEvent(txId, eventName) {
   return new Promise(function (resolve, reject) {
     var checkTxStatus = setInterval(async function () {
       try {
-        var event = await tronWeb.getEventByTransactionID(txId);
+        var event = await ETHEREUMWeb.getEventByTransactionID(txId);
         if (event.length >= 1) {
           var findIndex = event.findIndex(
             (eventArray) => eventArray.name === eventName
@@ -1249,9 +1263,9 @@ socket.on('newMessage', function ({ userName, message, level }) {
 jQuery('#all-chats-form').on('submit', async (e) => {
   e.preventDefault();
   if (
-    window.tronWeb &&
-    window.tronWeb.ready &&
-    window.tronWeb.eventServer.host.includes(tronNode)
+    window.ETHEREUMWeb &&
+    window.ETHEREUMWeb.ready &&
+    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
   ) {
     if (global.userSigned == false) {
       let playerExist = false;
@@ -1275,10 +1289,10 @@ jQuery('#all-chats-form').on('submit', async (e) => {
         return;
       }
 
-      var hex = window.tronWeb.toHex('CryptoHorseRacing.com');
+      var hex = window.ETHEREUMWeb.toHex('CryptoHorseRacing.com');
       hex = hex.substring(2);
       try {
-        var signed = await window.tronWeb.trx.sign(hex);
+        var signed = await window.ETHEREUMWeb.ETHEREUM.sign(hex);
         if (signed != '') {
           socket.emit(
             'signChat',
@@ -1604,7 +1618,7 @@ const handleLeaderboard = async () => {
               <img src="images/chat-logotest.png" />
             </td>
             <td>${addr}</td>
-            <td>${totalBetAmountAll / 1000000} TRX</td>
+            <td>${totalBetAmountAll / 1000000} ETHEREUM</td>
           </tr>
         `;
       else if (index === 1)
@@ -1615,7 +1629,7 @@ const handleLeaderboard = async () => {
               <img src="images/chat-logotest.png" />
             </td>
             <td>${addr}</td>
-            <td>${totalBetAmountAll / 1000000} TRX</td>
+            <td>${totalBetAmountAll / 1000000} ETHEREUM</td>
           </tr>
         `;
       else if (index === 2)
@@ -1626,7 +1640,7 @@ const handleLeaderboard = async () => {
               <img src="images/chat-logotest.png" />
             </td>
             <td>${addr}</td>
-            <td>${totalBetAmountAll / 1000000} TRX</td>
+            <td>${totalBetAmountAll / 1000000} ETHEREUM</td>
           </tr>
         `;
       else
@@ -1637,7 +1651,7 @@ const handleLeaderboard = async () => {
               <img src="images/chat-logotest.png" />
             </td>
             <td>${addr}</td>
-            <td>${totalBetAmountAll / 1000000} TRX</td>
+            <td>${totalBetAmountAll / 1000000} ETHEREUM</td>
           </tr>
         `;
       $('#leaderboard-bets-body').append(html);

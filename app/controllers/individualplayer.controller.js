@@ -1,35 +1,43 @@
-const IndividualPlayer = require("../models/individualplayer.model");
+const IndividualPlayer = require('../models/individualplayer.model');
 
-const TronWeb = require('tronweb');
+const ETHEREUMWeb = require('ETHEREUMweb');
 var config = require('../../config/config');
 
-
-const fullNode = config.TRONGRID_NODE;
-const solidityNode = config.TRONGRID_NODE;
-const eventServer = config.TRONGRID_NODE;
+const fullNode = config.ETHEREUMGRID_NODE;
+const solidityNode = config.ETHEREUMGRID_NODE;
+const eventServer = config.ETHEREUMGRID_NODE;
 const privateKey = config.DUMMY_PK;
 
 var tokenContract = config.TOKEN_CONTRACT_ADDRESS;
 
-const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
+const ETHEREUMWeb = new ETHEREUMWeb(
+  fullNode,
+  solidityNode,
+  eventServer,
+  privateKey
+);
 
 var tokenContractInstance;
-init()
+init();
 async function init() {
-    try{
-      var tokenContractInfo = await tronWeb.trx.getContract(tokenContract);
-      tokenContractInstance = await tronWeb.contract(tokenContractInfo.abi.entrys, tokenContractInfo.contract_address);
-    }catch(e){
-      console.log('error', e)
-    }
-
+  try {
+    var tokenContractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
+      tokenContract
+    );
+    tokenContractInstance = await ETHEREUMWeb.contract(
+      tokenContractInfo.abi.entrys,
+      tokenContractInfo.contract_address
+    );
+  } catch (e) {
+    console.log('error', e);
+  }
 }
 
 // Create Individual Player.
 exports.create = async (req, res) => {
   try {
     let individualplayer = new IndividualPlayer({
-      playerAddress: req.body.playerAddress
+      playerAddress: req.body.playerAddress,
     });
 
     individualplayer = await individualplayer.save();
@@ -37,7 +45,7 @@ exports.create = async (req, res) => {
     return res.send({ individualplayer });
   } catch (error) {
     return res.status(400).send({
-      ...error
+      ...error,
     });
   }
 };
@@ -46,14 +54,14 @@ exports.updateLocation1 = async (req, res) => {
   try {
     let individualPlayer = await IndividualPlayer.findOneAndUpdate(
       {
-        playerAddress: req.params.playerAddress
+        playerAddress: req.params.playerAddress,
       },
       {
         totalBetAmountAll: req.body.totalBetAmountAll,
         totalBeAmountLocation1: req.body.totalBeAmountLocation1,
         totalBetLocation1: req.body.totalBeAmountLocation1,
         totalWinAmount: req.body.totalWinAmount,
-        totalLoseAmount: req.body.totalLoseAmount
+        totalLoseAmount: req.body.totalLoseAmount,
       },
       { new: true }
     );
@@ -61,7 +69,7 @@ exports.updateLocation1 = async (req, res) => {
   } catch (error) {
     return res.status(400).send({
       ...error,
-      flag: false
+      flag: false,
     });
   }
 };
@@ -70,12 +78,12 @@ exports.updateLocation1 = async (req, res) => {
 exports.findOne = async (req, res) => {
   try {
     let individualplayer = await IndividualPlayer.findOne({
-      playerAddress: req.params.playerAddress
+      playerAddress: req.params.playerAddress,
     });
 
     if (individualplayer === null) {
       individualplayer = new IndividualPlayer({
-        playerAddress: req.params.playerAddress
+        playerAddress: req.params.playerAddress,
       });
       individualplayer = await individualplayer.save();
     }
@@ -83,7 +91,7 @@ exports.findOne = async (req, res) => {
     return res.send({ individualplayer });
   } catch (error) {
     return res.status(400).send({
-      ...error
+      ...error,
     });
   }
 };
@@ -92,7 +100,7 @@ exports.findOne = async (req, res) => {
 exports.findIndividualPlayer = async (req, res) => {
   try {
     let individualplayer = await IndividualPlayer.findOne({
-      playerAddress: req.params.id
+      playerAddress: req.params.id,
     });
     if (individualplayer === null) {
       return res.send({ flag: false });
@@ -100,15 +108,17 @@ exports.findIndividualPlayer = async (req, res) => {
     return res.send({ flag: true });
   } catch (error) {
     return res.status(400).send({
-      ...error
+      ...error,
     });
   }
 };
 
 // Get Individual Player level.
 exports.getPlayerLevel = async (req, res) => {
-
-  if(req.params.playerAddress == "TMDzQ9ixZ69Uew8vqnsdQfzzQBHjriZYub" || req.params.playerAddress == "TPEZTQ6Py47dSE8bPNzkb5KZsFDfUKREw8"){
+  if (
+    req.params.playerAddress == 'TMDzQ9ixZ69Uew8vqnsdQfzzQBHjriZYub' ||
+    req.params.playerAddress == 'TPEZTQ6Py47dSE8bPNzkb5KZsFDfUKREw8'
+  ) {
     var level = 100;
     return res.send({ level });
   } else {
@@ -116,23 +126,25 @@ exports.getPlayerLevel = async (req, res) => {
       // let individualplayer = await IndividualPlayer.findOne({
       //   playerAddress: req.params.playerAddress
       // });
-  
+
       // if (!individualplayer) return res.send({ level: 0 });
-  
+
       // let waggeredAmt = individualplayer.totalBetAmountAll;
-  
+
       // waggeredAmt = waggeredAmt / 1000000;
 
-      var playerAddress = req.params.playerAddress
-      var info = await tokenContractInstance.playerMintInfo(playerAddress).call()
+      var playerAddress = req.params.playerAddress;
+      var info = await tokenContractInstance
+        .playerMintInfo(playerAddress)
+        .call();
       var totalBets = info.totalBets / 1000000;
-  
-      var level = getRankByAmount(totalBets)
-    
+
+      var level = getRankByAmount(totalBets);
+
       return res.send({ level });
     } catch (error) {
       return res.status(400).send({
-        ...error
+        ...error,
       });
     }
   }
@@ -142,13 +154,13 @@ exports.getPlayerLevel = async (req, res) => {
 exports.getChatSign = async (req, res) => {
   try {
     let individualplayer = await IndividualPlayer.findOne({
-      playerAddress: req.params.playerAddress
+      playerAddress: req.params.playerAddress,
     });
 
     if (!individualplayer) return res.send({ sign: false });
 
     let sign = individualplayer.signChat;
-    if (sign === "-") {
+    if (sign === '-') {
       sign = false;
       return res.send({ sign });
     } else {
@@ -157,7 +169,7 @@ exports.getChatSign = async (req, res) => {
     }
   } catch (error) {
     return res.status(400).send({
-      ...error
+      ...error,
     });
   }
 };
@@ -180,16 +192,16 @@ exports.updateSignchat = async (req, res) => {
   try {
     await IndividualPlayer.findOneAndUpdate(
       {
-        playerAddress: req.params.id
+        playerAddress: req.params.id,
       },
       { signChat: req.body.signChat },
       { new: true }
     );
-    return res.send({ message: "success", flag: true });
+    return res.send({ message: 'success', flag: true });
   } catch (error) {
     return res.status(400).send({
       ...error,
-      flag: false
+      flag: false,
     });
   }
 };
@@ -197,17 +209,20 @@ exports.updateSignchat = async (req, res) => {
 // Get top 20 players
 exports.getTopPlayers = async (req, res) => {
   try {
-    const leaderBoard = await IndividualPlayer.find({}, {totalBetAmountAll:1, playerAddress:1, _id:0})
+    const leaderBoard = await IndividualPlayer.find(
+      {},
+      { totalBetAmountAll: 1, playerAddress: 1, _id: 0 }
+    )
       .sort({ totalBetAmountAll: -1 })
       .limit(20);
     return res.send({
-      message: "success",
-      leaderBoard
+      message: 'success',
+      leaderBoard,
     });
   } catch (error) {
     return res.status(400).send({
       ...error,
-      flag: false
+      flag: false,
     });
   }
 };
