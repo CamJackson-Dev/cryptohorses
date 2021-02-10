@@ -150,7 +150,7 @@
       d = s.width || e.clientWidth || p.right - p.left,
       a = s.height || e.clientHeight || p.bottom - p.top,
       f = e.offsetWidth - d,
-      h = e.offsETHEREUMeight - a;
+      h = e.offsTroneight - a;
     if (f || h) {
       var u = t(e);
       (f -= m(u, 'x')), (h -= m(u, 'y')), (p.width -= f), (p.height -= h);
@@ -295,7 +295,7 @@
       o = t.getComputedStyle(e),
       n = parseFloat(o.marginTop || 0) + parseFloat(o.marginBottom || 0),
       i = parseFloat(o.marginLeft || 0) + parseFloat(o.marginRight || 0),
-      r = { width: e.offsetWidth + i, height: e.offsETHEREUMeight + n };
+      r = { width: e.offsetWidth + i, height: e.offsTroneight + n };
     return r;
   }
   function T(e) {
@@ -683,7 +683,7 @@
               }, ne));
           };
         },
-    pe = te && !!(window.MSInputMETHEREUModContext && document.documentMode),
+    pe = te && !!(window.MSInputMTronodContext && document.documentMode),
     se = te && /MSIE 10/.test(navigator.userAgent),
     de = function (e, t) {
       if (!(e instanceof t))
@@ -912,7 +912,7 @@
           padding: 5,
           boundariesElement: 'scrollParent',
         },
-        keepTogETHEREUMer: {
+        keepTogTroner: {
           order: 400,
           enabled: !0,
           fn: function (e) {
@@ -937,8 +937,7 @@
           enabled: !0,
           fn: function (e, o) {
             var n;
-            if (!K(e.instance.modifiers, 'arrow', 'keepTogETHEREUMer'))
-              return e;
+            if (!K(e.instance.modifiers, 'arrow', 'keepTogTroner')) return e;
             var i = o.element;
             if ('string' == typeof i) {
               if (((i = e.instance.popper.querySelector(i)), !i)) return e;
@@ -1289,7 +1288,7 @@
         : 0;
     },
     reflow: function (t) {
-      return t.offsETHEREUMeight;
+      return t.offsTroneight;
     },
     triggerTransitionEnd: function (t) {
       g(t).trigger(e);
@@ -1866,7 +1865,7 @@
               t.to(i);
             else if ('string' == typeof n) {
               if ('undefined' == typeof t[n])
-                throw new TypeError('No mETHEREUMod named "' + n + '"');
+                throw new TypeError('No mTronod named "' + n + '"');
               t[n]();
             } else e.interval && e.ride && (t.pause(), t.cycle());
           });
@@ -2128,7 +2127,7 @@
               'string' == typeof i)
             ) {
               if ('undefined' == typeof e[i])
-                throw new TypeError('No mETHEREUMod named "' + i + '"');
+                throw new TypeError('No mTronod named "' + i + '"');
               e[i]();
             }
           });
@@ -2388,7 +2387,7 @@
               'string' == typeof e)
             ) {
               if ('undefined' == typeof t[e])
-                throw new TypeError('No mETHEREUMod named "' + e + '"');
+                throw new TypeError('No mTronod named "' + e + '"');
               t[e]();
             }
           });
@@ -2835,7 +2834,7 @@
               'string' == typeof n)
             ) {
               if ('undefined' == typeof t[n])
-                throw new TypeError('No mETHEREUMod named "' + n + '"');
+                throw new TypeError('No mTronod named "' + n + '"');
               t[n](i);
             } else e.show && t.show(i);
           });
@@ -2915,7 +2914,7 @@
       span: [],
       sub: [],
       sup: [],
-      sETHEREUMg: [],
+      sTrong: [],
       u: [],
       ul: [],
     },
@@ -3414,7 +3413,7 @@
               'string' == typeof n)
             ) {
               if ('undefined' == typeof t[n])
-                throw new TypeError('No mETHEREUMod named "' + n + '"');
+                throw new TypeError('No mTronod named "' + n + '"');
               t[n]();
             }
           });
@@ -3548,7 +3547,7 @@
               'string' == typeof n)
             ) {
               if ('undefined' == typeof t[n])
-                throw new TypeError('No mETHEREUMod named "' + n + '"');
+                throw new TypeError('No mTronod named "' + n + '"');
               t[n]();
             }
           });
@@ -3609,10 +3608,10 @@
     ln = 'bs.scrollspy',
     cn = '.' + ln,
     hn = g.fn[an],
-    un = { offset: 10, mETHEREUMod: 'auto', target: '' },
+    un = { offset: 10, mTronod: 'auto', target: '' },
     fn = {
       offset: 'number',
-      mETHEREUMod: 'string',
+      mTronod: 'string',
       target: '(string|element)',
     },
     dn = {
@@ -3665,10 +3664,7 @@
         (t.refresh = function () {
           var e = this,
             t = this._scrollElement === this._scrollElement.window ? bn : In,
-            o =
-              'auto' === this._config.mETHEREUMod
-                ? t
-                : this._config.mETHEREUMod,
+            o = 'auto' === this._config.mTronod ? t : this._config.mTronod,
             r = o === In ? this._getScrollTop() : 0;
           (this._offsets = []),
             (this._targets = []),
@@ -3731,7 +3727,7 @@
             )
           );
         }),
-        (t._getOffsETHEREUMeight = function () {
+        (t._getOffsTroneight = function () {
           return this._scrollElement === window
             ? window.innerHeight
             : this._scrollElement.getBoundingClientRect().height;
@@ -3739,7 +3735,7 @@
         (t._process = function () {
           var t = this._getScrollTop() + this._config.offset,
             e = this._getScrollHeight(),
-            n = this._config.offset + e - this._getOffsETHEREUMeight();
+            n = this._config.offset + e - this._getOffsTroneight();
           if ((this._scrollHeight !== e && this.refresh(), n <= t)) {
             var i = this._targets[this._targets.length - 1];
             this._activeTarget !== i && this._activate(i);
@@ -3797,7 +3793,7 @@
               'string' == typeof e)
             ) {
               if ('undefined' == typeof t[e])
-                throw new TypeError('No mETHEREUMod named "' + e + '"');
+                throw new TypeError('No mTronod named "' + e + '"');
               t[e]();
             }
           });
@@ -3951,7 +3947,7 @@
               (e || ((e = new i(this)), t.data(wn, e)), 'string' == typeof n)
             ) {
               if ('undefined' == typeof e[n])
-                throw new TypeError('No mETHEREUMod named "' + n + '"');
+                throw new TypeError('No mTronod named "' + n + '"');
               e[n]();
             }
           });
@@ -4079,7 +4075,7 @@
               'string' == typeof n)
             ) {
               if ('undefined' == typeof e[n])
-                throw new TypeError('No mETHEREUMod named "' + n + '"');
+                throw new TypeError('No mTronod named "' + n + '"');
               e[n](this);
             }
           });

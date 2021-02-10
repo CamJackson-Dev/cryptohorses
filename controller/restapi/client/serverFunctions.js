@@ -1,22 +1,17 @@
-const ETHEREUMWeb = require('ETHEREUMweb');
+const TronWeb = require('tronweb');
 var config = require('../../../config/config');
 var cron = require('node-cron');
 
-const fullNode = config.ETHEREUMGRID_NODE;
-const solidityNode = config.ETHEREUMGRID_NODE;
-const eventServer = config.ETHEREUMGRID_NODE;
+const fullNode = config.TRONGRID_NODE;
+const solidityNode = config.TRONGRID_NODE;
+const eventServer = config.TRONGRID_NODE;
 const privateKey = config.DUMMY_PK;
 
 var tokenContract = config.TOKEN_CONTRACT_ADDRESS;
 var dividendContract = config.DIVIDEND_CONTRACT_ADDRESS;
 var gameLocation1Contract = config.GAME_LOCATION_1_CONTRACT;
 
-const ETHEREUMWeb = new ETHEREUMWeb(
-  fullNode,
-  solidityNode,
-  eventServer,
-  privateKey
-);
+const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
 
 var tokenContractInstance,
   dividendContractInstance,
@@ -24,26 +19,20 @@ var tokenContractInstance,
 init();
 async function init() {
   try {
-    var tokenContractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
-      tokenContract
-    );
-    tokenContractInstance = await ETHEREUMWeb.contract(
+    var tokenContractInfo = await tronWeb.trx.getContract(tokenContract);
+    tokenContractInstance = await tronWeb.contract(
       tokenContractInfo.abi.entrys,
       tokenContractInfo.contract_address
     );
 
-    var dividendContractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
-      dividendContract
-    );
-    dividendContractInstance = await ETHEREUMWeb.contract(
+    var dividendContractInfo = await tronWeb.trx.getContract(dividendContract);
+    dividendContractInstance = await tronWeb.contract(
       dividendContractInfo.abi.entrys,
       dividendContractInfo.contract_address
     );
 
-    var gameContractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
-      gameLocation1Contract
-    );
-    gameLocation1ContractInstance = await ETHEREUMWeb.contract(
+    var gameContractInfo = await tronWeb.trx.getContract(gameLocation1Contract);
+    gameLocation1ContractInstance = await tronWeb.contract(
       gameContractInfo.abi.entrys,
       gameContractInfo.contract_address
     );
@@ -57,7 +46,7 @@ cron.schedule('* * * * *', async () => {
     var divContractAddress = await tokenContractInstance
       .dividendContract()
       .call();
-    var base58Converted = ETHEREUMWeb.address.fromHex(divContractAddress);
+    var base58Converted = TronWeb.address.fromHex(divContractAddress);
     if (base58Converted !== dividendContract) {
       console.log('need to change');
       setDivAddress();
@@ -66,12 +55,12 @@ cron.schedule('* * * * *', async () => {
 });
 
 async function setDivAddress() {
-  const fullNode = config.ETHEREUMGRID_NODE;
-  const solidityNode = config.ETHEREUMGRID_NODE;
-  const eventServer = config.ETHEREUMGRID_NODE;
+  const fullNode = config.TRONGRID_NODE;
+  const solidityNode = config.TRONGRID_NODE;
+  const eventServer = config.TRONGRID_NODE;
   const privateKey = config.TOKEN_OWNER;
 
-  const ETHEREUMWebTemp = new ETHEREUMWeb(
+  const TronWebTemp = new TronWeb(
     fullNode,
     solidityNode,
     eventServer,
@@ -79,10 +68,8 @@ async function setDivAddress() {
   );
 
   try {
-    var tokenContractInfo = await ETHEREUMWebTemp.ETHEREUM.getContract(
-      tokenContract
-    );
-    tokenContractInstance = await ETHEREUMWebTemp.contract(
+    var tokenContractInfo = await tronWebTemp.Tron.getContract(tokenContract);
+    tokenContractInstance = await tronWebTemp.contract(
       tokenContractInfo.abi.entrys,
       tokenContractInfo.contract_address
     );
@@ -127,19 +114,19 @@ exports.getMintData = async function (req, res, next) {
     var mintInfo = await tokenContractInstance
       .getMintInfoByStageAndLevel(stage, level)
       .call();
-    var miningDifficulty = ETHEREUMWeb.fromSun(mintInfo.difficulty);
-    var totalMintLimit = ETHEREUMWeb.fromSun(mintInfo.totalMintLimit);
-    var mintedTillNow = ETHEREUMWeb.fromSun(mintInfo.mintedTillNow);
+    var miningDifficulty = TronWeb.fromSun(mintInfo.difficulty);
+    var totalMintLimit = TronWeb.fromSun(mintInfo.totalMintLimit);
+    var mintedTillNow = TronWeb.fromSun(mintInfo.mintedTillNow);
 
     var availableDrop = await dividendContractInstance
       .availableMainDividendALL()
       .call();
-    availableDrop = ETHEREUMWeb.fromSun(availableDrop[1]);
+    availableDrop = TronWeb.fromSun(availableDrop[1]);
 
     var totalFrozenWinna = await dividendContractInstance
       .totalForzenWinnaAcrossNetwork()
       .call();
-    totalFrozenWinna = ETHEREUMWeb.fromSun(totalFrozenWinna);
+    totalFrozenWinna = TronWeb.fromSun(totalFrozenWinna);
 
     // console.log(miningDifficulty + '\n' +totalMintLimit + '\n' + mintedTillNow)
 

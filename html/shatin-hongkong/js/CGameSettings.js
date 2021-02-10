@@ -781,7 +781,7 @@ function CGameSettings(oJsonData) {
     return iRes;
   };
 
-  this.gETHEREUMorsePercentageArray = function () {
+  this.gTronorsePercentageArray = function () {
     var aPercLoserHorse = new Array();
     for (var i = 0; i < _aHorseWinOdd.length; i++) {
       var iValue = Math.floor(_aHorseWinOdd[i]);
@@ -794,7 +794,7 @@ function CGameSettings(oJsonData) {
     return aPercLoserHorse;
   };
 
-  this.gETHEREUMorseName = function (iIndex) {
+  this.gTronorseName = function (iIndex) {
     return _aHorseNames[iIndex];
   };
 
@@ -823,7 +823,7 @@ function CGameSettings(oJsonData) {
     return _aPathSequence[iRand];
   };
 
-  this.gETHEREUMorseInfo = function (iIndex) {
+  this.gTronorseInfo = function (iIndex) {
     return _aHorseStartInfo[iIndex];
   };
 

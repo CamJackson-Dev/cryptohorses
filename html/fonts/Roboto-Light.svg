@@ -343,7 +343,7 @@ q122 0 196 64t74 162q0 61 -44 117.5t-135.5 123.5t-137.5 134.5t-46 144.5q0 96 63 
 d="M1265 -20q-139 0 -238.5 54.5t-159.5 151.5q-60 -98 -174 -152t-253 -54q-169 0 -262 84.5t-93 228.5q0 157 110.5 246.5t315.5 92.5h270v88q0 132 -63.5 206t-189.5 74q-130 0 -213 -65t-83 -170l-119 13q0 144 116.5 234t298.5 90q125 0 213.5 -53.5t128.5 -159.5
 q60 100 154.5 156.5t210.5 56.5q196 0 308.5 -120.5t114.5 -337.5v-106h-757v-29q0 -201 96 -314.5t268 -113.5q185 0 324 118l47 -87q-145 -132 -371 -132zM458 80q91 0 184.5 46t138.5 110v300h-256q-137 0 -223 -61t-95 -166l-1 -20q0 -97 65.5 -153t186.5 -56z
 M1235 1000q-132 0 -222 -98t-109 -266h635v31q0 154 -80.5 243.5t-223.5 89.5z" />
-    <glyph glyph-name="ETHEREUM" unicode="&#xf0;" horiz-adv-x="1191" 
+    <glyph glyph-name="Tron" unicode="&#xf0;" horiz-adv-x="1191" 
 d="M811 1303q238 -250 244 -658v-110q0 -159 -56 -286.5t-157 -198t-227 -70.5q-130 0 -236 61.5t-168 175t-62 249.5q0 229 119.5 364t318.5 135q100 0 186.5 -38.5t145.5 -105.5q-42 251 -210 419l-225 -139l-51 73l206 128q-137 106 -343 173l39 103q242 -72 409 -212
 l194 121l51 -73zM935 625l-2 57q-39 83 -126 131t-198 48q-161 0 -250.5 -105t-89.5 -290q0 -103 45 -192.5t124.5 -140t180.5 -50.5q141 0 228.5 124.5t87.5 335.5v82z" />
     <glyph glyph-name="divide" unicode="&#xf7;" horiz-adv-x="1164" 
@@ -1403,7 +1403,7 @@ t-290.5 -97q-124 0 -228 53z" />
 d="M528 592h-479v101h479v-101z" />
     <glyph glyph-name="Dcroat" unicode="&#x110;" horiz-adv-x="1371" 
 d="M214 0v689h-181v102h181v665h407q179 0 321 -81.5t221.5 -233.5t79.5 -346v-134q0 -195 -79 -346t-222.5 -233t-329.5 -82h-398zM645 689h-308v-585h271q235 0 374 152.5t139 412.5v128q0 251 -137 402t-361 152h-286v-560h308v-102z" />
-    <glyph glyph-name="ETHEREUM" unicode="&#xd0;" horiz-adv-x="1371" 
+    <glyph glyph-name="Tron" unicode="&#xd0;" horiz-adv-x="1371" 
 d="M214 0v689h-181v102h181v665h407q179 0 321 -81.5t221.5 -233.5t79.5 -346v-134q0 -195 -79 -346t-222.5 -233t-329.5 -82h-398zM645 689h-308v-585h271q235 0 374 152.5t139 412.5v128q0 251 -137 402t-361 152h-286v-560h308v-102z" />
     <glyph glyph-name="hbar" unicode="&#x127;" horiz-adv-x="1154" 
 d="M612 1257h-307v-358q59 97 151 150t201 53q174 0 259 -98t86 -294v-710h-119v711q-1 145 -61.5 216t-193.5 71q-111 0 -196.5 -69.5t-126.5 -187.5v-741h-119v1257h-186v102h186v177h119v-177h307v-102z" />
@@ -1861,7 +1861,7 @@ d="M89 557q0 156 60.5 281t171 194.5t250.5 69.5q114 0 214 -48l78 160h94l-100 -204
 q-75 43 -166 43q-161 0 -262 -125.5t-101 -328.5v-22zM935 557q0 103 -33 194t-96 154l-387 -790q68 -34 154 -34q161 0 261.5 124.5t100.5 328.5v23zM643 1523h145l-231 -279h-105z" />
     <glyph glyph-name="Dcroat.c2sc" horiz-adv-x="1152" 
 d="M154 0v1165h354q154 0 276 -66t190.5 -186.5t70.5 -271.5v-109q0 -155 -66.5 -275.5t-189 -187.5t-279.5 -69h-356zM273 1062v-961h228q194 0 309.5 117t115.5 320v95q0 195 -113 312t-308 117h-232zM568 540h-612v102h612v-102z" />
-    <glyph glyph-name="ETHEREUM.c2sc" horiz-adv-x="1152" 
+    <glyph glyph-name="Tron.c2sc" horiz-adv-x="1152" 
 d="M154 0v1165h354q154 0 276 -66t190.5 -186.5t70.5 -271.5v-109q0 -155 -66.5 -275.5t-189 -187.5t-279.5 -69h-356zM273 1062v-961h228q194 0 309.5 117t115.5 320v95q0 195 -113 312t-308 117h-232zM568 540h-612v102h612v-102z" />
     <glyph glyph-name="Tbar.c2sc" horiz-adv-x="1057" 
 d="M1013 1062h-426v-1062h-119v1062h-425v103h970v-103zM827 647h-612v102h612v-102z" />
@@ -9904,28 +9904,28 @@ d="M288 0h-120v1082h120v-1082zM141 -221q0 34 22 57.5t60 23.5q39 0 61 -23.5t22 -5
     <hkern g1="C,C.ss06,Ccedilla,Cacute,Ccircumflex,Cdotaccent,Ccaron,afii10035,uni04AA"
 	g2="J,Jcircumflex,afii10057"
 	k="43" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="A,uni2206,Lambda,uni0466,Agrave,Aacute,Acircumflex,Atilde,Adieresis,Aring,Aringacute,Amacron,Abreve,Aogonek,Alphatonos,Alpha,afii10017,uni1E00,uni04D0,uni04D2,uni1EA0,uni1EA2,uni1EA4,uni1EA6,uni1EA8,uni1EAA,uni1EAC,uni1EAE,uni1EB0,uni1EB2,uni1EB4,uni1EB6"
 	k="102" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="a,agrave,aacute,acircumflex,atilde,adieresis,aring,aringacute,amacron,abreve,aogonek,afii10065,uni1E01,uni04D1,uni04D3,uni1EA1,uni1EA3,uni1EA5,uni1EA7,uni1EA9,uni1EAB,uni1EAD,uni1EAF,uni1EB1,uni1EB3,uni1EB5,uni1EB7"
 	k="22" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="c,d,e,g,q,oe,ohorn,alpha,sigma1,sigma,afii10086,afii10101,uni047D,uni0481,uni04A9,uni0502,uni0503,uni050D,ccedilla,egrave,eacute,ecircumflex,edieresis,cacute,ccircumflex,cdotaccent,ccaron,dcaron,emacron,ebreve,edotaccent,eogonek,ecaron,gcircumflex,gbreve,gdotaccent,gcommaaccent,alphatonos,afii10070,afii10083,afii10071,uni0450,uni0479,uni04AB,uni04D7,afii10846,uni04DB,uni04E9,uni0501,uni1EB9,uni1EBB,uni1EBD,uni1EBF,uni1EC1,uni1EC3,uni1EC5,uni1EC7,uni1EDB,uni1EDD,uni1EDF,uni1EE3"
 	k="23" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="Y,Yacute,Ycircumflex,Ydieresis,Upsilontonos,Upsilon,Upsilondieresis,Ygrave,uni04AE,uni1EF4,uni1EF6,uni1EF8,uni04B0"
 	k="19" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="v,y,gamma,afii10196,yacute,ydieresis,ycircumflex,nu,afii10085,afii10110,ygrave,uni0477,uni04AF,uni04EF,uni04F1,uni04F3,uni1EF5,uni1EF7,uni1EF9"
 	k="19" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="afii10041,uni04F4,uni04B6,uni04CB"
 	k="-20" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="X,afii10024,Chi,afii10039,uni04C1,uni04DC,uni04FC,uni04B2,uni0496"
 	k="17" />
-    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,ETHEREUM,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
+    <hkern g1="D,O,Theta,D.ss06,O.ss06,Dcroat,Tron,Ograve,Oacute,Ocircumflex,Otilde,Odieresis,Dcaron,Omacron,Obreve,Ohungarumlaut,Omicrontonos,Omicron,afii10032,uni04E6,uni1ECC,uni1ECE,uni1ED0,uni1ED2,uni1ED4,uni1ED6,uni1ED8,uni1F4D"
 	g2="Z,Zacute,Zdotaccent,Zcaron,Zeta"
 	k="26" />
     <hkern g1="E,Egrave,Eacute,Ecircumflex,Edieresis,Emacron,Ebreve,Edotaccent,Eogonek,Ecaron,Epsilontonos,Epsilon,afii10023,afii10022,uni0400,uni04D6,uni1EB8,uni1EBA,uni1EBC,uni1EBE,uni1EC0,uni1EC2,uni1EC4,uni1EC6"

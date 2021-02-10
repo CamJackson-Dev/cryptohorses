@@ -1,20 +1,15 @@
-const ETHEREUMWeb = require('ETHEREUMweb');
+const TronWeb = require('tronweb');
 const config = require('../config/config.js');
 
-const fullNode = config.ETHEREUMGRID_NODE;
-const solidityNode = config.ETHEREUMGRID_NODE;
-const eventServer = config.ETHEREUMGRID_NODE;
+const fullNode = config.TRONGRID_NODE;
+const solidityNode = config.TRONGRID_NODE;
+const eventServer = config.TRONGRID_NODE;
 const privateKey = config.DUMMY_PK;
 console.log('===========================================================');
-console.log(config.ETHEREUMGRID_NODE);
+console.log(config.TRONGRID_NODE);
 console.log('===========================================================');
 
-const ETHEREUMWeb = new ETHEREUMWeb(
-  fullNode,
-  solidityNode,
-  eventServer,
-  privateKey
-);
+const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
 
 // Models
 const Location1Bets = require('../app/models/location1bets.model');
@@ -23,10 +18,10 @@ const IndividualPlayer = require('../app/models/individualplayer.model');
 
 exports.location1 = async () => {
   try {
-    var contractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
+    var contractInfo = await tronWeb.trx.getContract(
       config.GAME_LOCATION_1_CONTRACT
     );
-    var contractInstance = await ETHEREUMWeb.contract(
+    var contractInstance = await tronWeb.contract(
       contractInfo.abi.entrys,
       contractInfo.contract_address
     );
@@ -37,7 +32,7 @@ exports.location1 = async () => {
       if (event) {
         counter++;
         console.log(counter + ' event received');
-        var playerAddress = ETHEREUMWeb.address.fromHex(event.result._bettor);
+        var playerAddress = TronWeb.address.fromHex(event.result._bettor);
 
         var predictedHourse = event.result._horseNum;
         var predictedHourseWin = event.result._p1;

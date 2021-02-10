@@ -1,30 +1,23 @@
 const IndividualPlayer = require('../models/individualplayer.model');
 
-const ETHEREUMWeb = require('ETHEREUMweb');
+const TronWeb = require('tronweb');
 var config = require('../../config/config');
 
-const fullNode = config.ETHEREUMGRID_NODE;
-const solidityNode = config.ETHEREUMGRID_NODE;
-const eventServer = config.ETHEREUMGRID_NODE;
+const fullNode = config.TRONGRID_NODE;
+const solidityNode = config.TRONGRID_NODE;
+const eventServer = config.TRONGRID_NODE;
 const privateKey = config.DUMMY_PK;
 
 var tokenContract = config.TOKEN_CONTRACT_ADDRESS;
 
-const ETHEREUMWeb = new ETHEREUMWeb(
-  fullNode,
-  solidityNode,
-  eventServer,
-  privateKey
-);
+const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
 
 var tokenContractInstance;
 init();
 async function init() {
   try {
-    var tokenContractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
-      tokenContract
-    );
-    tokenContractInstance = await ETHEREUMWeb.contract(
+    var tokenContractInfo = await tronWeb.trx.getContract(tokenContract);
+    tokenContractInstance = await tronWeb.contract(
       tokenContractInfo.abi.entrys,
       tokenContractInfo.contract_address
     );

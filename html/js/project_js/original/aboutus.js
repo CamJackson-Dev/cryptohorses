@@ -1,7 +1,7 @@
 var global = {
   userAddress: '',
   userAddressHex: '',
-  ETHEREUMscanName: '',
+  TronscanName: '',
   username: '',
   loggedIn: false,
   shortAddress: '',
@@ -9,8 +9,8 @@ var global = {
   userSigned: false,
 };
 
-// var ETHEREUMNode = "https://api.shasta.ETHEREUMgrid.io";
-var ETHEREUMNode = 'https://api.ETHEREUMgrid.io';
+// var TronNode = "https://api.shasta.TRONGRID.io";
+var TronNode = 'https://api.TRONGRID.io';
 
 $(document).ready(async function () {
   listClick('all');
@@ -18,67 +18,67 @@ $(document).ready(async function () {
   initInstanceStatic();
   getCurrentLangAndWallet();
   startLoginListener();
-  // var ETHEREUMLinkLoginCheck = getCookie("ETHEREUMLinkLoginTracker");
-  // if (ETHEREUMLinkLoginCheck == 1) {
-  // autoETHEREUMLinkloginCheck();
+  // var TronLinkLoginCheck = getCookie("TronLinkLoginTracker");
+  // if (TronLinkLoginCheck == 1) {
+  // autoTronLinkloginCheck();
   // }
 });
 
 // Login & Default Initialization
 
 $('#isLoggedIn').on('click', function () {
-  // ETHEREUMLinkloginCheck();
+  // TronLinkloginCheck();
   if (global.loggedIn == false) {
     $('#login-popup').modal('show');
   } else {
-    autoETHEREUMLinkloginCheck();
+    autoTronLinkloginCheck();
   }
 });
 
-function autoETHEREUMLinkloginCheck() {
+function autoTronLinkloginCheck() {
   let counter = 0;
   const maxAttempts = 4;
-  window.addEventListener('ETHEREUMWebInjected', { once: true });
+  window.addEventListener('TronWebInjected', { once: true });
   a;
   const intervalId = setInterval(() => {
-    const { ETHEREUMWeb } = window;
+    const { TronWeb } = window;
     counter++;
     if (counter > maxAttempts) {
-      window.removeEventListener('ETHEREUMWebInjected', { once: true });
+      window.removeEventListener('TronWebInjected', { once: true });
       return clearInterval(intervalId);
     }
-    if (ETHEREUMWeb) {
-      if (ETHEREUMWeb.ready) {
+    if (TronWeb) {
+      if (TronWeb.ready) {
         initGlobalData();
         // console.log(global);
-        setCookie('ETHEREUMLinkLoginTracker', '1', 10);
+        setCookie('TronLinkLoginTracker', '1', 10);
         clearInterval(intervalId);
-        dispatchEvent(new Event('ETHEREUMWebInjected'));
+        dispatchEvent(new Event('TronWebInjected'));
       }
     }
   }, 1000);
 }
 
-async function ETHEREUMLinkloginCheck() {
+async function TronLinkloginCheck() {
   let counter = 0;
   const maxAttempts = 4;
-  window.addEventListener('ETHEREUMWebInjected', { once: true });
+  window.addEventListener('TronWebInjected', { once: true });
   const intervalId = setInterval(() => {
-    const { ETHEREUMWeb } = window;
+    const { TronWeb } = window;
     counter++;
     if (counter > maxAttempts) {
       startLoginListener();
       $('#login-popup').modal('show');
-      window.removeEventListener('ETHEREUMWebInjected', { once: true });
+      window.removeEventListener('TronWebInjected', { once: true });
       return clearInterval(intervalId);
     }
-    if (ETHEREUMWeb) {
-      if (ETHEREUMWeb.ready) {
+    if (TronWeb) {
+      if (TronWeb.ready) {
         initGlobalData();
         // console.log(global);
-        setCookie('ETHEREUMLinkLoginTracker', '1', 10);
+        setCookie('TronLinkLoginTracker', '1', 10);
         clearInterval(intervalId);
-        dispatchEvent(new Event('ETHEREUMWebInjected'));
+        dispatchEvent(new Event('TronWebInjected'));
       }
     }
   }, 1000);
@@ -86,8 +86,8 @@ async function ETHEREUMLinkloginCheck() {
 
 function startLoginListener() {
   var start = setInterval(() => {
-    if (window.ETHEREUMWeb && window.ETHEREUMWeb.ready) {
-      if (window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)) {
+    if (window.TronWeb && window.TronWeb.ready) {
+      if (window.TronWeb.eventServer.host.includes(TronNode)) {
         initGlobalData();
         clearInterval(start);
       } else {
@@ -111,8 +111,8 @@ function startLoginListener() {
 
 function listenForNetworkChange() {
   var start = setInterval(() => {
-    if (window.ETHEREUMWeb && window.ETHEREUMWeb.ready) {
-      if (window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)) {
+    if (window.TronWeb && window.TronWeb.ready) {
+      if (window.TronWeb.eventServer.host.includes(TronNode)) {
         initGlobalData();
         clearInterval(start);
       }
@@ -121,17 +121,13 @@ function listenForNetworkChange() {
 }
 
 async function initGlobalData() {
-  global.shortAddress = getUserAddress(
-    window.ETHEREUMWeb.defaultAddress.base58
-  );
+  global.shortAddress = getUserAddress(window.TronWeb.defaultAddress.base58);
   $('#userAddress').text(global.shortAddress);
   $('#isLoggedIn').hide();
 
-  global.ETHEREUMscanName = await getETHEREUMscanName(
-    ETHEREUMWeb.defaultAddress.base58
-  );
-  global.userAddress = window.ETHEREUMWeb.defaultAddress.base58;
-  global.userAddressHex = window.ETHEREUMWeb.defaultAddress.hex;
+  global.TronscanName = await getTronscanName(TronWeb.defaultAddress.base58);
+  global.userAddress = window.TronWeb.defaultAddress.base58;
+  global.userAddressHex = window.TronWeb.defaultAddress.hex;
   global.loggedIn = true;
   // listClick("all");
   let response = null;
@@ -209,7 +205,7 @@ async function getPlayerLevel() {
       }
 
       global.username =
-        '[ LVL ' + level + ' | ' + levelTag + ' ] ' + global.ETHEREUMscanName;
+        '[ LVL ' + level + ' | ' + levelTag + ' ] ' + global.TronscanName;
       resolve(true);
     } catch (error) {
       console.error(error);
@@ -217,11 +213,11 @@ async function getPlayerLevel() {
   });
 }
 
-function getETHEREUMscanName(address) {
+function getTronscanName(address) {
   return new Promise(function (resolve, reject) {
     var _returnName = '';
     $.ajax({
-      url: 'https://apilist.ETHEREUMscan.org/api/account?address=' + address,
+      url: 'https://apilist.Tronscan.org/api/account?address=' + address,
       dataType: 'json',
       async: true,
       success: function (data) {
@@ -253,14 +249,14 @@ async function updateWonAmont() {
   }
 }
 
-/****************check for address change in ETHEREUMlink --START*************************/
+/****************check for address change in Tronlink --START*************************/
 //Try to set handle address change event
 let intervalID = setInterval(async function () {
-  if (typeof window.ETHEREUMWeb == 'object') {
-    // window.ETHEREUMWeb.on("addressChanged", initGlobalData);
+  if (typeof window.TronWeb == 'object') {
+    // window.TronWeb.on("addressChanged", initGlobalData);
     try {
-      var userAddress = await window.ETHEREUMWeb.defaultAddress.base58;
-      var userAddressHex = await window.ETHEREUMWeb.defaultAddress.hex;
+      var userAddress = await window.TronWeb.defaultAddress.base58;
+      var userAddressHex = await window.TronWeb.defaultAddress.hex;
       if (global.userAddress == '' && userAddress != '') {
         // initGlobalData()
       }
@@ -274,7 +270,7 @@ let intervalID = setInterval(async function () {
   }
 }, 1000);
 
-/****************check for address change in ETHEREUMlink --END*************************/
+/****************check for address change in Tronlink --END*************************/
 /**************** Detect and set current language and wallet --START*************************/
 
 $('.walletDropDown').on('click', function () {
@@ -284,7 +280,7 @@ $('.walletDropDown').on('click', function () {
     $('#currWallet').html('<img src="images/' + wallet + '.png">Guild Wallet');
   } else {
     setCookie('wallet', wallet, 5);
-    $('#currWallet').html('<img src="images/' + wallet + '.png">ETHEREUMLink');
+    $('#currWallet').html('<img src="images/' + wallet + '.png">TronLink');
   }
 });
 
@@ -321,8 +317,8 @@ function getCurrentLangAndWallet() {
   if (wallet == 'guild-wallet') {
     $('#currWallet').html('<img src="images/' + wallet + '.png">Guild Wallet');
   } else {
-    setCookie('wallet', 'ETHEREUMlink', 5);
-    $('#currWallet').html('<img src="images/ETHEREUMlink.png">ETHEREUMLink');
+    setCookie('wallet', 'Tronlink', 5);
+    $('#currWallet').html('<img src="images/Tronlink.png">TronLink');
   }
 }
 
@@ -449,9 +445,9 @@ socket.on('newMessage', function ({ userName, message, level }) {
 jQuery('#all-chats-form').on('submit', async (e) => {
   e.preventDefault();
   if (
-    window.ETHEREUMWeb &&
-    window.ETHEREUMWeb.ready &&
-    window.ETHEREUMWeb.eventServer.host.includes(ETHEREUMNode)
+    window.TronWeb &&
+    window.TronWeb.ready &&
+    window.TronWeb.eventServer.host.includes(TronNode)
   ) {
     if (global.userSigned == false) {
       let playerExist = false;
@@ -475,10 +471,10 @@ jQuery('#all-chats-form').on('submit', async (e) => {
         return;
       }
 
-      var hex = window.ETHEREUMWeb.toHex('CryptoHorseRacing.com');
+      var hex = window.TronWeb.toHex('CryptoHorseRacing.com');
       hex = hex.substring(2);
       try {
-        var signed = await window.ETHEREUMWeb.ETHEREUM.sign(hex);
+        var signed = await window.TronWeb.Tron.sign(hex);
         if (signed != '') {
           socket.emit(
             'signChat',

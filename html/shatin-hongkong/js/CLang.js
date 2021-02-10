@@ -1,7 +1,7 @@
-var TEXT_CURRENCY = 'ETHEREUM';
+var TEXT_CURRENCY = 'Tron';
 var TEXT_START_RACE = 'START RACE';
 var TEXT_CLEAR_BET = 'CLEAR BET';
-var TEXT_MONEY = 'ETHEREUM';
+var TEXT_MONEY = 'Tron';
 var TEXT_BET = 'BET';
 var TEXT_MIN_BET = 'MIN BET';
 var TEXT_MAX_BET = 'MAX BET';
@@ -27,8 +27,8 @@ var BET_TX_FAILED = 'Bet Failed, Please try again.';
 
 TEXT_SHARE_IMAGE = '200x200.jpg';
 TEXT_SHARE_TITLE = 'Congratulations!';
-TEXT_SHARE_MSG1 = 'You collected <sETHEREUMg>';
+TEXT_SHARE_MSG1 = 'You collected <sTrong>';
 TEXT_SHARE_MSG2 =
-  ' points</sETHEREUMg>!<br><br>Share your score with your friends!';
+  ' points</sTrong>!<br><br>Share your score with your friends!';
 TEXT_SHARE_SHARE1 = 'My score is ';
 TEXT_SHARE_SHARE2 = ' points! Can you do better';

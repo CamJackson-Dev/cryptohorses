@@ -1,18 +1,13 @@
-const ETHEREUMWeb = require('ETHEREUMweb');
+const TronWeb = require('tronweb');
 const config = require('../config/config.js');
-const { utils } = require('ETHEREUMers');
+const { utils } = require('ethers');
 
-const fullNode = config.ETHEREUMGRID_NODE;
-const solidityNode = config.ETHEREUMGRID_NODE;
-const eventServer = config.ETHEREUMGRID_NODE;
+const fullNode = config.TRONGRID_NODE;
+const solidityNode = config.TRONGRID_NODE;
+const eventServer = config.TRONGRID_NODE;
 // const privateKey = config.DUMMY_PK;
 const privateKey = config.SIGNER_KEY;
-const ETHEREUMWeb = new ETHEREUMWeb(
-  fullNode,
-  solidityNode,
-  eventServer,
-  privateKey
-);
+const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
 
 const abiCoder = new utils.AbiCoder();
 
@@ -25,10 +20,10 @@ exports.distributeDividend = async () => {
     var dividendData = new Array();
     var currentDistrinutionTime = 0;
     var nextDistributionTime = 0;
-    var dividendContractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
+    var dividendContractInfo = await tronWeb.trx.getContract(
       config.DIVIDEND_CONTRACT_ADDRESS
     );
-    dividendContractInstance = await ETHEREUMWeb.contract(
+    dividendContractInstance = await tronWeb.contract(
       dividendContractInfo.abi.entrys,
       dividendContractInfo.contract_address
     );
@@ -244,7 +239,7 @@ function waitForTxConfirmation(txId) {
   return new Promise(function (resolve, reject) {
     var checkTxStatus = setInterval(async function () {
       try {
-        var status = await ETHEREUMWeb.ETHEREUM.getTransactionInfo(txId);
+        var status = await tronWeb.Tron.getTransactionInfo(txId);
         if (status) {
           if (status.receipt.result == 'SUCCESS') {
             clearInterval(checkTxStatus);
@@ -263,7 +258,7 @@ function waitForTxConfirmation(txId) {
 
 async function decodeResult(txId) {
   try {
-    var status = await ETHEREUMWeb.ETHEREUM.getTransactionInfo(txId);
+    var status = await tronWeb.Tron.getTransactionInfo(txId);
     if (status.receipt.result == 'SUCCESS') {
       const types = ['bool', 'uint256'];
       var output = '0x' + status.contractResult[0];
@@ -279,9 +274,9 @@ async function decodeResult(txId) {
 
 async function decodeResultPayTX(txId) {
   try {
-    var status = await ETHEREUMWeb.ETHEREUM.getTransactionInfo(txId);
+    var status = await tronWeb.Tron.getTransactionInfo(txId);
     if (status.receipt.result == 'SUCCESS') {
-      var amtPaid = ETHEREUMWeb.toDecimal('0x' + status.contractResult[0]);
+      var amtPaid = TronWeb.toDecimal('0x' + status.contractResult[0]);
       return [true, amtPaid];
     } else {
       return [false, 0];

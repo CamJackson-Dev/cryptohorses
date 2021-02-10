@@ -58,7 +58,7 @@ function CCreditsPanel() {
     _oContainer.addChild(_oButLogo);
 
     _oLink = new createjs.Text(
-      'www.codETHEREUMislab.com',
+      'www.codTronislab.com',
       '36px ' + PRIMARY_FONT,
       '#fff'
     );
@@ -81,7 +81,7 @@ function CCreditsPanel() {
   };
 
   this._onLogoButRelease = function () {
-    window.open('http://www.codETHEREUMislab.com/index.php?&l=en', '_blank');
+    window.open('http://www.codTronislab.com/index.php?&l=en', '_blank');
   };
 
   this._init();

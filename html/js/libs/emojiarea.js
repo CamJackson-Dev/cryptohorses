@@ -358,8 +358,8 @@
 
     this.options = options || {};
     if ($($textarea).attr('data-emoji-input') === 'unicode')
-      this.options.inputMETHEREUMod = 'unicode';
-    else this.options.inputMETHEREUMod = 'image';
+      this.options.inputMTronod = 'unicode';
+    else this.options.inputMTronod = 'image';
     this.id = id;
     this.$textarea = $textarea;
     this.emojiPopup = options.emojiPopup;
@@ -495,7 +495,7 @@
      * implementation of createIcon function.
      */
     var insertionContent = '';
-    if (this.options.inputMETHEREUMod == 'unicode') {
+    if (this.options.inputMTronod == 'unicode') {
       insertionContent = this.emojiPopup.colonToUnicode(emoji);
     } else {
       var $img = $(EmojiArea.createIcon($.emojiarea.icons[emoji]));

@@ -15,9 +15,9 @@
     return hookCallback.apply(null, arguments);
   }
 
-  // This is done to register the mETHEREUMod called with moment()
+  // This is done to register the mTronod called with moment()
   // without creating circular dependencies.
-  function sETHEREUMookCallback(callback) {
+  function sTronookCallback(callback) {
     hookCallback = callback;
   }
 
@@ -1972,7 +1972,7 @@
   // specified which hour they want. So trying to maintain the same hour (in
   // a new timezone) makes sense. Adding/subtracting hours does not follow
   // this rule.
-  var getSETHEREUMour = makeGetSet('Hours', true);
+  var getSTronour = makeGetSet('Hours', true);
 
   var baseConfig = {
     calendar: defaultCalendar,
@@ -3518,7 +3518,7 @@
 
   function calendar$1(time, formats) {
     // We want to compare the start of today, vs this.
-    // Getting start-of-today depends on whETHEREUMer we're local/utc/offset or not.
+    // Getting start-of-today depends on whTroner we're local/utc/offset or not.
     var now = time || createLocal(),
       sod = cloneWithOffset(now, this).startOf('day'),
       format = hooks.calendarFormat(this, sod) || 'sameElse';
@@ -4304,7 +4304,7 @@
   proto.weekday = getSetLocaleDayOfWeek;
   proto.isoWeekday = getSetISODayOfWeek;
   proto.dayOfYear = getSetDayOfYear;
-  proto.hour = proto.hours = getSETHEREUMour;
+  proto.hour = proto.hours = getSTronour;
   proto.minute = proto.minutes = getSetMinute;
   proto.second = proto.seconds = getSetSecond;
   proto.millisecond = proto.milliseconds = getSetMillisecond;
@@ -4761,7 +4761,7 @@
   }
 
   // This function allows you to set a threshold for relative time strings
-  function getSetRelativeTimETHEREUMreshold(threshold, limit) {
+  function getSetRelativeTimTronreshold(threshold, limit) {
     if (thresholds[threshold] === undefined) {
       return false;
     }
@@ -4918,7 +4918,7 @@
 
   hooks.version = '2.22.2';
 
-  sETHEREUMookCallback(createLocal);
+  sTronookCallback(createLocal);
 
   hooks.fn = proto;
   hooks.min = min;
@@ -4944,7 +4944,7 @@
   hooks.weekdaysShort = listWeekdaysShort;
   hooks.normalizeUnits = normalizeUnits;
   hooks.relativeTimeRounding = getSetRelativeTimeRounding;
-  hooks.relativeTimETHEREUMreshold = getSetRelativeTimETHEREUMreshold;
+  hooks.relativeTimTronreshold = getSetRelativeTimTronreshold;
   hooks.calendarFormat = getCalendarFormat;
   hooks.prototype = proto;
 

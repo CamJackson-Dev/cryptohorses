@@ -3,17 +3,17 @@ const dev = {
   DIVIDEND_CONTRACT_ADDRESS: 'TBWKxdA5YUUzgpEq5uAYjTTkJUeuZYd3BJ',
   GAME_LOCATION_1_CONTRACT: 'TMknUncdNdn2KtNb8qDfTCxCBxUFR4P8Kn',
 
-  ETHEREUMGRID_NODE: 'https://api.shasta.ETHEREUMgrid.io',
+  TRONGRID_NODE: 'https://api.shasta.TRONGRID.io',
   SIGNER_KEY: process.env.SIGNER_KEY,
   TOKEN_OWNER: process.env.TOKEN_OWNER,
   DUMMY_PK: '677ff54c085d898025de8b8f1683c0d77f32568a6559787f4d46b5ae0fa8e767',
 
   MONGO_DATABASE: 'test',
-  MONGODB_USERNAME: 'ETHEREUMhorse',
-  MONGODB_PASSWORD: 'ETHEREUMDB%40%230909',
+  MONGODB_USERNAME: 'Tronhorse',
+  MONGODB_PASSWORD: 'TronDB%40%230909',
   MONGODB_IP_1: 'cluster0-fdyv4.mongodb.net',
   url:
-    'mongodb+srv://ETHEREUMhorse:ETHEREUMDB%40%230909@cluster0-fdyv4.mongodb.net/test',
+    'mongodb+srv://Tronhorse:TronDB%40%230909@cluster0-fdyv4.mongodb.net/test',
   // url: "mongodb://localhost:27017/test"
 };
 const prod = {
@@ -21,18 +21,18 @@ const prod = {
   DIVIDEND_CONTRACT_ADDRESS: 'TAa3BAntM7Cz5RMcci8jtN3Q8yccxGwGnF',
   GAME_LOCATION_1_CONTRACT: 'TVqdSYfGpPQXeBHQUgAAqqkgCiqmvQBY1p',
 
-  ETHEREUMGRID_NODE: 'https://api.ETHEREUMgrid.io',
+  TRONGRID_NODE: 'https://api.TRONGRID.io',
   SIGNER_KEY: process.env.SIGNER_KEY,
   TOKEN_OWNER: process.env.TOKEN_OWNER,
 
   DUMMY_PK: '677ff54c085d898025de8b8f1683c0d77f32568a6559787f4d46b5ae0fa8e767',
 
   MONGO_DATABASE: 'test',
-  MONGODB_USERNAME: 'ETHEREUMhorse',
-  MONGODB_PASSWORD: 'ETHEREUMDB%40%230909',
+  MONGODB_USERNAME: 'Tronhorse',
+  MONGODB_PASSWORD: 'TronDB%40%230909',
   MONGODB_IP_1: 'cluster0-fdyv4.mongodb.net',
   url:
-    'mongodb+srv://winnahorse777:Y2FYYgvXGmps8QK5@cluster0-e6dbh.mongodb.net/ETHEREUMhorse?retryWrites=true&w=majority',
+    'mongodb+srv://winnahorse777:Y2FYYgvXGmps8QK5@cluster0-e6dbh.mongodb.net/Tronhorse?retryWrites=true&w=majority',
 };
 
 module.exports = process.env.NODE_ENV === 'prod' ? prod : dev;

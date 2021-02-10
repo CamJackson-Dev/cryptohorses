@@ -741,7 +741,7 @@
 .fa-list-ol:before {
   content: '\f0cb';
 }
-.fa-strikETHEREUMrough:before {
+.fa-strikTronrough:before {
   content: '\f0cc';
 }
 .fa-underline:before {
@@ -851,7 +851,7 @@
 .fa-user-md:before {
   content: '\f0f0';
 }
-.fa-stETHEREUMoscope:before {
+.fa-stTronoscope:before {
   content: '\f0f1';
 }
 .fa-suitcase:before {

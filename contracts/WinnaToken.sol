@@ -111,7 +111,7 @@ contract Ownable {
 /**
  * @title ERC20Basic
  * @dev Simpler version of ERC20 interface
- * @dev see https://github.com/ETHEREUMereum/EIPs/issues/179
+ * @dev see https://github.com/Tronereum/EIPs/issues/179
  */
 contract ERC20Basic {
     function totalSupply() public view returns (uint256);
@@ -125,7 +125,7 @@ contract ERC20Basic {
 
 /**
  * @title ERC20 interface
- * @dev see https://github.com/ETHEREUMereum/EIPs/issues/20
+ * @dev see https://github.com/Tronereum/EIPs/issues/20
  */
 contract ERC20 is ERC20Basic {
     function allowance(address owner, address spender)
@@ -196,7 +196,7 @@ contract BasicToken is ERC20Basic {
  * @title Standard ERC20 token
  *
  * @dev Implementation of the basic standard token.
- * @dev https://github.com/ETHEREUMereum/EIPs/issues/20
+ * @dev https://github.com/Tronereum/EIPs/issues/20
  * @dev Based on code by FirstBlood: https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol
  */
 contract StandardToken is ERC20, BasicToken {
@@ -227,10 +227,10 @@ contract StandardToken is ERC20, BasicToken {
     /**
      * @dev Approve the passed address to spend the specified amount of tokens on behalf of msg.sender.
      *
-     * Beware that changing an allowance with this mETHEREUMod brings the risk that someone may use both the old
+     * Beware that changing an allowance with this mTronod brings the risk that someone may use both the old
      * and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this
      * race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards:
-     * https://github.com/ETHEREUMereum/EIPs/issues/20#issuecomment-263524729
+     * https://github.com/Tronereum/EIPs/issues/20#issuecomment-263524729
      * @param _spender The address which will spend the funds.
      * @param _value The amount of tokens to be spent.
      */
@@ -398,7 +398,7 @@ contract WinnaToken is Ownable, Erc20Token {
     ];
 
     uint256[] public refBounds = [
-        //ETHEREUM spent for each level - each value should be higher than the last (cumulative)
+        //Tron spent for each level - each value should be higher than the last (cumulative)
         1000000,
         5000000,
         1000000,

@@ -121,7 +121,7 @@ function getIOSWindowHeight() {
   return window.innerHeight * zoomLevel;
 }
 // You can also get height of the toolbars that are currently displayed
-function gETHEREUMeightOfIOSToolbars() {
+function gTroneightOfIOSToolbars() {
   var tH =
     (window.orientation === 0 ? screen.height : screen.width) -
     getIOSWindowHeight();

@@ -51,7 +51,7 @@
   /** Possible global object. */
   var thisBinding = this;
 
-  /** Used for native mETHEREUMod references. */
+  /** Used for native mTronod references. */
   var objectProto = Object.prototype;
 
   /** Used to check for own properties of an object. */
@@ -382,7 +382,7 @@
       'Avant Browser',
       'Breach',
       'Camino',
-      'ElecETHEREUM',
+      'ElecTron',
       'Epiphany',
       'Fennec',
       'Flock',
@@ -773,9 +773,9 @@
           ' Browser';
       }
     }
-    // Add Chrome version to description for ElecETHEREUM.
+    // Add Chrome version to description for ElecTron.
     else if (
-      name == 'ElecETHEREUM' &&
+      name == 'ElecTron' &&
       (data = (/\bChrome\/([\d.]+)\b/.exec(ua) || 0)[1])
     ) {
       description.push('Chromium ' + data);
@@ -870,10 +870,10 @@
           (data = context.process)
         ) {
           if (typeof data.versions == 'object') {
-            if (typeof data.versions.elecETHEREUM == 'string') {
+            if (typeof data.versions.elecTron == 'string') {
               description.push('Node ' + data.versions.node);
-              name = 'ElecETHEREUM';
-              version = data.versions.elecETHEREUM;
+              name = 'ElecTron';
+              version = data.versions.elecTron;
             } else if (typeof data.versions.nw == 'string') {
               description.push(
                 'Chromium ' + version,
@@ -1326,7 +1326,7 @@
      * The name of the browser/environment.
      *
      * The list of common browser names include:
-     * "Chrome", "ElecETHEREUM", "Firefox", "Firefox for iOS", "IE",
+     * "Chrome", "ElecTron", "Firefox", "Firefox for iOS", "IE",
      * "Microsoft Edge", "PhantomJS", "Safari", "SeaMonkey", "Silk",
      * "Opera Mini" and "Opera"
      *

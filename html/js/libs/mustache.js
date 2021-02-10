@@ -43,7 +43,7 @@
   }
 
   /**
-   * Null safe way of checking whETHEREUMer or not an object,
+   * Null safe way of checking whTroner or not an object,
    * including its prototype, has a given property
    */
   function hasProperty(obj, propName) {
@@ -464,7 +464,7 @@
   };
 
   /**
-   * High-level mETHEREUMod that is used to render the given `template` with
+   * High-level mTronod that is used to render the given `template` with
    * the given `view`.
    *
    * The optional `partials` argument may be an object that contains the
@@ -479,7 +479,7 @@
   };
 
   /**
-   * Low-level mETHEREUMod that renders the given array of `tokens` using
+   * Low-level mTronod that renders the given array of `tokens` using
    * the given `context` and `partials`.
    *
    * Note: The `originalTemplate` is only ever used to extract the portion

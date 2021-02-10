@@ -62,13 +62,13 @@
 
         let intervalID = setInterval(async function () {
           if (
-            parent.window.ETHEREUMWeb &&
-            parent.window.ETHEREUMWeb.ready &&
-            parent.window.ETHEREUMWeb.eventServer.host.includes("https://api.ETHEREUMgrid.io")
+            parent.window.TronWeb &&
+            parent.window.TronWeb.ready &&
+            parent.window.TronWeb.eventServer.host.includes("https://api.TRONGRID.io")
           ) {
             // console.log(window)
-            window.ETHEREUMWeb = parent.window.ETHEREUMWeb
-            console.log(window.ETHEREUMWeb)
+            window.TronWeb = parent.window.TronWeb
+            console.log(window.TronWeb)
             callcontract();
             clearInterval(intervalID);
           }
@@ -77,11 +77,11 @@
 
         async function callcontract() {
           try {
-            ETHEREUMBalance = await ETHEREUMWeb.ETHEREUM.getBalance(
-              window.ETHEREUMWeb.defaultAddress.base58
+            TronBalance = await tronWeb.Tron.getBalance(
+              window.TronWeb.defaultAddress.base58
             );
-            var betAmt = (ETHEREUMBalance / 1000000).toFixed(2);
-            if (ETHEREUMBalance != undefined) {
+            var betAmt = (TronBalance / 1000000).toFixed(2);
+            if (TronBalance != undefined) {
               var oMain = new CMain({
                 money: betAmt, //USER MONEY
                 min_bet: 10, //MINIMUM BET

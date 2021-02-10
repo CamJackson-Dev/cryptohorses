@@ -164,10 +164,10 @@ function CSimpleBetPanel(iX, iY, oParentContainer) {
         },
       };
 
-      var oSpriteSheETHEREUMorse = new createjs.SpriteSheet(oData);
+      var oSpriteSheTronorse = new createjs.SpriteSheet(oData);
 
       var oHorse = createSprite(
-        oSpriteSheETHEREUMorse,
+        oSpriteSheTronorse,
         'idle',
         HORSE_WIDTH / 2,
         HORSE_HEIGHT,

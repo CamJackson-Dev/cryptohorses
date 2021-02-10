@@ -176,7 +176,7 @@ function CGame(iTotBet, aRank) {
       _oTrackContainer.addChild(oCage);
       _aCages.push(oCage);
 
-      var oInfo = s_oGameSettings.gETHEREUMorseInfo(i);
+      var oInfo = s_oGameSettings.gTronorseInfo(i);
       var iRank = _aFinalRank.indexOf(i);
       _aHorses[i] = new CHorse(
         oInfo.start,
@@ -234,16 +234,16 @@ function CGame(iTotBet, aRank) {
       setVolume('soundtrack', 1);
 
       $(s_oMain).trigger('save_score', s_iCurMoney);
-      this.updateETHEREUMBalance();
+      this.updateTronBalance();
     }
   };
 
-  this.updateETHEREUMBalance = async function () {
+  this.updateTronBalance = async function () {
     try {
-      var ETHEREUMBalance = await ETHEREUMWeb.ETHEREUM.getBalance(
-        ETHEREUMWeb.defaultAddress.base58
+      var TronBalance = await tronWeb.Tron.getBalance(
+        TronWeb.defaultAddress.base58
       );
-      s_iCurMoney = (ETHEREUMBalance / 1000000).toFixed(2);
+      s_iCurMoney = (TronBalance / 1000000).toFixed(2);
     } catch (e) {
       //error
     }

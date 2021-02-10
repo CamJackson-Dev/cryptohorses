@@ -170,7 +170,7 @@
         a++
       ) {
         t = !0 === i(n[a], 'toastify-top') ? 'toastify-top' : 'toastify-bottom';
-        var r = n[a].offsETHEREUMeight;
+        var r = n[a].offsTroneight;
         t = t.substr(9, t.length - 1);
         (window.innerWidth > 0 ? window.innerWidth : screen.width) <= 360
           ? ((n[a].style[t] = s[t] + 'px'), (s[t] += r + 15))

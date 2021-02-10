@@ -339,10 +339,8 @@ function CBetPanel() {
 
       try {
         let contractAddress = 'TVqdSYfGpPQXeBHQUgAAqqkgCiqmvQBY1p';
-        var contractInfo = await ETHEREUMWeb.ETHEREUM.getContract(
-          contractAddress
-        );
-        instance = await ETHEREUMWeb.contract(
+        var contractInfo = await tronWeb.trx.getContract(contractAddress);
+        instance = await tronWeb.contract(
           contractInfo.abi.entrys,
           contractAddress
         );
@@ -355,9 +353,9 @@ function CBetPanel() {
 
         var seed2 = Math.floor(Math.random() * 100000000 + 1);
         var uniqueString = Date.now() + seed2 + '';
-        uniqueString = ETHEREUMWeb.sha3(uniqueString, true);
+        uniqueString = TronWeb.sha3(uniqueString, true);
         var seed3 = seed2 + uniqueString;
-        playerSeed = ETHEREUMWeb.sha3(seed3, true);
+        playerSeed = TronWeb.sha3(seed3, true);
 
         let connection = await instance
           .GoodLuckWINNA(betData, playerSeed, uniqueString)
@@ -367,7 +365,7 @@ function CBetPanel() {
 
         async function checkStatus() {
           try {
-            var event = await ETHEREUMWeb.getEventByTransactionID(connection);
+            var event = await tronWeb.getEventByTransactionID(connection);
             if (event.length >= 1) {
               var findIndex = event.findIndex(
                 (eventArray) => eventArray.name === 'RaceResult'
@@ -389,21 +387,21 @@ function CBetPanel() {
                 );
                 console.log(aRank);
 
-                s_oBetPanel.updateETHEREUMBalance();
+                s_oBetPanel.updateTronBalance();
                 s_oBetPanel.unload();
                 s_oMain.gotoGame(_iTotBet, aRank);
                 $(s_oMain).trigger('bet_placed', _iTotBet);
               } else {
                 clear();
                 _oMsgBox.show(BET_TX_FAILED);
-                s_oBetPanel.updateETHEREUMBalance();
+                s_oBetPanel.updateTronBalance();
                 s_oBetPanel.clearBet();
               }
             }
             // var findIndex = event.findIndex(event.name == "RaceResult");
             // console.log(findIndex)
 
-            // var status = await ETHEREUMWeb.ETHEREUM.getTransactionInfo(connection);
+            // var status = await tronWeb.Tron.getTransactionInfo(connection);
             // console.log(status)
             // if(status){
             //     if(status.receipt.result == "SUCCESS"){
@@ -420,7 +418,7 @@ function CBetPanel() {
             //         aRank.push(parseInt("0x"+leaderBoard.slice(576, 640)))
             //         // console.log(aRank)
 
-            //         s_oBetPanel.updateETHEREUMBalance();
+            //         s_oBetPanel.updateTronBalance();
 
             //         s_oBetPanel.unload();
             //         s_oMain.gotoGame(_iTotBet, aRank);
@@ -429,7 +427,7 @@ function CBetPanel() {
             //     } else {
             //         clear();
             //         _oMsgBox.show(BET_TX_FAILED);
-            //         s_oBetPanel.updateETHEREUMBalance();
+            //         s_oBetPanel.updateTronBalance();
             //         s_oBetPanel.clearBet();
             //     }
             // }
@@ -446,14 +444,14 @@ function CBetPanel() {
     }
   };
 
-  // setInterval(this.updateETHEREUMBalance, 3000)
+  // setInterval(this.updateTronBalance, 3000)
 
-  this.updateETHEREUMBalance = async function () {
+  this.updateTronBalance = async function () {
     try {
-      var ETHEREUMBalance = await ETHEREUMWeb.ETHEREUM.getBalance(
-        ETHEREUMWeb.defaultAddress.base58
+      var TronBalance = await tronWeb.Tron.getBalance(
+        TronWeb.defaultAddress.base58
       );
-      s_iCurMoney = (ETHEREUMBalance / 1000000).toFixed(2);
+      s_iCurMoney = (TronBalance / 1000000).toFixed(2);
     } catch (e) {}
   };
 
